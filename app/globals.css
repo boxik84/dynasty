@@ -154,6 +154,139 @@
     animation-delay: 4s;
   }
 
+  .animation-delay-\[6s\] {
+    animation-delay: 6s;
+  }
+
+  .animation-delay-\[3s\] {
+    animation-delay: 3s;
+  }
+
+  .animation-delay-\[1s\] {
+    animation-delay: 1s;
+  }
+
+  /* Grid movement animation */
+  @keyframes gridMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 80px 80px;
+    }
+  }
+
+  @keyframes gridMoveFast {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 20px 20px;
+    }
+  }
+
+  /* Grid pulse animation */
+  @keyframes gridPulse {
+    0%, 100% {
+      opacity: 0.4;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Scanline effect */
+  @keyframes scanline {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes scanlineMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100px 100px;
+    }
+  }
+
+  /* Rotating beam */
+  @keyframes rotateBeam {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Spinning animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Float up particles */
+  @keyframes floatUp {
+    0% {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-40px);
+      opacity: 0;
+    }
+  }
+
+  /* Float particles with rotation */
+  @keyframes floatParticle {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0.3;
+    }
+    25% {
+      transform: translate(30px, -30px) rotate(90deg);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(0, -60px) rotate(180deg);
+      opacity: 0.5;
+    }
+    75% {
+      transform: translate(-30px, -30px) rotate(270deg);
+      opacity: 0.8;
+    }
+  }
+
+  /* Complex floating animation */
+  @keyframes floatComplex {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translate(20px, -20px) rotate(5deg) scale(1.05);
+    }
+    50% {
+      transform: translate(0, -30px) rotate(-5deg) scale(0.95);
+    }
+    75% {
+      transform: translate(-20px, -10px) rotate(3deg) scale(1.02);
+    }
+  }
+
   /* Moving background pattern */
   @keyframes moveBackground {
     0% {
@@ -204,12 +337,130 @@
     }
   }
 
+  /* Flickering grid animations */
+  @keyframes flickerGrid {
+    0%, 100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes flickerGridSubtle {
+    0%, 100% {
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes flickerGridIntense {
+    0% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    25% {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(0.98);
+    }
+    75% {
+      opacity: 0.9;
+      transform: scale(1.01);
+    }
+    100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes matrixRain {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes waveEffect {
+    0%, 100% {
+      transform: translateY(0) scaleY(1);
+    }
+    50% {
+      transform: translateY(-10px) scaleY(1.1);
+    }
+  }
+
+  @keyframes pulseGrid {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-flicker-grid {
+    animation: flickerGrid 3s ease-in-out infinite;
+  }
+
+  .animate-flicker-grid-subtle {
+    animation: flickerGridSubtle 4s ease-in-out infinite;
+  }
+
+  .animate-flicker-grid-intense {
+    animation: flickerGridIntense 2s ease-in-out infinite;
+  }
+
+  .animate-matrix-rain {
+    animation: matrixRain 3s linear infinite;
+  }
+
+  .animate-wave-effect {
+    animation: waveEffect 2s ease-in-out infinite;
+  }
+
+  .animate-pulse-grid {
+    animation: pulseGrid 2.5s ease-in-out infinite;
+  }
+
   /* Gradient text */
   .gradient-text {
     background: linear-gradient(135deg, #20c997 0%, #38d9a9 50%, #12a97d 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  /* Animated gradient */
+  @keyframes gradient-x {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 3s ease infinite;
   }
 
   /* Floating particles */

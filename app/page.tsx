@@ -8,6 +8,7 @@ import { motion, useInView, useMotionValue, useMotionTemplate } from 'framer-mot
 import { Icons } from '@/components/icons';
 import { siteConfig } from '@/config/site';
 import { CardSpotlight } from '@/components/ui/card-spotlight';
+import { FlickeringGrid } from '@/components/ui/flickering-grid';
 
 // Animated counter component
 const AnimatedCounter = ({ value, suffix = "" }: { value: number; suffix?: string }) => {
@@ -88,6 +89,23 @@ const HeroSection = React.memo(() => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* FlickeringGrid - TOP RIGHT with beautiful shadow and gradient */}
+      <div 
+        className="absolute top-20 right-20 w-[400px] h-[400px] z-0 pointer-events-none rounded-3xl"
+        style={{
+          filter: 'drop-shadow(0 0 80px rgba(236, 72, 153, 0.4)) drop-shadow(0 0 40px rgba(168, 85, 247, 0.3))',
+          maskImage: 'radial-gradient(circle at center, black 20%, transparent 70%)',
+          WebkitMaskImage: 'radial-gradient(circle at center, black 20%, transparent 70%)',
+        }}
+      >
+        <FlickeringGrid
+          className="w-full h-full rounded-3xl"
+          color="rgb(236, 72, 153)"
+          maxOpacity={0.5}
+          variant="pulse"
+        />
+      </div>
+      
       <GridPattern />
       
       {/* Animated gradient orbs */}
@@ -315,7 +333,7 @@ const BentoGrid = React.memo(() => {
       gradient: "from-yellow-600/20 via-yellow-500/10 to-orange-600/20",
       iconBg: "bg-yellow-500/10",
       iconColor: "text-yellow-400",
-      spotlightColors: [[255, 215, 0], [255, 165, 0]] // Gold/Orange
+      spotlightColors: [[255, 215, 0], [255, 165, 0]], // Gold/Orange
     },
     {
       title: "Secure by Default",
@@ -325,7 +343,7 @@ const BentoGrid = React.memo(() => {
       gradient: "from-green-600/20 via-green-500/10 to-emerald-600/20",
       iconBg: "bg-green-500/10",
       iconColor: "text-green-400",
-      spotlightColors: [[34, 197, 94], [16, 185, 129]] // Green/Emerald
+      spotlightColors: [[34, 197, 94], [16, 185, 129]], // Green/Emerald
     },
     {
       title: "Developer Friendly",
@@ -335,7 +353,7 @@ const BentoGrid = React.memo(() => {
       gradient: "from-blue-600/20 via-blue-500/10 to-cyan-600/20",
       iconBg: "bg-blue-500/10",
       iconColor: "text-blue-400",
-      spotlightColors: [[59, 130, 246], [6, 182, 212]] // Blue/Cyan
+      spotlightColors: [[59, 130, 246], [6, 182, 212]], // Blue/Cyan
     },
     {
       title: "Scale Infinitely",
@@ -345,7 +363,7 @@ const BentoGrid = React.memo(() => {
       gradient: "from-purple-600/20 via-purple-500/10 to-pink-600/20",
       iconBg: "bg-purple-500/10",
       iconColor: "text-purple-400",
-      spotlightColors: [[139, 92, 246], [236, 72, 153]] // Purple/Pink
+      spotlightColors: [[139, 92, 246], [236, 72, 153]], // Purple/Pink
     },
     {
       title: "Global Network",
@@ -355,7 +373,7 @@ const BentoGrid = React.memo(() => {
       gradient: "from-indigo-600/20 via-indigo-500/10 to-purple-600/20",
       iconBg: "bg-indigo-500/10",
       iconColor: "text-indigo-400",
-      spotlightColors: [[99, 102, 241], [139, 92, 246]] // Indigo/Purple
+      spotlightColors: [[99, 102, 241], [139, 92, 246]], // Indigo/Purple
     },
   ];
 
@@ -444,21 +462,24 @@ const FeaturesGrid = React.memo(() => {
       value: 50000, 
       suffix: "+", 
       color: "text-blue-400",
-      spotlightColors: [[59, 130, 246], [96, 165, 250]] // Blue
+      spotlightColors: [[59, 130, 246], [96, 165, 250]], // Blue
+      gridColor: "rgb(59, 130, 246)",
     },
     { 
       label: "Projects", 
       value: 10000, 
       suffix: "+", 
       color: "text-green-400",
-      spotlightColors: [[34, 197, 94], [74, 222, 128]] // Green
+      spotlightColors: [[34, 197, 94], [74, 222, 128]], // Green
+      gridColor: "rgb(34, 197, 94)",
     },
     { 
       label: "Uptime", 
       value: 99.9, 
       suffix: "%", 
       color: "text-purple-400",
-      spotlightColors: [[139, 92, 246], [168, 85, 247]] // Purple
+      spotlightColors: [[139, 92, 246], [168, 85, 247]], // Purple
+      gridColor: "rgb(139, 92, 246)",
     },
   ];
 
