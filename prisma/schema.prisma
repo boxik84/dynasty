@@ -1,0 +1,280 @@
+// Prisma Schema pro Dynasty FiveM Web
+// Better Auth + Custom Tables
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// BETTER AUTH MODELS
+// ============================================
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  whitelistRequests WhitelistRequest[]
+
+  @@map("user")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  expiresAt DateTime
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("session")
+}
+
+model Account {
+  id                String   @id @default(cuid())
+  accountId         String
+  providerId        String
+  userId            String
+  accessToken       String?  @db.Text
+  refreshToken      String?  @db.Text
+  idToken           String?  @db.Text
+  accessTokenExpiresAt DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope             String?
+  password          String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([providerId, accountId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id @default(cuid())
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@unique([identifier, value])
+  @@map("verification")
+}
+
+// ============================================
+// CUSTOM MODELS
+// ============================================
+
+model WhitelistRequest {
+  id            Int      @id @default(autoincrement())
+  serialNumber  String?  @unique @map("serial_number") @db.VarChar(20)
+  notes         String?  @db.Text
+  userId        String   @map("user_id") @db.VarChar(255)
+  formData      Json     @map("form_data")
+  status        WhitelistStatus @default(pending)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@index([serialNumber])
+  @@index([createdAt])
+  @@index([updatedAt])
+  @@map("whitelist_requests")
+}
+
+enum WhitelistStatus {
+  pending
+  approved
+  rejected
+}
+
+model Activity {
+  id            Int      @id @default(autoincrement())
+  nazev         String   @db.VarChar(255)
+  popis         String   @db.Text
+  obrazek       String?  @db.VarChar(500)
+  icon          String?  @db.VarChar(255)
+  odmena        String?  @db.VarChar(255)
+  vzdalenost    String?  @db.VarChar(255)
+  cas           String?  @db.VarChar(255)
+  riziko        String   @db.VarChar(255)
+  rizikoLevel   RizikoLevel @default(low) @map("riziko_level")
+  category      ActivityCategory @default(legal)
+  span          Int      @default(1)
+  gradient      String?  @db.VarChar(255)
+  borderColor   String?  @map("border_color") @db.VarChar(255)
+  glowColor     String?  @map("glow_color") @db.VarChar(255)
+  orderIndex    Int      @default(0) @map("order_index")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  @@index([category])
+  @@index([rizikoLevel])
+  @@index([orderIndex])
+  @@map("activities")
+}
+
+enum RizikoLevel {
+  low
+  medium
+  high
+  extreme
+}
+
+enum ActivityCategory {
+  legal
+  illegal
+  heist
+}
+
+model RuleSection {
+  id          String   @id @db.VarChar(50)
+  title       String   @db.VarChar(255)
+  icon        String?  @db.VarChar(255)
+  orderIndex  Int      @default(0) @map("order_index")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  subcategories RuleSubcategory[]
+  rules         Rule[]
+
+  @@index([orderIndex])
+  @@map("rule_sections")
+}
+
+model RuleSubcategory {
+  id          String   @db.VarChar(50)
+  sectionId   String   @map("section_id") @db.VarChar(50)
+  title       String   @db.VarChar(255)
+  icon        String?  @db.VarChar(255)
+  orderIndex  Int      @default(0) @map("order_index")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  section     RuleSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  rules       Rule[]
+
+  @@id([sectionId, id])
+  @@index([sectionId, orderIndex])
+  @@map("rule_subcategories")
+}
+
+model Rule {
+  id            Int      @id @default(autoincrement())
+  sectionId     String?  @map("section_id") @db.VarChar(50)
+  subcategoryId String?  @map("subcategory_id") @db.VarChar(50)
+  content       String   @db.Text
+  orderIndex    Int      @default(0) @map("order_index")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  section       RuleSection? @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  subcategory   RuleSubcategory? @relation(fields: [sectionId, subcategoryId], references: [sectionId, id], onDelete: Cascade)
+
+  @@index([sectionId])
+  @@index([sectionId, subcategoryId])
+  @@index([sectionId, subcategoryId, orderIndex])
+  @@map("rules")
+}
+
+model WhitelistQuestion {
+  id          Int      @id @default(autoincrement())
+  question    String   @db.Text
+  type        QuestionType @default(text)
+  required    Boolean  @default(true)
+  options     Json?
+  placeholder String?  @db.VarChar(255)
+  orderIndex  Int      @default(0) @map("order_index")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@index([orderIndex])
+  @@map("whitelist_questions")
+}
+
+enum QuestionType {
+  text
+  textarea
+  select
+  radio
+  checkbox
+  number
+  email
+  url
+}
+
+model BackupLog {
+  id          Int      @id @default(autoincrement())
+  filename    String   @db.VarChar(255)
+  size        BigInt
+  status      BackupStatus @default(success)
+  message     String?  @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@index([status])
+  @@map("backup_logs")
+}
+
+enum BackupStatus {
+  success
+  failed
+  pending
+}
+
+model PhotoContestEntry {
+  id          Int      @id @default(autoincrement())
+  userId      String   @map("user_id") @db.VarChar(255)
+  imageUrl    String   @map("image_url") @db.VarChar(500)
+  title       String   @db.VarChar(255)
+  description String?  @db.Text
+  contestId   Int      @map("contest_id")
+  status      ContestStatus @default(pending)
+  votes       Int      @default(0)
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
+  @@index([contestId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("photo_contest_entries")
+}
+
+enum ContestStatus {
+  pending
+  approved
+  rejected
+}
+
+model PhotoContestVote {
+  id          Int      @id @default(autoincrement())
+  entryId     Int      @map("entry_id")
+  userId      String   @map("user_id") @db.VarChar(255)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@unique([entryId, userId])
+  @@index([entryId])
+  @@index([userId])
+  @@map("photo_contest_votes")
+}

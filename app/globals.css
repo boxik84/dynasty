@@ -41,6 +41,22 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-aurora: aurora 60s linear infinite;
+
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
 }
 
 :root {
@@ -116,7 +132,106 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom Sonner Toast Styles */
+.sonner-toast {
+  background: linear-gradient(135deg, #181b1f 80%, #1a222b 100%);
+  color: #e6e6e6;
+  border-radius: 1.25rem;
+  border: 1.5px solid #23272e;
+  box-shadow: 0 4px 32px 0 #8a0101cc, 0 1.5px 8px 0 #000a;
+  font-family: var(--font-sans, 'Geist', 'Inter', sans-serif);
+  font-size: 1.05rem;
+  padding: 1.25rem 2rem 1.25rem 2rem;
+  min-width: 320px;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  animation: toast-fade-in 0.4s cubic-bezier(.4, 1.2, .6, 1) both;
+  min-height: 3.5rem;
+}
+
+.sonner-toast .sonner-icon {
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b90505 60%, #8a0101 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2.2rem;
+  margin-left: 0;
+  box-shadow: 0 0 12px #b90505cc;
+  padding: 0.15rem;
+}
+
+.sonner-toast .sonner-icon svg {
+  color: #fff;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.sonner-toast .sonner-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.15rem;
+}
+
+.sonner-toast .sonner-description {
+  color: #bdbdbd;
+  font-size: 0.98rem;
+  margin-bottom: 0.1rem;
+}
+
+.sonner-toast.sonner-success .sonner-icon {
+  background: linear-gradient(135deg, #22d399 60%, #059669 100%);
+  box-shadow: 0 0 12px #22d399cc;
+}
+
+.sonner-toast.sonner-success {
+  border-color: #22d39999;
+  box-shadow: 0 4px 32px 0 #22d39933, 0 1.5px 8px 0 #000a;
+}
+
+.sonner-toast.sonner-error .sonner-icon {
+  background: linear-gradient(135deg, #ff3b3b 60%, #b90505 100%);
+  box-shadow: 0 0 12px #ff3b3bcc;
+}
+
+.sonner-toast.sonner-error {
+  border-color: #ff3b3b99;
+  box-shadow: 0 4px 32px 0 #ff3b3b33, 0 1.5px 8px 0 #000a;
+}
+
+.sonner-toast.sonner-info .sonner-icon {
+  background: linear-gradient(135deg, #3b82f6 60%, #2563eb 100%);
+  box-shadow: 0 0 12px #3b82f6cc;
+}
+
+.sonner-toast.sonner-info {
+  border-color: #3b82f699;
+  box-shadow: 0 4px 32px 0 #3b82f633, 0 1.5px 8px 0 #000a;
+}
+
+@keyframes toast-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }

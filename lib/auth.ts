@@ -1,22 +1,21 @@
 import { betterAuth } from "better-auth";
-import mysql from "mysql2/promise";
-
-// Create MySQL connection pool
-const pool = mysql.createPool({
-  uri: process.env.DATABASE_URL,
-});
+import { prismaAdapter } from "better-auth/adapters/prisma";
+import prisma from "./prisma";
 
 export const auth = betterAuth({
-  database: {
-    provider: "mysql",
-    pool: pool,
-  },
-  secret: process.env.BETTER_AUTH_SECRET,
-  baseURL: process.env.BETTER_AUTH_URL,
-  emailAndPassword: {
-    enabled: true,
-  },
-  socialProviders: {
-    // Můžeš přidat Google, GitHub, etc. později
-  },
+    database: prismaAdapter(prisma, {
+        provider: "mysql",
+    }),
+    origin: process.env.BETTER_AUTH_URL,
+    secret: process.env.BETTER_AUTH_SECRET,
+    emailAndPassword: {
+        enabled: false,
+    },
+    socialProviders: {
+        discord: {
+            clientId: process.env.DISCORD_CLIENT_ID as string,
+            clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
+            redirectUri: `${process.env.BETTER_AUTH_URL}/api/auth/callback/discord`,
+        },
+    },
 });
