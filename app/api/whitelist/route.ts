@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import { hasWhitelistPermissions } from "@/lib/utils";
 import { headers } from "next/headers";
 import axios from "axios";
+import { webDb } from "@/lib/db";
 
 const DISCORD_GUILD_ID = process.env.DISCORD_GUILD_ID!;
 const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN!;
+const db = webDb as any;
 
 // GET - Získat všechny whitelist žádosti (pouze pro adminy)
 export async function GET() {
@@ -20,17 +21,14 @@ export async function GET() {
         }
 
         // Získání Discord account ID
-        const account = await prisma.account.findFirst({
-            where: {
-                userId: session.user.id,
-                providerId: 'discord'
-            },
-            select: {
-                accountId: true
-            }
-        });
+        const account = await db
+            .selectFrom("account")
+            .select(["account_id"])
+            .where("user_id", "=", session.user.id)
+            .where("provider_id", "=", "discord")
+            .executeTakeFirst();
 
-        const discordId = account?.accountId;
+        const discordId = account?.account_id as string | undefined;
 
         if (!discordId) {
             return NextResponse.json({ error: "No Discord account linked" }, { status: 404 });
@@ -58,20 +56,21 @@ export async function GET() {
             return NextResponse.json({ error: "Error verifying permissions" }, { status: 500 });
         }
 
-        const requests = await prisma.whitelistRequest.findMany({
-            orderBy: {
-                createdAt: 'desc'
-            },
-            select: {
-                id: true,
-                userId: true,
-                formData: true,
-                status: true,
-                serialNumber: true,
-                createdAt: true,
-                updatedAt: true
-            }
-        });
+        const rows = await db
+            .selectFrom("whitelist_requests")
+            .select(["id", "user_id", "form_data", "status", "serial_number", "created_at", "updated_at"])
+            .orderBy("created_at", "desc")
+            .execute();
+
+        const requests = rows.map((row: any) => ({
+            id: row.id,
+            userId: row.user_id,
+            formData: typeof row.form_data === "string" ? safeJsonParse(row.form_data) : row.form_data,
+            status: row.status,
+            serialNumber: row.serial_number,
+            createdAt: toIso(row.created_at),
+            updatedAt: toIso(row.updated_at),
+        }));
 
         return NextResponse.json({ requests });
     } catch (error) {
@@ -105,15 +104,11 @@ export async function POST(request: NextRequest) {
         }
 
         // Kontrola počtu pokusů (max 3)
-        const requestsArray = await prisma.whitelistRequest.findMany({
-            where: {
-                userId: session.user.id
-            },
-            select: {
-                id: true,
-                status: true
-            }
-        });
+        const requestsArray = await db
+            .selectFrom("whitelist_requests")
+            .select(["id", "status"])
+            .where("user_id", "=", session.user.id)
+            .execute();
         const totalAttempts = requestsArray.length;
         const MAX_ATTEMPTS = 3;
 
@@ -138,26 +133,26 @@ export async function POST(request: NextRequest) {
         const startOfYear = new Date(currentYear, 0, 1);
         
         // Get count of requests this year to generate sequential number
-        const yearCount = await prisma.whitelistRequest.count({
-            where: {
-                createdAt: {
-                    gte: startOfYear
-                }
-            }
-        });
+        const yearCountRow = await db
+            .selectFrom("whitelist_requests")
+            .select((qb: any) => qb.fn.count("id").as("count"))
+            .where("created_at", ">=", startOfYear)
+            .executeTakeFirst();
+        const yearCount = Number(yearCountRow?.count ?? 0);
         
         const sequentialNumber = (yearCount + 1).toString().padStart(4, '0');
         const serialNumber = `WL-${currentYear}-${sequentialNumber}`;
 
         // Vytvoření nové žádosti
-        await prisma.whitelistRequest.create({
-            data: {
-                userId: session.user.id,
-                formData: formData,
+        await db
+            .insertInto("whitelist_requests")
+            .values({
+                user_id: session.user.id,
+                form_data: JSON.stringify(formData),
                 status: 'pending',
-                serialNumber: serialNumber
-            }
-        });
+                serial_number: serialNumber,
+            })
+            .execute();
 
         const remainingAttempts = MAX_ATTEMPTS - totalAttempts - 1;
         
@@ -177,4 +172,18 @@ export async function POST(request: NextRequest) {
             { status: 500 }
         );
     }
+}
+
+function safeJsonParse(value: string) {
+    try {
+        return JSON.parse(value);
+    } catch (error) {
+        console.warn("Failed to parse form_data JSON", error);
+        return value;
+    }
+}
+
+function toIso(value: any) {
+    if (!value) return null;
+    return value instanceof Date ? value.toISOString() : value;
 }

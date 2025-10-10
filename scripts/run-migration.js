@@ -1,48 +1,79 @@
 const mysql = require('mysql2/promise');
 const fs = require('fs');
 const path = require('path');
+const dotenv = require('dotenv');
 
-async function runMigration() {
+function loadEnvironment() {
+    const projectRoot = path.join(__dirname, '..');
+    const envFiles = ['.env.local', '.env'];
+
+    for (const file of envFiles) {
+        const candidate = path.join(projectRoot, file);
+        if (fs.existsSync(candidate)) {
+            dotenv.config({ path: candidate });
+        }
+    }
+}
+
+function ensureEnv(keys) {
+    const missing = keys.filter((key) => !process.env[key]);
+    if (missing.length > 0) {
+        throw new Error(`Missing required environment variables: ${missing.join(', ')}`);
+    }
+}
+
+async function runMigrations() {
     try {
-        // Load environment variables
-        require('dotenv').config();
+        loadEnvironment();
+        ensureEnv(['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME']);
 
-        // Create database connection
+        const migrationsDir = path.join(__dirname, '..', 'better-auth_migrations');
+        if (!fs.existsSync(migrationsDir)) {
+            console.log('No migrations directory found, nothing to run.');
+            return;
+        }
+
+        const migrationFiles = fs
+            .readdirSync(migrationsDir)
+            .filter((file) => file.endsWith('.sql'))
+            .sort();
+
+        if (migrationFiles.length === 0) {
+            console.log('No migration files detected, nothing to run.');
+            return;
+        }
+
         const connection = await mysql.createConnection({
             host: process.env.DB_HOST,
             user: process.env.DB_USER,
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME,
+            multipleStatements: true,
         });
 
-        console.log('Connected to database');
+        console.log(`Connected to database ${process.env.DB_NAME}`);
+        console.log(`Running ${migrationFiles.length} better-auth migration(s)...`);
 
-        // Read the migration file
-        const migrationPath = path.join(__dirname, '..', 'better-auth_migrations', '2025-01-16T14-00-00.000Z_create_whitelist_questions.sql');
-        const migrationSQL = fs.readFileSync(migrationPath, 'utf8');
+        for (const file of migrationFiles) {
+            const migrationPath = path.join(migrationsDir, file);
+            const migrationSQL = fs.readFileSync(migrationPath, 'utf8');
 
-        // Split by semicolon and filter out empty statements
-        const statements = migrationSQL
-            .split(';')
-            .map(stmt => stmt.trim())
-            .filter(stmt => stmt.length > 0 && !stmt.startsWith('--'));
-
-        console.log(`Running ${statements.length} SQL statements...`);
-
-        // Execute each statement
-        for (const statement of statements) {
-            if (statement.trim()) {
-                await connection.execute(statement);
-                console.log('✓ Executed statement');
+            if (!migrationSQL.trim()) {
+                console.log(`- Skipping empty migration ${file}`);
+                continue;
             }
+
+            console.log(`→ Executing ${file}`);
+            await connection.query(migrationSQL);
+            console.log(`✓ Completed ${file}`);
         }
 
-        console.log('Migration completed successfully!');
         await connection.end();
+        console.log('All better-auth migrations executed successfully.');
     } catch (error) {
-        console.error('Migration failed:', error);
+        console.error('Better-auth migrations failed:', error);
         process.exit(1);
     }
 }
 
-runMigration(); 
+runMigrations();

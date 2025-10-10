@@ -1,11 +1,9 @@
 import { betterAuth } from "better-auth";
-import { prismaAdapter } from "better-auth/adapters/prisma";
-import prisma from "./prisma";
+import { mysqlAdapter } from "./better-auth-mysql-adapter";
+import { webDb } from "./db";
 
 export const auth = betterAuth({
-    database: prismaAdapter(prisma, {
-        provider: "mysql",
-    }),
+    database: mysqlAdapter(webDb),
     origin: process.env.BETTER_AUTH_URL,
     secret: process.env.BETTER_AUTH_SECRET,
     emailAndPassword: {
