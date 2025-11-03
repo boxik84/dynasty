@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
+import database from "@/lib/db";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import { webDb } from "@/lib/db";
 
+// GET - Získat status whitelist žádosti aktuálního uživatele
 export async function GET() {
     try {
         const session = await auth.api.getSession({
@@ -13,33 +14,32 @@ export async function GET() {
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const db = webDb as any;
+        // Najít nejnovější žádost uživatele
+        const [rows] = await database.execute(`
+      SELECT id, status, created_at, updated_at
+      FROM whitelist_requests
+      WHERE user_id = ?
+      ORDER BY created_at DESC
+      LIMIT 1
+    `, [session.user.id]);
 
-        const rows = await db
-            .selectFrom("whitelist_requests")
-            .select(["id", "status", "created_at", "updated_at"])
-            .where("user_id", "=", session.user.id)
-            .orderBy("created_at", "desc")
-            .limit(1)
-            .execute();
-
-        const request = rows[0];
-
-        if (!request) {
+        if (!Array.isArray(rows) || rows.length === 0) {
             return NextResponse.json({
                 hasRequest: false,
                 status: null,
-                message: "Žádná whitelist žádost nenalezena",
+                message: "Žádná whitelist žádost nenalezena"
             });
         }
+
+        const request = rows[0] as any;
 
         return NextResponse.json({
             hasRequest: true,
             status: request.status,
             requestId: request.id,
-            createdAt: toIso(request.created_at),
-            updatedAt: toIso(request.updated_at),
-            message: getStatusMessage(request.status),
+            createdAt: request.created_at,
+            updatedAt: request.updated_at,
+            message: getStatusMessage(request.status)
         });
     } catch (error) {
         console.error("Error fetching whitelist status:", error);
@@ -52,25 +52,13 @@ export async function GET() {
 
 function getStatusMessage(status: string): string {
     switch (status) {
-        case "pending":
-            return "Žádost čeká se na vyhodnocení";
-        case "approved":
-            return "Schválená žádost";
-        case "rejected":
-            return "Zamítnutá žádost";
+        case 'pending':
+            return 'Žádost čeká se na vyhodnocení';
+        case 'approved':
+            return 'Schválená žádost';
+        case 'rejected':
+            return 'Zamítnutá žádost';
         default:
-            return "Neznámý status žádosti";
+            return 'Neznámý status žádosti';
     }
-}
-
-function toIso(value: unknown) {
-    if (!value) {
-        return value;
-    }
-
-    if (value instanceof Date) {
-        return value.toISOString();
-    }
-
-    return value;
 }

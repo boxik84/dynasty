@@ -1,13 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
+import database from "@/lib/db";
 import { auth } from "@/lib/auth";
 import { hasWhitelistPermissions } from "@/lib/utils";
 import { headers } from "next/headers";
 import axios from "axios";
-import { webDb } from "@/lib/db";
 
 const DISCORD_GUILD_ID = process.env.DISCORD_GUILD_ID!;
 const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN!;
-const db = webDb as any;
 
 // GET - Získat všechny whitelist žádosti (pouze pro adminy)
 export async function GET() {
@@ -21,14 +20,13 @@ export async function GET() {
         }
 
         // Získání Discord account ID
-        const account = await db
-            .selectFrom("account")
-            .select(["account_id"])
-            .where("user_id", "=", session.user.id)
-            .where("provider_id", "=", "discord")
-            .executeTakeFirst();
+        const [accountRows] = await database.execute(
+            "SELECT accountId FROM account WHERE userId = ? AND providerId = 'discord' LIMIT 1",
+            [session.user.id]
+        );
 
-        const discordId = account?.account_id as string | undefined;
+        const accountRow = Array.isArray(accountRows) ? (accountRows[0] as any) : null;
+        const discordId = accountRow?.accountId;
 
         if (!discordId) {
             return NextResponse.json({ error: "No Discord account linked" }, { status: 404 });
@@ -56,23 +54,13 @@ export async function GET() {
             return NextResponse.json({ error: "Error verifying permissions" }, { status: 500 });
         }
 
-        const rows = await db
-            .selectFrom("whitelist_requests")
-            .select(["id", "user_id", "form_data", "status", "serial_number", "created_at", "updated_at"])
-            .orderBy("created_at", "desc")
-            .execute();
+        const [rows] = await database.execute(`
+      SELECT id, user_id, form_data, status, serial_number, created_at, updated_at
+      FROM whitelist_requests
+      ORDER BY created_at DESC
+    `);
 
-        const requests = rows.map((row: any) => ({
-            id: row.id,
-            userId: row.user_id,
-            formData: typeof row.form_data === "string" ? safeJsonParse(row.form_data) : row.form_data,
-            status: row.status,
-            serialNumber: row.serial_number,
-            createdAt: toIso(row.created_at),
-            updatedAt: toIso(row.updated_at),
-        }));
-
-        return NextResponse.json({ requests });
+        return NextResponse.json({ requests: rows });
     } catch (error) {
         console.error("Error fetching whitelist requests:", error);
         return NextResponse.json(
@@ -104,11 +92,12 @@ export async function POST(request: NextRequest) {
         }
 
         // Kontrola počtu pokusů (max 3)
-        const requestsArray = await db
-            .selectFrom("whitelist_requests")
-            .select(["id", "status"])
-            .where("user_id", "=", session.user.id)
-            .execute();
+        const [allRequests] = await database.execute(
+            "SELECT id, status FROM whitelist_requests WHERE user_id = ?",
+            [session.user.id]
+        );
+
+        const requestsArray = Array.isArray(allRequests) ? allRequests : [];
         const totalAttempts = requestsArray.length;
         const MAX_ATTEMPTS = 3;
 
@@ -130,29 +119,23 @@ export async function POST(request: NextRequest) {
 
         // Generate serial number
         const currentYear = new Date().getFullYear();
-        const startOfYear = new Date(currentYear, 0, 1);
         
         // Get count of requests this year to generate sequential number
-        const yearCountRow = await db
-            .selectFrom("whitelist_requests")
-            .select((qb: any) => qb.fn.count("id").as("count"))
-            .where("created_at", ">=", startOfYear)
-            .executeTakeFirst();
-        const yearCount = Number(yearCountRow?.count ?? 0);
+        const [yearCountRows] = await database.execute(
+            `SELECT COUNT(*) as count FROM whitelist_requests WHERE YEAR(created_at) = ?`,
+            [currentYear]
+        );
         
+        const yearCount = Array.isArray(yearCountRows) ? (yearCountRows[0] as any)?.count || 0 : 0;
         const sequentialNumber = (yearCount + 1).toString().padStart(4, '0');
         const serialNumber = `WL-${currentYear}-${sequentialNumber}`;
 
         // Vytvoření nové žádosti
-        await db
-            .insertInto("whitelist_requests")
-            .values({
-                user_id: session.user.id,
-                form_data: JSON.stringify(formData),
-                status: 'pending',
-                serial_number: serialNumber,
-            })
-            .execute();
+        await database.execute(
+            `INSERT INTO whitelist_requests (user_id, form_data, status, serial_number, created_at, updated_at)
+       VALUES (?, ?, 'pending', ?, NOW(), NOW())`,
+            [session.user.id, JSON.stringify(formData), serialNumber]
+        );
 
         const remainingAttempts = MAX_ATTEMPTS - totalAttempts - 1;
         
@@ -172,18 +155,4 @@ export async function POST(request: NextRequest) {
             { status: 500 }
         );
     }
-}
-
-function safeJsonParse(value: string) {
-    try {
-        return JSON.parse(value);
-    } catch (error) {
-        console.warn("Failed to parse form_data JSON", error);
-        return value;
-    }
-}
-
-function toIso(value: any) {
-    if (!value) return null;
-    return value instanceof Date ? value.toISOString() : value;
 }

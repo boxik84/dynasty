@@ -1,9 +1,8 @@
 import { betterAuth } from "better-auth";
-import { mysqlAdapter } from "./better-auth-mysql-adapter";
-import { webDb } from "./db";
+import database from "./db";
 
 export const auth = betterAuth({
-    database: mysqlAdapter(webDb),
+    database,
     origin: process.env.BETTER_AUTH_URL,
     secret: process.env.BETTER_AUTH_SECRET,
     emailAndPassword: {

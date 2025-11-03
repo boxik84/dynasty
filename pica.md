@@ -1,9 +1,5 @@
-# Better Auth Configuration
-BETTER_AUTH_SECRET=NdCQE7nHz9dNrceBX7vP0Y8HO2yla38n
-BETTER_AUTH_URL=http://localhost:3000
-
-# MySQL Database Configuration
-DATABASE_URL=mysql://u4_R1euFrthQ5:t1%40hZAnti%5EsrnddLaYhYT%2BOw@85.239.155.21:3306/s4_webdynasty
+BETTER_AUTH_SECRET=QZLcFmoVvd2o5y0AJ3jNUMZhmbaUoVaC
+BETTER_AUTH_URL=http://localhost:3000/
 
 DB_HOST=176.96.136.212
 DB_NAME=web
