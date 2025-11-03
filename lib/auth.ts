@@ -3,6 +3,8 @@ import { getMigrations } from "better-auth/db";
 import { nextCookies } from "better-auth/next-js";
 import { createPool } from "mysql2/promise";
 
+import { logError, logInfo, logWarn } from "@/lib/fivemanage-logger";
+
 const plugins = [nextCookies()];
 
 const baseURL =
@@ -16,8 +18,36 @@ const databasePassword = process.env.DB_PASSWORD;
 const databaseName = process.env.DB_NAME;
 const databasePort = Number(process.env.DB_PORT ?? "3306");
 
+const discordClientId = process.env.DISCORD_CLIENT_ID;
+const discordClientSecret = process.env.DISCORD_CLIENT_SECRET;
+
 if (!databaseHost || !databaseUser || !databasePassword || !databaseName) {
   throw new Error("Missing MySQL connection details in environment variables");
+}
+
+const socialProviders =
+  discordClientId && discordClientSecret
+    ? {
+        discord: {
+          clientId: discordClientId,
+          clientSecret: discordClientSecret,
+        },
+      }
+    : undefined;
+
+if (!discordClientId || !discordClientSecret) {
+  void logWarn("Discord OAuth provider not fully configured", {
+    metadata: {
+      clientIdPresent: Boolean(discordClientId),
+      clientSecretPresent: Boolean(discordClientSecret),
+    },
+  });
+} else {
+  void logInfo("Discord OAuth provider registered", {
+    metadata: {
+      clientIdFragment: discordClientId.slice(-4),
+    },
+  });
 }
 
 const mysqlPool = createPool({
@@ -47,8 +77,11 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  ...(socialProviders ? { socialProviders } : {}),
   plugins,
 });
+
+export const isDiscordAuthConfigured = Boolean(socialProviders);
 
 let migrationsPromise: Promise<void> | null = null;
 
@@ -57,8 +90,21 @@ async function runMigrationsOnce() {
     migrationsPromise = getMigrations(auth.options)
       .then(async ({ runMigrations }) => {
         await runMigrations();
+        void logInfo("Better Auth migrations executed", {
+          metadata: {
+            databaseHost,
+            databaseName,
+          },
+        });
       })
       .catch((error) => {
+        void logError("Better Auth migrations failed", {
+          error,
+          metadata: {
+            databaseHost,
+            databaseName,
+          },
+        });
         migrationsPromise = null;
         throw error;
       });
