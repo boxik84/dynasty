@@ -1,22 +1,8 @@
 import Link from "next/link"
-import {
-  ArrowLeft,
-  Compass,
-  LifeBuoy,
-  MessageCircle,
-  ShieldCheck,
-  Sparkles,
-} from "lucide-react"
+import { ArrowLeft, Compass, ShieldCheck, Sparkles } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 
 export default function NotFound() {
   return (
@@ -27,7 +13,7 @@ export default function NotFound() {
         <div className="absolute bottom-[10%] left-1/2 size-80 -translate-x-1/2 rounded-full bg-muted/20 blur-[120px]" />
       </div>
 
-      <div className="relative mx-auto flex max-w-5xl flex-col gap-16 px-6 py-24 sm:px-10 lg:px-16">
+      <div className="relative mx-auto flex max-w-4xl flex-col gap-12 px-6 py-24 sm:px-10 lg:px-16">
         <section className="grid gap-12 text-center lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:text-left">
           <div className="flex flex-col gap-6">
             <Badge variant="outline" className="mx-auto lg:mx-0">
@@ -74,85 +60,6 @@ export default function NotFound() {
                   Adaptive navigation active
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="grid gap-6 md:grid-cols-2">
-          <Card className="border-primary/50 bg-background/80 backdrop-blur">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <Compass className="size-5 text-primary" />
-                Continue exploring
-              </CardTitle>
-              <CardDescription>
-                Discover highlighted areas of the product while you are here.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="flex flex-col gap-3 text-sm text-muted-foreground">
-              <Link href="/" className="hover:text-primary">
-                • Go to the dashboard overview
-              </Link>
-              <Link href="/auth" className="hover:text-primary">
-                • Manage your sessions and security
-              </Link>
-              <Link href="/" className="hover:text-primary">
-                • Review the latest Dynasty release notes
-              </Link>
-            </CardContent>
-          </Card>
-
-          <Card className="border-border/80 bg-background/80 backdrop-blur">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg">
-                <LifeBuoy className="size-5 text-primary" />
-                Need assistance?
-              </CardTitle>
-              <CardDescription>
-                Our team is on standby to help you locate what you need.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-3 rounded-xl border border-dashed border-border/70 p-4">
-                <MessageCircle className="size-5 text-primary" />
-                <div>
-                  <p className="font-medium text-foreground">Live concierge</p>
-                  <p>Weekdays 9:00–18:00 CET • <span className="text-primary">support@dynasty.app</span></p>
-                </div>
-              </div>
-              <p>
-                Prefer self-service? Browse workflows, environment setup tips, and troubleshooting guides directly from the in-app knowledge base.
-              </p>
-            </CardContent>
-          </Card>
-        </section>
-
-        <section className="rounded-3xl border border-border/60 bg-background/90 p-8 shadow-lg backdrop-blur">
-          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div className="space-y-2">
-              <p className="text-sm font-medium text-primary uppercase tracking-[0.3em]">
-                system heartbeat
-              </p>
-              <h2 className="text-2xl font-semibold">
-                All systems operational — your journey can continue safely.
-              </h2>
-              <p className="max-w-2xl text-sm text-muted-foreground">
-                Routing checks, authentication layers, and content guards are healthy. If something feels off, share a quick report and we will investigate.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild variant="outline">
-                <Link href="mailto:support@dynasty.app">
-                  <MessageCircle className="size-4" />
-                  Report an issue
-                </Link>
-              </Button>
-              <Button asChild>
-                <Link href="/">
-                  <Compass className="size-4" />
-                  Launch guided tour
-                </Link>
-              </Button>
             </div>
           </div>
         </section>

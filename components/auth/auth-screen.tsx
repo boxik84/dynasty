@@ -4,7 +4,6 @@ import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,40 +13,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { FieldDescription } from "@/components/ui/field";
-import { Separator } from "@/components/ui/separator";
 import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
 import { authClient } from "@/lib/auth-client";
-import {
-  CheckCircle2,
-  MessageCircleHeart,
-  ShieldCheck,
-  Users2,
-} from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 interface AuthScreenProps {
   redirectTo: string;
   initialError?: string | null;
   discordReady: boolean;
 }
-
-const featureCards = [
-  {
-    title: "Role-based kontrola",
-    description: "Přístup získáš automaticky podle své Discord role na serveru.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Komunitní notifikace",
-    description: "Získej informace o whitelistech, eventech a updatech bez prodlevy.",
-    icon: MessageCircleHeart,
-  },
-  {
-    title: "Jeden účet pro všechno",
-    description: "Propojený Discord účet používáme napříč celým Dynasty ekosystémem.",
-    icon: Users2,
-  },
-];
 
 const errorMessages: Record<string, string> = {
   discord:
@@ -131,137 +106,93 @@ export function AuthScreen({
     }
   }, [discordReady, redirectTo]);
 
-  const featureElements = useMemo(
-    () =>
-      featureCards.map(({ title, description, icon: Icon }) => (
-        <Card
-          key={title}
-          className="border-border/60 bg-background/60 shadow-sm backdrop-blur"
-        >
-          <CardHeader className="flex flex-row items-start gap-3 space-y-0">
-            <div className="rounded-full border border-primary/20 bg-primary/10 p-2 text-primary">
-              <Icon className="size-5" aria-hidden="true" />
-            </div>
-            <div>
-              <CardTitle className="text-base font-semibold leading-tight">
-                {title}
-              </CardTitle>
-              <CardDescription className="mt-1 text-sm text-muted-foreground">
-                {description}
-              </CardDescription>
-            </div>
-          </CardHeader>
-        </Card>
-      )),
-    []
-  );
-
   return (
-    <div className="relative isolate flex min-h-screen flex-col justify-center overflow-hidden bg-background">
+    <div className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-background">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,var(--chart-4)_0%,transparent_55%)] opacity-40" />
       <div className="absolute inset-y-0 left-0 -z-10 hidden w-1/2 bg-[radial-gradient(circle_at_left,var(--chart-2)_0%,transparent_55%)] opacity-25 lg:block" />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-16 lg:flex-row lg:items-center">
-        <div className="order-2 w-full lg:order-1 lg:w-1/2">
-          <Badge variant="secondary" className="mb-4">
-            <CheckCircle2 className="size-3.5" />
-            Přístup jen pro ověřené hráče
-          </Badge>
-          <h1 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Přihlas se přes Discord a vstup do Dynasty RP portálu
-          </h1>
-          <p className="mt-4 max-w-xl text-lg text-muted-foreground">
-            Autorizační proces používá výhradně Discord, takže nemusíš spravovat
-            další hesla. Stačí potvrdit oprávnění a máš hotovo během pár vteřin.
-          </p>
+      <div className="relative mx-auto w-full max-w-md px-6 py-16">
+        <Card className="border-border/70 bg-card/90 shadow-xl backdrop-blur">
+          <CardHeader className="space-y-3 text-center">
+            <div className="mx-auto flex size-14 items-center justify-center rounded-full border border-primary/30 bg-primary/10 text-primary">
+              <DiscordIcon className="size-7" />
+            </div>
+            <CardTitle className="text-2xl font-semibold text-foreground">
+              Přihlášení přes Discord
+            </CardTitle>
+            <CardDescription className="text-muted-foreground">
+              Přihlas se jediným kliknutím a pokračuj do Dynasty portálu.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {displayedError ? (
+              <Alert variant="destructive">
+                <AlertDescription>{displayedError}</AlertDescription>
+              </Alert>
+            ) : null}
 
-          <Separator className="my-6" />
+            <Button
+              type="button"
+              onClick={handleDiscordSignIn}
+              disabled={isLoading || !discordReady}
+              className={cn(
+                "group relative flex h-12 w-full items-center justify-center gap-3 rounded-lg",
+                "bg-[#5865F2] text-white shadow-sm transition-colors",
+                "hover:bg-[#4E5BD1] focus-visible:ring-4 focus-visible:ring-primary/30",
+                !discordReady && "cursor-not-allowed opacity-70"
+              )}
+            >
+              {isLoading ? (
+                <Spinner className="size-5" />
+              ) : (
+                <DiscordIcon className="size-5" />
+              )}
+              {isLoading ? "Připojuji účet" : "Pokračovat přes Discord"}
+            </Button>
 
-          <div className="grid gap-4 sm:grid-cols-2">
-            {featureElements}
-          </div>
+            <div className="space-y-3 text-sm text-muted-foreground">
+              <p className="flex items-start gap-2">
+                <CheckCircle2 className="mt-0.5 size-4 text-primary" />
+                Přihlášení probíhá výhradně přes oficiální Discord OAuth.
+              </p>
+              <p className="flex items-start gap-2">
+                <CheckCircle2 className="mt-0.5 size-4 text-primary" />
+                Nikdy po tobě nebudeme chtít heslo ani dvoufázový kód.
+              </p>
+            </div>
 
-          <FieldDescription className="mt-6 text-sm text-muted-foreground">
-            Potřebuješ pomoc? Napiš na support ticket na našem Discordu nebo nás
-            kontaktuj na <a href="mailto:support@dynastyrp.eu">support@dynastyrp.eu</a>.
-          </FieldDescription>
-        </div>
-
-        <div className="order-1 w-full lg:order-2 lg:w-1/2">
-          <Card className="border-border/70 bg-card/90 shadow-xl backdrop-blur">
-            <CardHeader className="space-y-3 text-center">
-              <div className="mx-auto flex size-14 items-center justify-center rounded-full border border-primary/30 bg-primary/10 text-primary">
-                <DiscordIcon className="size-7" />
-              </div>
-              <CardTitle className="text-2xl font-semibold text-foreground">
-                Přihlášení přes Discord
-              </CardTitle>
-              <CardDescription className="text-muted-foreground">
-                Jeden bezpečný vstup pro všechny nástroje Dynasty RP.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {displayedError ? (
-                <Alert variant="destructive">
-                  <AlertDescription>{displayedError}</AlertDescription>
-                </Alert>
-              ) : null}
-
-              <Button
-                type="button"
-                onClick={handleDiscordSignIn}
-                disabled={isLoading || !discordReady}
-                className={cn(
-                  "group relative flex h-12 w-full items-center justify-center gap-3 rounded-lg",
-                  "bg-[#5865F2] text-white shadow-sm transition-colors",
-                  "hover:bg-[#4E5BD1] focus-visible:ring-4 focus-visible:ring-primary/30",
-                  !discordReady && "cursor-not-allowed opacity-70"
-                )}
+            <FieldDescription className="text-center text-xs text-muted-foreground">
+              Pokračováním potvrzuješ souhlas s našimi{" "}
+              <Link
+                href="https://www.dynastyrp.eu/terms"
+                className="underline-offset-4 hover:underline"
               >
-                {isLoading ? (
-                  <Spinner className="size-5" />
-                ) : (
-                  <DiscordIcon className="size-5" />
-                )}
-                {isLoading ? "Připojuji účet" : "Pokračovat přes Discord"}
-              </Button>
+                podmínkami používání
+              </Link>{" "}a{" "}
+              <Link
+                href="https://www.dynastyrp.eu/privacy"
+                className="underline-offset-4 hover:underline"
+              >
+                zásadami ochrany soukromí
+              </Link>
+              .
+            </FieldDescription>
+          </CardContent>
+        </Card>
 
-              <div className="space-y-4 text-sm">
-                <Separator />
-                <div className="space-y-2 text-left text-muted-foreground">
-                  <p className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 size-4 text-primary" />
-                    Přihlášení probíhá výhradně přes oficiální Discord OAuth.
-                  </p>
-                  <p className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 size-4 text-primary" />
-                    Nikdy po tobě nebudeme chtít heslo ani dvoufázový kód.
-                  </p>
-                </div>
-              </div>
-
-              <FieldDescription className="text-center text-xs text-muted-foreground">
-                Pokračováním potvrzuješ souhlas s našimi{" "}
-                <Link
-                  href="https://www.dynastyrp.eu/terms"
-                  className="underline-offset-4 hover:underline"
-                >
-                  podmínkami používání
-                </Link>{" "}a{" "}
-                <Link
-                  href="https://www.dynastyrp.eu/privacy"
-                  className="underline-offset-4 hover:underline"
-                >
-                  zásadami ochrany soukromí
-                </Link>
-                .
-              </FieldDescription>
-            </CardContent>
-          </Card>
+        <div className="mt-6 text-center text-sm text-muted-foreground">
+          Potřebuješ pomoc? Napiš ticket na našem Discordu nebo nás kontaktuj na{" "}
+          <a
+            href="mailto:support@dynastyrp.eu"
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            support@dynastyrp.eu
+          </a>
+          .
         </div>
       </div>
 
-      <div className="absolute left-6 top-6 flex items-center gap-3 text-sm text-muted-foreground">
+      <div className="absolute left-6 top-6 hidden items-center gap-3 text-sm text-muted-foreground md:flex">
         <Link
           href="/"
           className="rounded-full border border-border/70 bg-background/80 px-3 py-1.5 backdrop-blur transition-colors hover:border-primary/50 hover:text-foreground"
