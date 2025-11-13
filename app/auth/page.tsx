@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 type AuthPageProps = {
-  searchParams?: Record<string, string | string[] | undefined>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
 function resolveRedirect(target?: string | string[]) {
@@ -40,9 +40,10 @@ function resolveError(searchParams?: Record<string, string | string[] | undefine
   return rawError ?? null;
 }
 
-export default function AuthPage({ searchParams }: AuthPageProps) {
-  const redirectTo = resolveRedirect(searchParams?.redirectTo);
-  const initialError = resolveError(searchParams);
+export default async function AuthPage({ searchParams }: AuthPageProps) {
+  const params = await searchParams;
+  const redirectTo = resolveRedirect(params?.redirectTo);
+  const initialError = resolveError(params);
 
   if (!isDiscordAuthConfigured) {
     void logWarn("Auth page rendered without Discord OAuth configuration", {
