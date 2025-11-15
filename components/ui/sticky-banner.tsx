@@ -48,7 +48,7 @@ export const StickyBanner = ({
         "before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#8a0101]/5 before:via-[#b90505]/10 before:to-[#8a0101]/5 before:pointer-events-none",
         // Animated border glow with stronger red color
         "after:absolute after:inset-x-0 after:bottom-0 after:h-[1px] after:bg-gradient-to-r after:from-transparent after:via-[#8a0101]/80 after:to-transparent",
-        "relative overflow-hidden text-white",
+        "relative overflow-hidden text-foreground dark:text-white",
         className,
       )}
       initial={{
@@ -133,7 +133,7 @@ export const StickyBanner = ({
           transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 200 }}
           className="flex-shrink-0 w-8 h-8 bg-gradient-to-br from-[#8a0101] via-[#b90505] to-[#570000] rounded-full flex items-center justify-center shadow-lg shadow-[#8a0101]/50 ring-2 ring-[#8a0101]/30"
         >
-          <StoreIcon className="w-4 h-4 text-white drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]" />
+          <StoreIcon className="w-4 h-4 text-foreground dark:text-white drop-shadow-[0_0_4px_rgba(255,255,255,0.5)]" />
         </motion.div>
         
         <motion.div
@@ -175,7 +175,7 @@ export const StickyBanner = ({
         onClick={() => setOpen(false)}
         aria-label="Zavřít banner"
       >
-        <CloseIcon className="h-5 w-5 text-white/80 group-hover:text-white transition-colors duration-200 drop-shadow-sm" />
+        <CloseIcon className="h-5 w-5 text-foreground dark:text-white/80 group-hover:text-foreground dark:text-white transition-colors duration-200 drop-shadow-sm" />
       </motion.button>
     </motion.div>
   );

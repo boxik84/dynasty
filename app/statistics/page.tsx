@@ -146,7 +146,7 @@ export default function StatisticsPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#0a0a0a] overflow-hidden">
+    <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a] overflow-hidden">
       {/* Pozadí grid a efekty */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <svg
@@ -260,9 +260,9 @@ export default function StatisticsPage() {
           >
             <div className="flex items-center justify-center gap-3 mb-4">
               <span className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-[#8a0101]/80 to-[#b90505]/80 shadow-lg shadow-[#8a0101]/30 w-12 h-12">
-                <BarChart3 className="h-7 w-7 text-white drop-shadow-[0_0_8px_#8a0101]" />
+                <BarChart3 className="h-7 w-7 text-foreground dark:text-white drop-shadow-[0_0_8px_#8a0101]" />
               </span>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight drop-shadow">Server statistiky</h1>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground dark:text-white tracking-tight drop-shadow">Server statistiky</h1>
             </div>
             <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
               Přehled ekonomiky, členské základny a aktivity na Retrovax FiveM serveru. Sledujte růst naší komunity v reálném čase.
@@ -318,9 +318,9 @@ export default function StatisticsPage() {
           >
             <div className="flex items-center justify-center gap-3 mb-8">
               <span className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-[#8a0101]/80 to-[#b90505]/80 shadow-lg shadow-[#8a0101]/30 w-10 h-10">
-                <ShieldCheck className="h-6 w-6 text-white drop-shadow-[0_0_8px_#8a0101]" />
+                <ShieldCheck className="h-6 w-6 text-foreground dark:text-white drop-shadow-[0_0_8px_#8a0101]" />
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight drop-shadow">Whitelist statistiky</h2>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground dark:text-white tracking-tight drop-shadow">Whitelist statistiky</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
               {/* Počet žádostí */}
@@ -374,9 +374,9 @@ export default function StatisticsPage() {
             <div className="w-full max-w-2xl rounded-3xl bg-gradient-to-br from-[#131618]/90 via-[#151a1c]/90 to-[#111b22]/95 border border-white/10 shadow-2xl backdrop-blur-md p-8 flex flex-col items-center">
               <div className="flex items-center gap-3 mb-4">
                 <span className="inline-flex items-center justify-center rounded-full bg-gradient-to-br from-[#8a0101]/80 to-[#b90505]/80 shadow-lg shadow-[#8a0101]/30 w-10 h-10">
-                  <TrendingUp className="h-6 w-6 text-white drop-shadow-[0_0_8px_#8a0101]" />
+                  <TrendingUp className="h-6 w-6 text-foreground dark:text-white drop-shadow-[0_0_8px_#8a0101]" />
                 </span>
-                <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight drop-shadow">Shrnutí serveru</h2>
+                <h2 className="text-xl sm:text-2xl font-extrabold text-foreground dark:text-white tracking-tight drop-shadow">Shrnutí serveru</h2>
               </div>
               <p className="text-gray-300 leading-relaxed text-base sm:text-lg text-center mb-6">
                 Server Retrovax FiveM úspěšně provozujeme již <span className="text-orange-400 font-semibold">{stats.daysRunning} dní</span>.<br/>

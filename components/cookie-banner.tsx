@@ -42,7 +42,7 @@ export default function CookieBanner() {
         <div className="flex items-center gap-3 mb-1">
           <Cookie className="w-8 h-8 text-[#8a0101] drop-shadow-lg" />
           <div>
-            <h4 className="text-base font-semibold text-white">Souhlas s cookies</h4>
+            <h4 className="text-base font-semibold text-foreground dark:text-white">Souhlas s cookies</h4>
             <p className="text-sm text-gray-300 leading-snug">
               Tento web používá cookies, aby Vám zajistil co nejlepší zážitek z našich stránek.
             </p>
@@ -58,7 +58,7 @@ export default function CookieBanner() {
           <Link href="/cookies">
             <Button
               variant="outline"
-              className="cursor-pointer border-white/20 text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-200 font-semibold px-4 py-2 w-full"
+              className="cursor-pointer border-white/20 text-gray-300 hover:bg-white/10 hover:text-foreground dark:text-white transition-all duration-200 font-semibold px-4 py-2 w-full"
               type="button"
             >
               Více informací

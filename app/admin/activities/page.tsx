@@ -235,7 +235,7 @@ export default function ActivitiesAdmin() {
                     
                     <Button 
                         onClick={handleNew}
-                        className="bg-[#8a0101] hover:bg-[#570000] text-white shadow-lg"
+                        className="bg-[#8a0101] hover:bg-[#570000] text-foreground dark:text-white shadow-lg"
                     >
                         <Plus className="h-4 w-4 mr-2" />
                         Přidat aktivitu
@@ -270,7 +270,7 @@ export default function ActivitiesAdmin() {
                             <CardHeader className="pb-3 relative">
                                 <div className="flex justify-between items-start">
                                     <div className="flex-1 min-w-0">
-                                        <CardTitle className="text-lg text-white mb-3 group-hover:text-[#bd2727] transition-colors duration-300 truncate">
+                                        <CardTitle className="text-lg text-foreground dark:text-white mb-3 group-hover:text-[#bd2727] transition-colors duration-300 truncate">
                                             {activity.nazev}
                                         </CardTitle>
                                         <div className="flex gap-2 mb-2 flex-wrap">
@@ -355,7 +355,7 @@ export default function ActivitiesAdmin() {
                             className="bg-gradient-to-br from-[#131618] via-[#151a1c] to-[#111b22] border border-white/10 rounded-2xl p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto"
                         >
                             <div className="flex items-center justify-between mb-6">
-                                <h2 className="text-2xl font-bold text-white">
+                                <h2 className="text-2xl font-bold text-foreground dark:text-white">
                                     {editingActivity.id ? 'Upravit aktivitu' : 'Nová aktivita'}
                                 </h2>
                                 <Button
@@ -370,7 +370,7 @@ export default function ActivitiesAdmin() {
 
                             <div className="space-y-4">
                                 <div>
-                                    <Label htmlFor="nazev" className="text-white">Název *</Label>
+                                    <Label htmlFor="nazev" className="text-foreground dark:text-white">Název *</Label>
                                     <Input
                                         id="nazev"
                                         value={editingActivity.nazev}
@@ -381,7 +381,7 @@ export default function ActivitiesAdmin() {
                                 </div>
 
                                 <div>
-                                    <Label htmlFor="popis" className="text-white">Popis *</Label>
+                                    <Label htmlFor="popis" className="text-foreground dark:text-white">Popis *</Label>
                                     <Textarea
                                         id="popis"
                                         value={editingActivity.popis}
@@ -394,7 +394,7 @@ export default function ActivitiesAdmin() {
 
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <Label htmlFor="category" className="text-white">Kategorie *</Label>
+                                        <Label htmlFor="category" className="text-foreground dark:text-white">Kategorie *</Label>
                                         <Select
                                             value={editingActivity.category}
                                             onValueChange={(value) => setEditingActivity({...editingActivity, category: value as any})}
@@ -413,7 +413,7 @@ export default function ActivitiesAdmin() {
                                     </div>
 
                                     <div>
-                                        <Label htmlFor="rizikoLevel" className="text-white">Úroveň rizika *</Label>
+                                        <Label htmlFor="rizikoLevel" className="text-foreground dark:text-white">Úroveň rizika *</Label>
                                         <Select
                                             value={editingActivity.rizikoLevel}
                                             onValueChange={(value) => setEditingActivity({...editingActivity, rizikoLevel: value as any})}
@@ -433,7 +433,7 @@ export default function ActivitiesAdmin() {
                                 </div>
 
                                 <div>
-                                    <Label htmlFor="riziko" className="text-white">Riziko text *</Label>
+                                    <Label htmlFor="riziko" className="text-foreground dark:text-white">Riziko text *</Label>
                                     <Input
                                         id="riziko"
                                         value={editingActivity.riziko}
@@ -445,7 +445,7 @@ export default function ActivitiesAdmin() {
 
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
-                                        <Label htmlFor="odmena" className="text-white">Odměna</Label>
+                                        <Label htmlFor="odmena" className="text-foreground dark:text-white">Odměna</Label>
                                         <Input
                                             id="odmena"
                                             value={editingActivity.odmena}
@@ -456,7 +456,7 @@ export default function ActivitiesAdmin() {
                                     </div>
 
                                     <div>
-                                        <Label htmlFor="cas" className="text-white">Čas</Label>
+                                        <Label htmlFor="cas" className="text-foreground dark:text-white">Čas</Label>
                                         <Input
                                             id="cas"
                                             value={editingActivity.cas}
@@ -468,7 +468,7 @@ export default function ActivitiesAdmin() {
                                 </div>
 
                                 <div>
-                                    <Label htmlFor="obrazek" className="text-white">URL obrázku</Label>
+                                    <Label htmlFor="obrazek" className="text-foreground dark:text-white">URL obrázku</Label>
                                     <Input
                                         id="obrazek"
                                         value={editingActivity.obrazek}
@@ -483,7 +483,7 @@ export default function ActivitiesAdmin() {
                                 <Button
                                     onClick={handleSave}
                                     disabled={isSaving || !editingActivity.nazev || !editingActivity.popis}
-                                    className="flex-1 bg-[#8a0101] hover:bg-[#570000] text-white"
+                                    className="flex-1 bg-[#8a0101] hover:bg-[#570000] text-foreground dark:text-white"
                                 >
                                     {isSaving ? (
                                         <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />

@@ -367,17 +367,17 @@ export default function VehiclesPage() {
                                 </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end" className="bg-[#131618] border-white/10">
-                                <DropdownMenuLabel className="text-white">Akce</DropdownMenuLabel>
+                                <DropdownMenuLabel className="text-foreground dark:text-white">Akce</DropdownMenuLabel>
                                 <DropdownMenuItem
                                     onClick={() => copyToClipboard(vehicle.plate, "SPZ")}
-                                    className="text-gray-300 hover:text-white hover:bg-white/10"
+                                    className="text-gray-300 hover:text-foreground dark:text-white hover:bg-white/10"
                                 >
                                     <Copy className="h-4 w-4 mr-2" />
                                     Zkopírovat SPZ
                                 </DropdownMenuItem>
                                 <DropdownMenuItem
                                     onClick={() => copyToClipboard(vehicle.owner, "Vlastník")}
-                                    className="text-gray-300 hover:text-white hover:bg-white/10"
+                                    className="text-gray-300 hover:text-foreground dark:text-white hover:bg-white/10"
                                 >
                                     <Copy className="h-4 w-4 mr-2" />
                                     Zkopírovat vlastníka
@@ -396,7 +396,7 @@ export default function VehiclesPage() {
                         <AlertDialog open={openDialogFor?.plate === vehicle.plate} onOpenChange={(open) => !open && setOpenDialogFor(null)}>
                             <AlertDialogContent className="bg-[#131618] border-white/10">
                                 <AlertDialogHeader>
-                                    <AlertDialogTitle className="text-white">Opravdu chceš smazat vozidlo?</AlertDialogTitle>
+                                    <AlertDialogTitle className="text-foreground dark:text-white">Opravdu chceš smazat vozidlo?</AlertDialogTitle>
                                     <AlertDialogDescription className="text-gray-400">
                                         SPZ: <span className="font-mono font-semibold text-[#bd2727]">{vehicle.plate}</span>
                                         <br />
@@ -404,12 +404,12 @@ export default function VehiclesPage() {
                                     </AlertDialogDescription>
                                 </AlertDialogHeader>
                                 <AlertDialogFooter>
-                                    <AlertDialogCancel className="bg-gray-600 hover:bg-gray-700 text-white">
+                                    <AlertDialogCancel className="bg-gray-600 hover:bg-gray-700 text-foreground dark:text-white">
                                         Zrušit
                                     </AlertDialogCancel>
                                     <AlertDialogAction
                                         onClick={() => handleDelete(vehicle)}
-                                        className="bg-red-600 hover:bg-red-700 text-white"
+                                        className="bg-red-600 hover:bg-red-700 text-foreground dark:text-white"
                                     >
                                         Smazat
                                     </AlertDialogAction>
@@ -443,7 +443,7 @@ export default function VehiclesPage() {
 
     if (isLoading) {
         return (
-            <div className="relative min-h-screen bg-[#0a0a0a]">
+            <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
                 <div className="pointer-events-none absolute left-1/2 top-1/4 z-0 -translate-x-1/2">
                     <div className="h-[400px] w-[600px] rounded-full bg-[#b90505]/8 blur-3xl" />
                 </div>
@@ -471,7 +471,7 @@ export default function VehiclesPage() {
     }
 
     return (
-        <div className="relative min-h-screen bg-[#0a0a0a]">
+        <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
             {/* Background effects */}
             <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
                 <div className="absolute left-1/2 top-1/4 -translate-x-1/2 h-[400px] w-[800px] rounded-full bg-[#b90505]/8 blur-3xl" />
@@ -496,7 +496,7 @@ export default function VehiclesPage() {
                                 <Car className="h-4 w-4 text-[#bd2727] drop-shadow-[0_0_5px_#bd2727]" />
                                 Správa vozidel
                             </Badge>
-                            <h1 className="text-3xl md:text-4xl font-extrabold text-white drop-shadow">
+                            <h1 className="text-3xl md:text-4xl font-extrabold text-foreground dark:text-white drop-shadow">
                                 Databáze vozidel
                             </h1>
                             <p className="text-lg text-gray-400 max-w-2xl">
@@ -524,7 +524,7 @@ export default function VehiclesPage() {
                             <div className="p-2 rounded-lg bg-[#b90505]/20 text-[#bd2727]">
                                 <Car className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
                             </div>
-                            <CardTitle className="text-white text-sm">Celkem vozidel</CardTitle>
+                            <CardTitle className="text-foreground dark:text-white text-sm">Celkem vozidel</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <p className="text-3xl font-bold text-[#bd2727]">{vehicles.length}</p>
@@ -536,7 +536,7 @@ export default function VehiclesPage() {
                             <div className="p-2 rounded-lg bg-green-500/20 text-green-400">
                                 <Activity className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
                             </div>
-                            <CardTitle className="text-white text-sm">Uložených vozidel</CardTitle>
+                            <CardTitle className="text-foreground dark:text-white text-sm">Uložených vozidel</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <p className="text-3xl font-bold text-green-400">
@@ -550,7 +550,7 @@ export default function VehiclesPage() {
                             <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400">
                                 <User className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
                             </div>
-                            <CardTitle className="text-white text-sm">Jedinečných vlastníků</CardTitle>
+                            <CardTitle className="text-foreground dark:text-white text-sm">Jedinečných vlastníků</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <p className="text-3xl font-bold text-blue-400">
@@ -564,7 +564,7 @@ export default function VehiclesPage() {
                             <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
                                 <Fuel className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
                             </div>
-                            <CardTitle className="text-white text-sm">Průměrné palivo</CardTitle>
+                            <CardTitle className="text-foreground dark:text-white text-sm">Průměrné palivo</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <p className="text-3xl font-bold text-purple-400">
@@ -582,7 +582,7 @@ export default function VehiclesPage() {
                 >
                     <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10 shadow-xl rounded-2xl backdrop-blur-md">
                         <CardHeader>
-                            <CardTitle className="text-white flex items-center gap-2">
+                            <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
                                 <Car className="w-5 h-5 text-[#bd2727]" />
                                 Seznam vozidel
                             </CardTitle>
@@ -599,11 +599,11 @@ export default function VehiclesPage() {
                                         setFilter(e.target.value);
                                         table.getColumn("plate")?.setFilterValue(e.target.value);
                                     }}
-                                    className="max-w-sm bg-white/5 border-white/10 text-white"
+                                    className="max-w-sm bg-white/5 border-white/10 text-foreground dark:text-white"
                                 />
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
-                                        <Button variant="outline" className="ml-auto border-white/10 text-white hover:bg-white/10">
+                                        <Button variant="outline" className="ml-auto border-white/10 text-foreground dark:text-white hover:bg-white/10">
                                             Sloupce <ChevronDown className="ml-2 h-4 w-4" />
                                         </Button>
                                     </DropdownMenuTrigger>
@@ -615,7 +615,7 @@ export default function VehiclesPage() {
                                                     key={column.id}
                                                     checked={column.getIsVisible()}
                                                     onCheckedChange={(value) => column.toggleVisibility(!!value)}
-                                                    className="text-white hover:bg-white/10"
+                                                    className="text-foreground dark:text-white hover:bg-white/10"
                                                 >
                                                     {column.id}
                                                 </DropdownMenuCheckboxItem>
@@ -645,7 +645,7 @@ export default function VehiclesPage() {
                                                 table.getRowModel().rows.map((row) => (
                                                     <TableRow key={row.id} className="border-white/10 hover:bg-white/5">
                                                         {row.getVisibleCells().map((cell) => (
-                                                            <TableCell key={cell.id} className="whitespace-nowrap px-2 py-2 text-xs sm:text-sm text-white">
+                                                            <TableCell key={cell.id} className="whitespace-nowrap px-2 py-2 text-xs sm:text-sm text-foreground dark:text-white">
                                                                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                                             </TableCell>
                                                         ))}
@@ -673,7 +673,7 @@ export default function VehiclesPage() {
                                         size="sm"
                                         onClick={() => table.previousPage()}
                                         disabled={!table.getCanPreviousPage()}
-                                        className="border-white/10 text-white hover:bg-white/10"
+                                        className="border-white/10 text-foreground dark:text-white hover:bg-white/10"
                                     >
                                         Předchozí
                                     </Button>
@@ -682,7 +682,7 @@ export default function VehiclesPage() {
                                         size="sm"
                                         onClick={() => table.nextPage()}
                                         disabled={!table.getCanNextPage()}
-                                        className="border-white/10 text-white hover:bg-white/10"
+                                        className="border-white/10 text-foreground dark:text-white hover:bg-white/10"
                                     >
                                         Další
                                     </Button>

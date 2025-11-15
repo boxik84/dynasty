@@ -261,7 +261,7 @@ export default function SettingsAdmin() {
                         onChange={(e) => 
                             setSettings(prev => ({ ...prev, [setting.key]: e.target.value }))
                         }
-                        className="mt-1 bg-white/5 border-white/10 text-white"
+                        className="mt-1 bg-white/5 border-white/10 text-foreground dark:text-white"
                         rows={3}
                     />
                 )
@@ -273,7 +273,7 @@ export default function SettingsAdmin() {
                         onChange={(e) => 
                             setSettings(prev => ({ ...prev, [setting.key]: parseInt(e.target.value) }))
                         }
-                        className="mt-1 bg-white/5 border-white/10 text-white"
+                        className="mt-1 bg-white/5 border-white/10 text-foreground dark:text-white"
                     />
                 )
             default:
@@ -284,7 +284,7 @@ export default function SettingsAdmin() {
                         onChange={(e) => 
                             setSettings(prev => ({ ...prev, [setting.key]: e.target.value }))
                         }
-                        className="mt-1 bg-white/5 border-white/10 text-white"
+                        className="mt-1 bg-white/5 border-white/10 text-foreground dark:text-white"
                     />
                 )
         }
@@ -316,7 +316,7 @@ export default function SettingsAdmin() {
                     <Button 
                         onClick={handleSave}
                         disabled={isSaving}
-                        className="bg-[#8a0101] hover:bg-[#570000] text-white shadow-lg"
+                        className="bg-[#8a0101] hover:bg-[#570000] text-foreground dark:text-white shadow-lg"
                     >
                         {isSaving ? (
                             <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
@@ -349,7 +349,7 @@ export default function SettingsAdmin() {
                         >
                             <Card className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10">
                                 <CardHeader>
-                                    <CardTitle className="flex items-center gap-3 text-white">
+                                    <CardTitle className="flex items-center gap-3 text-foreground dark:text-white">
                                         <div className="p-2 rounded-lg bg-gradient-to-br from-[#b90505]/20 to-[#bd2727]/10 text-[#bd2727]">
                                             <section.icon className="h-5 w-5" />
                                         </div>
@@ -359,7 +359,7 @@ export default function SettingsAdmin() {
                                 <CardContent className="space-y-6">
                                     {section.settings.map((setting) => (
                                         <div key={setting.key} className="space-y-2">
-                                            <Label htmlFor={setting.key} className="text-white font-medium">
+                                            <Label htmlFor={setting.key} className="text-foreground dark:text-white font-medium">
                                                 {setting.label}
                                             </Label>
                                             {renderInput(setting)}
@@ -384,7 +384,7 @@ export default function SettingsAdmin() {
                     >
                         <Card className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10">
                             <CardHeader>
-                                <CardTitle className="flex items-center gap-3 text-white">
+                                <CardTitle className="flex items-center gap-3 text-foreground dark:text-white">
                                     <div className="p-2 rounded-lg bg-gradient-to-br from-[#b90505]/20 to-[#bd2727]/10 text-[#bd2727]">
                                         <Database className="h-5 w-5" />
                                     </div>
@@ -413,7 +413,7 @@ export default function SettingsAdmin() {
                                 
                                 <div className="space-y-3 pt-4 border-t border-white/10">
                                     <div className="space-y-2">
-                                        <Label className="text-white font-medium">Typ zálohy</Label>
+                                        <Label className="text-foreground dark:text-white font-medium">Typ zálohy</Label>
                                         <div className="grid grid-cols-1 gap-2">
                                             <Button
                                                 onClick={() => createBackup('full')}
@@ -453,7 +453,7 @@ export default function SettingsAdmin() {
                                 
                                 <div className="space-y-3 pt-4 border-t border-white/10">
                                     <div className="space-y-2">
-                                        <Label className="text-white font-medium">Automatické zálohy</Label>
+                                        <Label className="text-foreground dark:text-white font-medium">Automatické zálohy</Label>
                                         <div className="flex items-center space-x-2">
                                             <Switch
                                                 checked={settings.autoBackup}
@@ -469,12 +469,12 @@ export default function SettingsAdmin() {
 
                                     {settings.autoBackup && (
                                         <div className="space-y-2">
-                                            <Label className="text-white font-medium">Interval</Label>
+                                            <Label className="text-foreground dark:text-white font-medium">Interval</Label>
                                             <Select
                                                 value={settings.backupInterval}
                                                 onValueChange={(value) => setSettings(prev => ({ ...prev, backupInterval: value }))}
                                             >
-                                                <SelectTrigger className="bg-white/5 border-white/10 text-white">
+                                                <SelectTrigger className="bg-white/5 border-white/10 text-foreground dark:text-white">
                                                     <SelectValue />
                                                 </SelectTrigger>
                                                 <SelectContent>
@@ -499,7 +499,7 @@ export default function SettingsAdmin() {
                     >
                         <Card className="bg-gradient-to-br from-white/5 to-white/[0.02] border-white/10">
                             <CardHeader className="flex flex-row items-center justify-between">
-                                <CardTitle className="flex items-center gap-3 text-white">
+                                <CardTitle className="flex items-center gap-3 text-foreground dark:text-white">
                                     <div className="p-2 rounded-lg bg-gradient-to-br from-[#b90505]/20 to-[#bd2727]/10 text-[#bd2727]">
                                         <Clock className="h-5 w-5" />
                                     </div>
@@ -507,7 +507,7 @@ export default function SettingsAdmin() {
                                 </CardTitle>
                                 <Button
                                     onClick={fetchBackupInfo}
-                                    className="border-white/20 text-white hover:bg-white/10 bg-transparent h-8 w-8 p-0"
+                                    className="border-white/20 text-foreground dark:text-white hover:bg-white/10 bg-transparent h-8 w-8 p-0"
                                 >
                                     <RefreshCw className="h-4 w-4" />
                                 </Button>

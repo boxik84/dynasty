@@ -201,7 +201,7 @@ export default function PravidlaPage() {
 
     if (isLoading) {
         return (
-            <div className="relative min-h-screen bg-[#0a0a0a] p-8">
+            <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a] p-8">
                 <div className="flex flex-col lg:flex-row gap-8">
                     <aside className="w-full lg:w-64">
                          <Skeleton className="h-10 w-full mb-4" />
@@ -216,7 +216,7 @@ export default function PravidlaPage() {
     }
 
     return (
-        <div className="relative min-h-screen bg-[#0a0a0a] overflow-x-hidden">
+        <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a] overflow-x-hidden">
              <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
                  <div className="absolute left-1/2 top-1/4 -translate-x-1/2 h-[300px] w-[400px] md:h-[400px] md:w-[600px] rounded-full bg-[#b90505]/10 blur-3xl" />
              </div>
@@ -234,11 +234,11 @@ export default function PravidlaPage() {
                                  <Scale className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
                                  Retrovax FiveM
                              </Badge>
-                             <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-1 sm:mb-2">Pravidla Serveru</h1>
+                             <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground dark:text-white mb-1 sm:mb-2">Pravidla Serveru</h1>
                              <p className="text-xs sm:text-sm lg:text-base text-gray-400">Neznalost pravidel není omluva</p>
                          </div>
                          <div>
-                             <Button variant="outline" onClick={() => setSearchOpen(true)} className="border-white/20 text-white hover:bg-white/10 gap-2 text-xs sm:text-sm" size="sm">
+                             <Button variant="outline" onClick={() => setSearchOpen(true)} className="border-white/20 text-foreground dark:text-white hover:bg-white/10 gap-2 text-xs sm:text-sm" size="sm">
                                  <Search className="h-4 w-4" />
                                  <span className="hidden sm:inline">Vyhledat pravidla</span>
                                  <kbd className="pointer-events-none hidden lg:inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
@@ -266,7 +266,7 @@ export default function PravidlaPage() {
                                         return (
                                             <div key={section.id}>
                                                 <div className="flex items-center gap-1">
-                                                    <button onClick={() => setActiveSection(section.id)} className={`group relative flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 border flex-1 text-left ${activeSection === section.id ? "text-[#b90505] bg-[#b90505]/20 border-[#b90505]/40 shadow-lg shadow-[#b90505]/10" : isParentActive ? "text-[#bd2727] bg-[#b90505]/10 border-[#b90505]/30" : "text-gray-300 hover:text-white bg-transparent border-transparent hover:bg-white/5"}`}>
+                                                    <button onClick={() => setActiveSection(section.id)} className={`group relative flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 border flex-1 text-left ${activeSection === section.id ? "text-[#b90505] bg-[#b90505]/20 border-[#b90505]/40 shadow-lg shadow-[#b90505]/10" : isParentActive ? "text-[#bd2727] bg-[#b90505]/10 border-[#b90505]/30" : "text-gray-300 hover:text-foreground dark:text-white bg-transparent border-transparent hover:bg-white/5"}`}>
                                                         <Icon className={`w-5 h-5 transition-all duration-200 ${activeSection === section.id ? "text-[#b90505] drop-shadow-[0_0_5px_#b90505]" : isParentActive ? "text-[#bd2727]" : "text-gray-400 group-hover:text-gray-300"}`} />
                                                         <span className="flex-1">{section.title}</span>
                                                         {activeSection === section.id && (<div className="w-2 h-2 rounded-full bg-[#b90505] shadow-[0_0_8px_#b90505]" />)}
@@ -315,7 +315,7 @@ export default function PravidlaPage() {
                                             {React.createElement(getIcon(currentSection.icon), { className: "h-4 w-4" })}
                                         </div>
                                         <div>
-                                            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-1">
+                                            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground dark:text-white mb-1">
                                                 {currentSection.title}
                                             </h1>
                                             {/* Počet pravidel bude dynamický níže */}
@@ -332,7 +332,7 @@ export default function PravidlaPage() {
                                                 {/* Pravidla přímo v sekci (bez podkategorie) */}
                                                 {getRulesForCurrentSection().length > 0 && (
                                                     <div className="mb-8">
-                                                        <h2 className="text-lg font-semibold text-white mb-2">Obecná pravidla</h2>
+                                                        <h2 className="text-lg font-semibold text-foreground dark:text-white mb-2">Obecná pravidla</h2>
                                                         <div className="space-y-4">
                                                             {getRulesForCurrentSection().map((rule) => <RuleDisplay key={rule.id} rule={rule} />)}
                                                         </div>
@@ -347,7 +347,7 @@ export default function PravidlaPage() {
                                                         <div key={sub.id} className="mb-8">
                                                             <div className="flex items-center gap-2 mb-2">
                                                                 <SubIcon className="h-4 w-4 text-[#b90505]" />
-                                                                <h3 className="text-md font-semibold text-white">{sub.title}</h3>
+                                                                <h3 className="text-md font-semibold text-foreground dark:text-white">{sub.title}</h3>
                                                             </div>
                                                             <div className="space-y-4">
                                                                 {subRules.map((rule) => <RuleDisplay key={rule.id} rule={rule} />)}
@@ -368,10 +368,10 @@ export default function PravidlaPage() {
              <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
                  <div className="bg-gradient-to-br from-[#131618] via-[#151a1c] to-[#111b22] border border-white/10">
                      <Command className="bg-transparent">
-                         <CommandInput placeholder="Vyhledat pravidla..." className="border-0 border-b border-white/10 bg-transparent text-white placeholder-gray-400 focus:ring-0" />
+                         <CommandInput placeholder="Vyhledat pravidla..." className="border-0 border-b border-white/10 bg-transparent text-foreground dark:text-white placeholder-gray-400 focus:ring-0" />
                          <CommandList className="bg-transparent">
                              <CommandEmpty className="text-gray-400 p-6 text-center">Žádná pravidla nenalezena.</CommandEmpty>
-                             <CommandGroup heading={<span className="text-gray-400">Pravidla</span>} className="text-white [&_[cmdk-group-heading]]:p-2 [&_[cmdk-group-heading]]:font-semibold">
+                             <CommandGroup heading={<span className="text-gray-400">Pravidla</span>} className="text-foreground dark:text-white [&_[cmdk-group-heading]]:p-2 [&_[cmdk-group-heading]]:font-semibold">
                                  {getAllRulesForSearch().map((rule, index) => (
                                      <CommandItem
                                          key={index}
@@ -380,7 +380,7 @@ export default function PravidlaPage() {
                                              setActiveSection(rule.sectionId);
                                              setSearchOpen(false);
                                          }}
-                                         className="flex flex-col items-start gap-2 p-4 text-white rounded-lg hover:bg-white/10 data-[selected=true]:bg-white/5 cursor-pointer"
+                                         className="flex flex-col items-start gap-2 p-4 text-foreground dark:text-white rounded-lg hover:bg-white/10 data-[selected=true]:bg-white/5 cursor-pointer"
                                      >
                                          <div className="text-xs text-gray-400">{rule.sectionTitle}</div>
                                          <div className="text-sm line-clamp-2">{rule.text}</div>

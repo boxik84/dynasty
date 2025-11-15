@@ -140,7 +140,7 @@ const SortableQuestionItem = ({ question, handleEdit, handleDelete, handleToggle
         !question.is_active && "bg-zinc-950/50 border-zinc-900 opacity-60"
       )}
     >
-      <div {...attributes} {...listeners} className="p-2 cursor-grab text-zinc-500 hover:text-white transition-colors">
+      <div {...attributes} {...listeners} className="p-2 cursor-grab text-zinc-500 hover:text-foreground dark:text-white transition-colors">
         <GripVertical className="h-5 w-5" />
       </div>
       <div className="flex-grow ml-2">
@@ -369,7 +369,7 @@ export default function WhitelistQuestionsPage() {
                     className={cn(
                       "flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-md text-sm font-medium transition-colors duration-200",
                       activeCategory === key
-                        ? "bg-zinc-800 text-white shadow-inner"
+                        ? "bg-zinc-800 text-foreground dark:text-white shadow-inner"
                         : "text-zinc-400 hover:bg-zinc-800/50 hover:text-zinc-200"
                     )}
                   >
@@ -392,7 +392,7 @@ export default function WhitelistQuestionsPage() {
       <main className="flex-1">
         <div className="flex justify-between items-center mb-6">
             <div>
-                <h2 className="text-3xl font-bold text-white">{categoryConfig[activeCategory]?.label || 'Všechny otázky'}</h2>
+                <h2 className="text-3xl font-bold text-foreground dark:text-white">{categoryConfig[activeCategory]?.label || 'Všechny otázky'}</h2>
                 <p className="text-zinc-400 mt-1">{categoryConfig[activeCategory]?.description || 'Správa všech otázek ve formuláři.'}</p>
             </div>
             <Button onClick={handleAddNew} className="bg-[#b90505] hover:bg-[#8a0101]">
@@ -429,7 +429,7 @@ export default function WhitelistQuestionsPage() {
         ) : (
           <div className="flex flex-col items-center justify-center text-center bg-zinc-900/50 border-2 border-dashed border-zinc-800 rounded-xl py-20">
               <AlertCircle className="h-12 w-12 text-zinc-600 mb-4" />
-              <h3 className="text-xl font-semibold text-white">Žádné otázky v této kategorii</h3>
+              <h3 className="text-xl font-semibold text-foreground dark:text-white">Žádné otázky v této kategorii</h3>
               <p className="text-zinc-400 mt-2 max-w-sm">
                   {`Pro kategorii "${categoryConfig[activeCategory]?.label}" zatím nebyly vytvořeny žádné otázky. Můžete je přidat kliknutím na tlačítko vpravo nahoře.`}
               </p>
@@ -441,7 +441,7 @@ export default function WhitelistQuestionsPage() {
         <SheetContent className="bg-zinc-950 border-zinc-800 text-zinc-50 sm:max-w-lg">
             <ScrollArea className="h-full pr-6 -mr-6">
                 <SheetHeader className="mb-6">
-                    <SheetTitle className="text-2xl text-white">{editingQuestion ? 'Upravit otázku' : 'Vytvořit novou otázku'}</SheetTitle>
+                    <SheetTitle className="text-2xl text-foreground dark:text-white">{editingQuestion ? 'Upravit otázku' : 'Vytvořit novou otázku'}</SheetTitle>
                     <SheetDescription>
                         Pečlivě vyplňte všechny detaily. Změny se projeví ve formuláři pro žadatele o whitelist.
                     </SheetDescription>
@@ -449,7 +449,7 @@ export default function WhitelistQuestionsPage() {
 
                 <div className="space-y-6">
                     <div className="space-y-4 p-4 rounded-lg border border-zinc-800 bg-zinc-900">
-                        <h4 className="font-semibold text-lg text-white">Základní nastavení</h4>
+                        <h4 className="font-semibold text-lg text-foreground dark:text-white">Základní nastavení</h4>
                         <div>
                             <Label htmlFor="question">Text otázky</Label>
                             <Textarea id="question" value={formData.question || ''} onChange={(e) => setFormData({ ...formData, question: e.target.value })} className="mt-1" required />
@@ -500,7 +500,7 @@ export default function WhitelistQuestionsPage() {
                             exit={{ opacity: 0, height: 0 }}
                             className="space-y-4 p-4 rounded-lg border border-zinc-800 bg-zinc-900 overflow-hidden"
                         >
-                            <h4 className="font-semibold text-lg text-white">Specifická nastavení pole</h4>
+                            <h4 className="font-semibold text-lg text-foreground dark:text-white">Specifická nastavení pole</h4>
                             {formData.field_type === 'number' && (
                                 <div className="grid grid-cols-2 gap-4">
                                     <div>
@@ -536,7 +536,7 @@ export default function WhitelistQuestionsPage() {
                     </AnimatePresence>
 
                     <div className="space-y-4 p-4 rounded-lg border border-zinc-800 bg-zinc-900">
-                        <h4 className="font-semibold text-lg text-white">Atributy</h4>
+                        <h4 className="font-semibold text-lg text-foreground dark:text-white">Atributy</h4>
                         <div className="flex items-center space-x-2">
                             <Checkbox id="required" checked={formData.required} onCheckedChange={(checked) => setFormData({ ...formData, required: !!checked })} />
                             <Label htmlFor="required">Povinná otázka</Label>

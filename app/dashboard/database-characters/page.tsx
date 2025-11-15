@@ -225,7 +225,7 @@ export default function DatabaseCharactersPage() {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <span className="text-white font-medium cursor-help">{shortened}</span>
+                    <span className="text-foreground dark:text-white font-medium cursor-help">{shortened}</span>
                   </TooltipTrigger>
                   <TooltipContent>
                     <span className="text-xs">{fullName}</span>
@@ -233,7 +233,7 @@ export default function DatabaseCharactersPage() {
                 </Tooltip>
               </TooltipProvider>
             ) : (
-              <span className="text-white font-medium">{fullName}</span>
+              <span className="text-foreground dark:text-white font-medium">{fullName}</span>
             )}
           </div>
         );
@@ -367,45 +367,45 @@ export default function DatabaseCharactersPage() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="bg-[#131618] border-white/10">
-                <DropdownMenuLabel className="text-white">Akce</DropdownMenuLabel>
+                <DropdownMenuLabel className="text-foreground dark:text-white">Akce</DropdownMenuLabel>
                 <DropdownMenuItem
                   onClick={() => copyToClipboard(String(character.id), "ID")}
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
+                  className="text-gray-300 hover:text-foreground dark:text-white hover:bg-white/10"
                 >
                   <Copy className="h-4 w-4 mr-2" />
                   Zkopírovat ID
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => copyToClipboard(`${character.firstname} ${character.lastname}`, "Jméno")}
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
+                  className="text-gray-300 hover:text-foreground dark:text-white hover:bg-white/10"
                 >
                   <Copy className="h-4 w-4 mr-2" />
                   Zkopírovat jméno
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => copyToClipboard(character.name || "", "Steam jméno")}
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
+                  className="text-gray-300 hover:text-foreground dark:text-white hover:bg-white/10"
                 >
                   <Copy className="h-4 w-4 mr-2" />
                   Zkopírovat Steam jméno
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => copyToClipboard(character.identifier || "", "Identifikátor")}
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
+                  className="text-gray-300 hover:text-foreground dark:text-white hover:bg-white/10"
                 >
                   <Copy className="h-4 w-4 mr-2" />
                   Zkopírovat identifikátor
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => copyToClipboard(character.steam_id || "", "Steam ID")}
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
+                  className="text-gray-300 hover:text-foreground dark:text-white hover:bg-white/10"
                 >
                   <Copy className="h-4 w-4 mr-2" />
                   Zkopírovat Steam ID
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => copyToClipboard(character.discord_id || "", "Discord ID")}
-                  className="text-gray-300 hover:text-white hover:bg-white/10"
+                  className="text-gray-300 hover:text-foreground dark:text-white hover:bg-white/10"
                 >
                   <Copy className="h-4 w-4 mr-2" />
                   Zkopírovat Discord ID
@@ -476,7 +476,7 @@ export default function DatabaseCharactersPage() {
 
   if (isLoading) {
     return (
-      <div className="relative min-h-screen bg-[#0a0a0a]">
+      <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
         <div className="pointer-events-none absolute left-1/2 top-1/4 z-0 -translate-x-1/2">
           <div className="h-[400px] w-[600px] rounded-full bg-[#b90505]/8 blur-3xl" />
         </div>
@@ -504,7 +504,7 @@ export default function DatabaseCharactersPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#0a0a0a]">
+    <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="absolute left-1/2 top-1/4 -translate-x-1/2 h-[400px] w-[800px] rounded-full bg-[#b90505]/8 blur-3xl" />
@@ -529,7 +529,7 @@ export default function DatabaseCharactersPage() {
                 <Users className="h-4 w-4 text-[#bd2727] drop-shadow-[0_0_5px_#bd2727]" />
                 Databáze postav
               </Badge>
-              <h1 className="text-3xl md:text-4xl font-extrabold text-white drop-shadow">
+              <h1 className="text-3xl md:text-4xl font-extrabold text-foreground dark:text-white drop-shadow">
                 Správa postav
               </h1>
               <p className="text-lg text-gray-400 max-w-2xl">
@@ -557,7 +557,7 @@ export default function DatabaseCharactersPage() {
               <div className="p-2 rounded-lg bg-[#b90505]/20 text-[#bd2727]">
                 <Users className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
               </div>
-              <CardTitle className="text-white text-sm">Celkem postav</CardTitle>
+              <CardTitle className="text-foreground dark:text-white text-sm">Celkem postav</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-3xl font-bold text-[#bd2727]">{characters.length}</p>
@@ -569,7 +569,7 @@ export default function DatabaseCharactersPage() {
               <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400">
                 <User className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
               </div>
-              <CardTitle className="text-white text-sm">Jedinečných hráčů</CardTitle>
+              <CardTitle className="text-foreground dark:text-white text-sm">Jedinečných hráčů</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-3xl font-bold text-blue-400">
@@ -583,7 +583,7 @@ export default function DatabaseCharactersPage() {
               <div className="p-2 rounded-lg bg-yellow-500/20 text-yellow-400">
                 <Crown className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
               </div>
-              <CardTitle className="text-white text-sm">Různých jobů</CardTitle>
+              <CardTitle className="text-foreground dark:text-white text-sm">Různých jobů</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-3xl font-bold text-yellow-400">
@@ -597,7 +597,7 @@ export default function DatabaseCharactersPage() {
               <div className="p-2 rounded-lg bg-green-500/20 text-green-400">
                 <Activity className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
               </div>
-              <CardTitle className="text-white text-sm">Aktivní dnes</CardTitle>
+              <CardTitle className="text-foreground dark:text-white text-sm">Aktivní dnes</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-3xl font-bold text-green-400">
@@ -620,7 +620,7 @@ export default function DatabaseCharactersPage() {
         >
           <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10 shadow-xl rounded-2xl backdrop-blur-md">
             <CardHeader>
-              <CardTitle className="text-white flex items-center gap-2">
+              <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-[#bd2727]" />
                 Statistiky vytvoření postav za posledních 30 dní
               </CardTitle>
@@ -658,7 +658,7 @@ export default function DatabaseCharactersPage() {
                               border: '1px solid rgba(255, 255, 255, 0.1)',
                               color: '#ffffff'
                             }}>
-                              <div className="font-semibold text-white mb-2">{label}</div>
+                              <div className="font-semibold text-foreground dark:text-white mb-2">{label}</div>
                               {payload.map((entry, index) => (
                                 <div key={index} className="flex items-center gap-2 mb-1">
                                   <div
@@ -666,7 +666,7 @@ export default function DatabaseCharactersPage() {
                                     style={{ backgroundColor: entry.color }}
                                   />
                                   <span className="text-sm text-gray-300">
-                                    {entry.name}: <span className="font-medium text-white">{entry.value}</span>
+                                    {entry.name}: <span className="font-medium text-foreground dark:text-white">{entry.value}</span>
                                     {(() => {
                                       const count = Number(entry.value);
                                       return count === 1 ? ' postava' : count >= 2 && count <= 4 ? ' postavy' : ' postav';
@@ -723,7 +723,7 @@ export default function DatabaseCharactersPage() {
         >
           <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10 shadow-xl rounded-2xl backdrop-blur-md">
             <CardHeader>
-              <CardTitle className="text-white flex items-center gap-2">
+              <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
                 <Users className="w-5 h-5 text-[#bd2727]" />
                 Seznam postav
               </CardTitle>
@@ -734,15 +734,15 @@ export default function DatabaseCharactersPage() {
             <CardContent>
               <div className="flex items-center py-4 gap-4 flex-wrap">
                 <Select value={filterColumn} onValueChange={v => setFilterColumn(v as any)}>
-                  <SelectTrigger className="w-40 min-w-[120px] bg-white/5 border-white/10 text-white">
+                  <SelectTrigger className="w-40 min-w-[120px] bg-white/5 border-white/10 text-foreground dark:text-white">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent className="bg-[#131618] border-white/10">
-                    <SelectItem value="firstname" className="text-white hover:bg-white/10">Jméno</SelectItem>
-                    <SelectItem value="name" className="text-white hover:bg-white/10">Steam jméno</SelectItem>
-                    <SelectItem value="identifier" className="text-white hover:bg-white/10">Identifikátor</SelectItem>
-                    <SelectItem value="steam_id" className="text-white hover:bg-white/10">Steam ID</SelectItem>
-                    <SelectItem value="discord_id" className="text-white hover:bg-white/10">Discord ID</SelectItem>
+                    <SelectItem value="firstname" className="text-foreground dark:text-white hover:bg-white/10">Jméno</SelectItem>
+                    <SelectItem value="name" className="text-foreground dark:text-white hover:bg-white/10">Steam jméno</SelectItem>
+                    <SelectItem value="identifier" className="text-foreground dark:text-white hover:bg-white/10">Identifikátor</SelectItem>
+                    <SelectItem value="steam_id" className="text-foreground dark:text-white hover:bg-white/10">Steam ID</SelectItem>
+                    <SelectItem value="discord_id" className="text-foreground dark:text-white hover:bg-white/10">Discord ID</SelectItem>
                   </SelectContent>
                 </Select>
                 <Input
@@ -757,7 +757,7 @@ export default function DatabaseCharactersPage() {
                       table.getColumn(filterColumn)?.setFilterValue("");
                     }
                   }}
-                  className="max-w-sm bg-white/5 border-white/10 text-white"
+                  className="max-w-sm bg-white/5 border-white/10 text-foreground dark:text-white"
                 />
               </div>
 
@@ -810,7 +810,7 @@ export default function DatabaseCharactersPage() {
                     size="sm"
                     onClick={() => table.previousPage()}
                     disabled={!table.getCanPreviousPage()}
-                    className="border-white/10 text-white hover:bg-white/10"
+                    className="border-white/10 text-foreground dark:text-white hover:bg-white/10"
                   >
                     Předchozí
                   </Button>
@@ -819,7 +819,7 @@ export default function DatabaseCharactersPage() {
                     size="sm"
                     onClick={() => table.nextPage()}
                     disabled={!table.getCanNextPage()}
-                    className="border-white/10 text-white hover:bg-white/10"
+                    className="border-white/10 text-foreground dark:text-white hover:bg-white/10"
                   >
                     Další
                   </Button>
@@ -834,7 +834,7 @@ export default function DatabaseCharactersPage() {
       <AlertDialog open={!!editCharacter} onOpenChange={(open) => !open && setEditCharacter(null)}>
         <AlertDialogContent className="bg-[#131618] border-white/10">
           <AlertDialogHeader>
-            <AlertDialogTitle className="text-white">Upravit jméno postavy</AlertDialogTitle>
+            <AlertDialogTitle className="text-foreground dark:text-white">Upravit jméno postavy</AlertDialogTitle>
             <AlertDialogDescription className="text-gray-400">
               Změňte jméno a příjmení postavy. Změna je okamžitá.
             </AlertDialogDescription>
@@ -847,7 +847,7 @@ export default function DatabaseCharactersPage() {
                 value={editFirstName}
                 onChange={e => setEditFirstName(e.target.value)}
                 disabled={saving}
-                className="bg-white/5 border-white/10 text-white"
+                className="bg-white/5 border-white/10 text-foreground dark:text-white"
               />
             </div>
             <div className="flex flex-col gap-2">
@@ -856,12 +856,12 @@ export default function DatabaseCharactersPage() {
                 value={editLastName}
                 onChange={e => setEditLastName(e.target.value)}
                 disabled={saving}
-                className="bg-white/5 border-white/10 text-white"
+                className="bg-white/5 border-white/10 text-foreground dark:text-white"
               />
             </div>
           </div>
           <AlertDialogFooter>
-            <AlertDialogCancel disabled={saving} onClick={() => setEditCharacter(null)} className="bg-gray-600 hover:bg-gray-700 text-white">
+            <AlertDialogCancel disabled={saving} onClick={() => setEditCharacter(null)} className="bg-gray-600 hover:bg-gray-700 text-foreground dark:text-white">
               Zrušit
             </AlertDialogCancel>
             <AlertDialogAction
@@ -889,7 +889,7 @@ export default function DatabaseCharactersPage() {
                   setSaving(false);
                 }
               }}
-              className="bg-[#b90505] hover:bg-[#bd2727] text-white"
+              className="bg-[#b90505] hover:bg-[#bd2727] text-foreground dark:text-white"
             >
               {saving ? "Ukládání..." : "Uložit"}
             </AlertDialogAction>

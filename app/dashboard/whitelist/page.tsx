@@ -364,7 +364,7 @@ export default function WhitelistDashboard() {
   }
 
   return (
-    <div className="relative min-h-screen bg-[#0a0a0a]">
+    <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
       {/* Background effects */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="absolute left-1/2 top-1/4 -translate-x-1/2 h-[400px] w-[800px] rounded-full bg-[#b90505]/8 blur-3xl" />
@@ -380,7 +380,7 @@ export default function WhitelistDashboard() {
         className="flex items-center justify-between py-4"
       >
         <div>
-          <h1 className="text-2xl font-bold text-white">Správa Whitelistu</h1>
+          <h1 className="text-2xl font-bold text-foreground dark:text-white">Správa Whitelistu</h1>
           <p className="text-gray-400">Spravujte žádosti o přístup na server</p>
         </div>
         <Button
@@ -448,7 +448,7 @@ export default function WhitelistDashboard() {
       >
         <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10 shadow-xl rounded-2xl backdrop-blur-md">
           <CardHeader>
-            <CardTitle className="text-white flex items-center gap-2">
+            <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
               <BarChart3 className="w-5 h-5 text-[#bd2727]" />
               Statistiky whitelist žádostí za posledních 30 dní
             </CardTitle>
@@ -494,7 +494,7 @@ export default function WhitelistDashboard() {
                             border: '1px solid rgba(255, 255, 255, 0.1)',
                             color: '#ffffff'
                           }}>
-                            <div className="font-semibold text-white mb-2">{label}</div>
+                            <div className="font-semibold text-foreground dark:text-white mb-2">{label}</div>
                             {payload.map((entry, index) => (
                               <div key={index} className="flex items-center gap-2 mb-1">
                                 <div 
@@ -502,7 +502,7 @@ export default function WhitelistDashboard() {
                                   style={{ backgroundColor: entry.color }}
                                 />
                                 <span className="text-sm text-gray-300">
-                                  {entry.name}: <span className="font-medium text-white">{entry.value}</span>
+                                  {entry.name}: <span className="font-medium text-foreground dark:text-white">{entry.value}</span>
                                 </span>
                               </div>
                             ))}
@@ -580,7 +580,7 @@ export default function WhitelistDashboard() {
       >
       <Card className="bg-white/5 border border-white/10 rounded-lg backdrop-blur-md">
         <CardHeader>
-          <CardTitle className="text-white">Whitelist žádosti</CardTitle>
+          <CardTitle className="text-foreground dark:text-white">Whitelist žádosti</CardTitle>
           <CardDescription>
             Seznam všech žádostí o whitelist s možností schválení nebo odmítnutí
           </CardDescription>
@@ -613,7 +613,7 @@ export default function WhitelistDashboard() {
                     const formData = parseFormData(request.form_data);
                     return (
                       <TableRow key={request.id} className="border-white/10 hover:bg-white/5 group">
-                        <TableCell className="text-white whitespace-nowrap px-2 py-2 text-xs sm:text-sm">
+                        <TableCell className="text-foreground dark:text-white whitespace-nowrap px-2 py-2 text-xs sm:text-sm">
                           <div className="flex items-center gap-1">
                             {request.serial_number ? (
                               <>
@@ -633,13 +633,13 @@ export default function WhitelistDashboard() {
                             )}
                           </div>
                         </TableCell>
-                        <TableCell className="text-white whitespace-nowrap px-2 py-2 text-xs sm:text-sm">
+                        <TableCell className="text-foreground dark:text-white whitespace-nowrap px-2 py-2 text-xs sm:text-sm">
                           <div className="flex items-center">
                             <User className="h-3 w-3 mr-1 text-gray-400" />
                             <span className="truncate max-w-[100px]">{formData?.discordName || 'N/A'}</span>
                           </div>
                         </TableCell>
-                        <TableCell className="text-white whitespace-nowrap px-2 py-2 text-xs sm:text-sm">
+                        <TableCell className="text-foreground dark:text-white whitespace-nowrap px-2 py-2 text-xs sm:text-sm">
                           {formData?.steamProfile && formData.steamProfile !== 'N/A' ? (
                             <TooltipProvider>
                               <Tooltip>
@@ -666,7 +666,7 @@ export default function WhitelistDashboard() {
                             <span className="text-gray-400 text-xs">N/A</span>
                           )}
                         </TableCell>
-                        <TableCell className="text-white whitespace-nowrap px-2 py-2 text-xs sm:text-sm">
+                        <TableCell className="text-foreground dark:text-white whitespace-nowrap px-2 py-2 text-xs sm:text-sm">
                           {formData?.age ? (
                             <TooltipProvider>
                               <Tooltip>
@@ -728,7 +728,7 @@ export default function WhitelistDashboard() {
                                       </AlertDialogTrigger>
                                       <AlertDialogContent className="bg-[#131618] border-white/10">
                                         <AlertDialogHeader>
-                                          <AlertDialogTitle className="text-white">
+                                          <AlertDialogTitle className="text-foreground dark:text-white">
                                             Schválit žádost
                                           </AlertDialogTitle>
                                           <AlertDialogDescription className="text-gray-400">
@@ -762,7 +762,7 @@ export default function WhitelistDashboard() {
                                       </AlertDialogTrigger>
                                       <AlertDialogContent className="bg-[#131618] border-white/10">
                                         <AlertDialogHeader>
-                                          <AlertDialogTitle className="text-white">
+                                          <AlertDialogTitle className="text-foreground dark:text-white">
                                             Odmítnout žádost
                                           </AlertDialogTitle>
                                           <AlertDialogDescription className="text-gray-400">
@@ -799,7 +799,7 @@ export default function WhitelistDashboard() {
                                       </AlertDialogTrigger>
                                       <AlertDialogContent className="bg-[#131618] border-white/10">
                                         <AlertDialogHeader>
-                                          <AlertDialogTitle className="text-white">
+                                          <AlertDialogTitle className="text-foreground dark:text-white">
                                             Změnit status na Odmítnuto
                                           </AlertDialogTitle>
                                           <AlertDialogDescription className="text-gray-400">
@@ -831,7 +831,7 @@ export default function WhitelistDashboard() {
                                       </AlertDialogTrigger>
                                       <AlertDialogContent className="bg-[#131618] border-white/10">
                                         <AlertDialogHeader>
-                                          <AlertDialogTitle className="text-white">
+                                          <AlertDialogTitle className="text-foreground dark:text-white">
                                             Vrátit status na Čeká se na vyhodnocení
                                           </AlertDialogTitle>
                                           <AlertDialogDescription className="text-gray-400">
@@ -866,7 +866,7 @@ export default function WhitelistDashboard() {
                                       </AlertDialogTrigger>
                                       <AlertDialogContent className="bg-[#131618] border-white/10">
                                         <AlertDialogHeader>
-                                          <AlertDialogTitle className="text-white">
+                                          <AlertDialogTitle className="text-foreground dark:text-white">
                                             Změnit status na Schváleno
                                           </AlertDialogTitle>
                                           <AlertDialogDescription className="text-gray-400">
@@ -898,7 +898,7 @@ export default function WhitelistDashboard() {
                                       </AlertDialogTrigger>
                                       <AlertDialogContent className="bg-[#131618] border-white/10">
                                         <AlertDialogHeader>
-                                          <AlertDialogTitle className="text-white">
+                                          <AlertDialogTitle className="text-foreground dark:text-white">
                                             Vrátit status na Čeká se na vyhodnocení
                                           </AlertDialogTitle>
                                           <AlertDialogDescription className="text-gray-400">
@@ -949,7 +949,7 @@ export default function WhitelistDashboard() {
                                 e.preventDefault();
                                 handlePageChange(currentPage - 1);
                             }}
-                            className={currentPage === 1 ? 'pointer-events-none opacity-50' : 'text-gray-300 hover:bg-white/10 hover:text-white'}
+                            className={currentPage === 1 ? 'pointer-events-none opacity-50' : 'text-gray-300 hover:bg-white/10 hover:text-foreground dark:text-white'}
                         >
                             Předchozí
                         </PaginationPrevious>
@@ -973,8 +973,8 @@ export default function WhitelistDashboard() {
                                         isActive={currentPage === page}
                                         className={
                                             currentPage === page
-                                                ? "bg-white/10 text-white border border-white/20"
-                                                : "text-gray-400 hover:bg-white/5 hover:text-white"
+                                                ? "bg-white/10 text-foreground dark:text-white border border-white/20"
+                                                : "text-gray-400 hover:bg-white/5 hover:text-foreground dark:text-white"
                                         }
                                     >
                                         {page}
@@ -994,7 +994,7 @@ export default function WhitelistDashboard() {
                                 e.preventDefault();
                                 handlePageChange(currentPage + 1);
                             }}
-                            className={currentPage === totalPages ? 'pointer-events-none opacity-50' : 'text-gray-300 hover:bg-white/10 hover:text-white'}
+                            className={currentPage === totalPages ? 'pointer-events-none opacity-50' : 'text-gray-300 hover:bg-white/10 hover:text-foreground dark:text-white'}
                         >
                             Další
                         </PaginationNext>
@@ -1009,7 +1009,7 @@ export default function WhitelistDashboard() {
         <AlertDialog open={!!selectedRequest} onOpenChange={() => setSelectedRequest(null)}>
           <AlertDialogContent className="bg-[#131618] border-white/10 max-w-4xl max-h-[90vh] overflow-y-auto">
             <AlertDialogHeader>
-              <AlertDialogTitle className="text-white flex items-center">
+              <AlertDialogTitle className="text-foreground dark:text-white flex items-center">
                 <User className="h-5 w-5 mr-2" />
                 Detail whitelist žádosti #{selectedRequest.id}
                 {selectedRequest.serial_number && (
@@ -1030,14 +1030,14 @@ export default function WhitelistDashboard() {
 
                 const FormField = ({ label, value, isTextarea = false }: { label: string; value: string; isTextarea?: boolean }) => (
                   <div className="space-y-2">
-                    <Label className="text-white font-medium">{label}</Label>
+                    <Label className="text-foreground dark:text-white font-medium">{label}</Label>
                     <div className="flex items-start gap-2">
                       {isTextarea ? (
-                        <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white text-sm whitespace-pre-wrap break-words word-break min-h-[60px] max-h-40 overflow-y-auto">
+                        <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-foreground dark:text-white text-sm whitespace-pre-wrap break-words word-break min-h-[60px] max-h-40 overflow-y-auto">
                           {value}
                         </div>
                       ) : (
-                        <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white text-sm break-words word-break">
+                        <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-foreground dark:text-white text-sm break-words word-break">
                           {value}
                         </div>
                       )}
@@ -1052,7 +1052,7 @@ export default function WhitelistDashboard() {
                   <div className="space-y-6">
                     
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-white border-b border-white/10 pb-2">Základní informace</h3>
+                      <h3 className="text-lg font-semibold text-foreground dark:text-white border-b border-white/10 pb-2">Základní informace</h3>
 
                       <FormField label="Discord jméno (např. jakuubboss)" value={formData.discordName} />
 
@@ -1074,7 +1074,7 @@ export default function WhitelistDashboard() {
 
                     
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-white border-b border-white/10 pb-2">Otázky o pravidlech</h3>
+                      <h3 className="text-lg font-semibold text-foreground dark:text-white border-b border-white/10 pb-2">Otázky o pravidlech</h3>
 
                       <FormField
                         label="Co je to Roleplay?"
@@ -1157,7 +1157,7 @@ export default function WhitelistDashboard() {
 
                     
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-white border-b border-white/10 pb-2">Další pravidla</h3>
+                      <h3 className="text-lg font-semibold text-foreground dark:text-white border-b border-white/10 pb-2">Další pravidla</h3>
 
                       <FormField
                         label="Vysvětli pojem NVL"
@@ -1252,14 +1252,14 @@ export default function WhitelistDashboard() {
 
                     
                     <div className="space-y-4">
-                      <h3 className="text-lg font-semibold text-white border-b border-white/10 pb-2">Scénáře - Co je špatně?</h3>
+                      <h3 className="text-lg font-semibold text-foreground dark:text-white border-b border-white/10 pb-2">Scénáře - Co je špatně?</h3>
 
                       <div className="space-y-2">
-                        <Label className="text-white font-medium">
+                        <Label className="text-foreground dark:text-white font-medium">
                           Scénář 1: &quot;V kasínu jsi hrál kostky proti nějakému pánovi, popíjeli jste alkohol a ty jsi prohrál. Prohru jsi neunesl a dal jsi mu bagra, okolo bylo dost hráčů, tak jsi vytáhl carabinu, co jsi měl v inventáři a začal jsi všechny střílet. Před kasínem jsi ukradl první auto, co jsi viděl a vydal ses na jízdu směr hlavní garáže. Cestou tě zastavili policisti a po chvíli ti oznámili, že se shoduješ s popisem osoby, co v kasínu napadla pána. Řekl jsi, že nemáš náladu tohle RPit, odjel jsi na garáže a tam jsi dal F8 + quit.&quot;
                         </Label>
                         <div className="flex items-center gap-2">
-                          <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white text-sm whitespace-pre-wrap min-h-[80px] max-h-40 overflow-y-auto">
+                          <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-foreground dark:text-white text-sm whitespace-pre-wrap min-h-[80px] max-h-40 overflow-y-auto">
                             {formData.scenario1}
                           </div>
                           <Badge variant="outline" className="border-blue-500/30 text-blue-400 bg-blue-500/10 text-xs whitespace-nowrap">
@@ -1269,11 +1269,11 @@ export default function WhitelistDashboard() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label className="text-white font-medium">
+                        <Label className="text-foreground dark:text-white font-medium">
                           Scénář 2: &quot;Vykrádal jsi obchod, následně jsi se naháněl s PD a oni ti prostřelili 2 gumy. Ty jsi však pokračoval normálně v jízde, s autem jsi dojel do doků a skočil jsi s ním do vody. Následně jsi plaval jižním směrem, co nejdále do oceánu.&quot;
                         </Label>
                         <div className="flex items-center gap-2">
-                          <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white text-sm whitespace-pre-wrap min-h-[80px] max-h-40 overflow-y-auto">
+                          <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-foreground dark:text-white text-sm whitespace-pre-wrap min-h-[80px] max-h-40 overflow-y-auto">
                             {formData.scenario2}
                           </div>
                           <Badge variant="outline" className="border-blue-500/30 text-blue-400 bg-blue-500/10 text-xs whitespace-nowrap">
@@ -1291,7 +1291,7 @@ export default function WhitelistDashboard() {
                       </div>
                       <div className="text-right">
                         <Label className="text-gray-300">Datum vytvoření</Label>
-                        <p className="text-white">{formatDate(selectedRequest.created_at)}</p>
+                        <p className="text-foreground dark:text-white">{formatDate(selectedRequest.created_at)}</p>
                       </div>
                     </div>
                   </div>

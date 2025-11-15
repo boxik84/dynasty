@@ -55,7 +55,7 @@ const stats = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-[#0a0a0a] via-[#111111] to-[#000000] text-white overflow-hidden border-t border-white/10">
+    <footer className="relative bg-gradient-to-b from-[#0a0a0a] via-[#111111] to-[#000000] text-foreground dark:text-white overflow-hidden border-t border-white/10">
       
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#b90505]/5 rounded-full blur-3xl" />
@@ -105,7 +105,7 @@ export default function Footer() {
                     className="text-center"
                   >
                     <stat.icon className="h-5 w-5 sm:h-6 sm:w-6 mx-auto mb-2 text-[#b90505]" />
-                    <div className="text-base sm:text-lg font-bold text-white">{stat.value}</div>
+                    <div className="text-base sm:text-lg font-bold text-foreground dark:text-white">{stat.value}</div>
                     <div className="text-xs text-gray-400">{stat.label}</div>
                   </motion.div>
                 ))}
@@ -145,7 +145,7 @@ export default function Footer() {
                       href={link.href}
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noopener noreferrer' : undefined}
-                      className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
+                      className="text-gray-300 hover:text-foreground dark:text-white transition-colors duration-200 flex items-center group"
                     >
                       {link.name}
                       {link.external && (
@@ -174,7 +174,7 @@ export default function Footer() {
                       href={link.href}
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noopener noreferrer' : undefined}
-                      className="text-gray-300 hover:text-white transition-colors duration-200 flex items-center group"
+                      className="text-gray-300 hover:text-foreground dark:text-white transition-colors duration-200 flex items-center group"
                     >
                       {link.name}
                       {link.external && (
@@ -201,7 +201,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors duration-200"
+                      className="text-gray-300 hover:text-foreground dark:text-white transition-colors duration-200"
                     >
                       {link.name}
                     </Link>
@@ -211,14 +211,14 @@ export default function Footer() {
 
               
               <div className="bg-gradient-to-r from-[#b90505]/10 to-[#8a0101]/10 border border-[#b90505]/20 rounded-lg p-4">
-                <h5 className="font-semibold mb-2 text-white">Rychlé připojení</h5>
+                <h5 className="font-semibold mb-2 text-foreground dark:text-white">Rychlé připojení</h5>
                 <p className="text-sm text-gray-300 mb-3">
                   Připoj se přímo na server
                 </p>
                 <Link href={siteConfig.links.fivem} target="_blank">
                   <Button
                     size="sm"
-                    className="w-full bg-[#b90505] hover:bg-[#8a0101] text-white"
+                    className="w-full bg-[#b90505] hover:bg-[#8a0101] text-foreground dark:text-white"
                   >
                     <Gamepad2 className="h-4 w-4 mr-2" />
                     Hrát nyní

@@ -299,7 +299,7 @@ const AboutSection = React.memo(() => {
           {serverStats.map((stat, index) => (
             <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-8 text-center group hover:border-[#b90505]/30 hover:bg-gradient-to-br hover:from-[#b90505]/5 hover:to-[#8a0101]/5 transition-all duration-500">
               <stat.icon className="h-12 w-12 mx-auto mb-4 text-[#bd2727] group-hover:scale-110 transition-transform duration-300" />
-              <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
+              <div className="text-3xl font-bold text-foreground dark:text-white mb-2">{stat.value}</div>
               <div className="text-lg font-semibold text-gray-300 mb-1">{stat.label}</div>
               <div className="text-sm text-gray-500">{stat.description}</div>
             </div>
@@ -327,7 +327,7 @@ const AboutSection = React.memo(() => {
                 
                 
                 <div className="relative text-center">
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#bd2727] transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4 group-hover:text-[#bd2727] transition-colors duration-300">
                     {feature.title}
                   </h3>
                   <p className="text-gray-400 leading-relaxed text-lg">
@@ -350,11 +350,11 @@ const AboutSection = React.memo(() => {
           className="text-center mt-20"
         >
           <div className="bg-gradient-to-r from-[#b90505]/10 via-[#8a0101]/10 to-[#b90505]/10 backdrop-blur-sm border border-[#b90505]/20 rounded-3xl p-10 max-w-3xl mx-auto">
-            <h3 className="text-3xl font-bold text-white mb-4">Připraveni vstoupit do hry?</h3>
+            <h3 className="text-3xl font-bold text-foreground dark:text-white mb-4">Připraveni vstoupit do hry?</h3>
             <p className="text-gray-400 mb-8 text-lg">Staňte se součástí největší CZ/SK FiveM komunity a začněte psát svůj příběh už dnes</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={siteConfig.links.fivem} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#8a0101] hover:bg-[#570000] text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-[#8a0101]/25 transition-all duration-300 text-lg">
+                <Button className="bg-[#8a0101] hover:bg-[#570000] text-foreground dark:text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-[#8a0101]/25 transition-all duration-300 text-lg">
                   <Users className="h-5 w-5 mr-2" />
                   Připojit se k serveru
                 </Button>
@@ -434,9 +434,9 @@ const CommunitySection = React.memo(() => {
               feature.borderColor
             )}>
               <div className={cn("w-16 h-16 rounded-2xl bg-gradient-to-br mx-auto mb-6 flex items-center justify-center", feature.color)}>
-                <feature.icon className="h-8 w-8 text-white" />
+                <feature.icon className="h-8 w-8 text-foreground dark:text-white" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
+              <h3 className="text-xl font-bold text-foreground dark:text-white mb-3">{feature.title}</h3>
               <p className="text-gray-400">{feature.description}</p>
             </div>
           ))}
@@ -604,7 +604,7 @@ const ActivitiesSection = React.memo(() => {
           {activityStats.map((stat, index) => (
             <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center group hover:border-[#b90505]/30 transition-all duration-300">
               <stat.icon className={`h-8 w-8 mx-auto mb-3 ${stat.color} group-hover:scale-110 transition-transform duration-300`} />
-              <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
+              <div className="text-2xl font-bold text-foreground dark:text-white mb-1">{stat.value}</div>
               <div className="text-sm text-gray-400">{stat.label}</div>
             </div>
           ))}
@@ -625,7 +625,7 @@ const ActivitiesSection = React.memo(() => {
                 "flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm",
                 selectedCategory === category.id
                   ? "bg-[#b90505]/20 text-[#bd2727] border border-[#b90505]/40 shadow-lg shadow-[#b90505]/20"
-                  : "bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10 hover:text-white"
+                  : "bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10 hover:text-foreground dark:text-white"
               )}
             >
               <category.icon className="h-4 w-4" />
@@ -713,7 +713,7 @@ const ActivitiesSection = React.memo(() => {
                         
                         
                         <div className="absolute top-4 left-4">
-                          <Badge className="bg-black/50 text-white border-white/20">
+                          <Badge className="bg-black/50 text-foreground dark:text-white border-white/20">
                             {zakazka.category === 'legal' ? 'Legální' : 
                              zakazka.category === 'illegal' ? 'Ilegální' : 'Loupež'}
                           </Badge>
@@ -725,7 +725,7 @@ const ActivitiesSection = React.memo(() => {
                         <div className={cn("p-2 rounded-lg bg-white/10 backdrop-blur-sm transition-all duration-150 group-hover:scale-110 group-hover:rotate-3 group-hover:duration-150 group-hover:ease-out", getHoverColor(zakazka).split(' ')[1])}>
                           {zakazka.icon}
                         </div>
-                        <h3 className={cn("text-xl font-bold text-white transition-all duration-150 group-hover:translate-x-1 group-hover:duration-150 group-hover:ease-out", getHoverColor(zakazka).split(' ')[0])}>
+                        <h3 className={cn("text-xl font-bold text-foreground dark:text-white transition-all duration-150 group-hover:translate-x-1 group-hover:duration-150 group-hover:ease-out", getHoverColor(zakazka).split(' ')[0])}>
                           {zakazka.nazev}
                         </h3>
                       </div>
@@ -777,10 +777,10 @@ const ActivitiesSection = React.memo(() => {
           className="text-center mt-16"
         >
           <div className="bg-gradient-to-r from-[#b90505]/10 via-[#8a0101]/10 to-[#b90505]/10 backdrop-blur-sm border border-[#b90505]/20 rounded-3xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">Připraveni na akci?</h3>
+            <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">Připraveni na akci?</h3>
             <p className="text-gray-400 mb-6">Připojte se k tisícům hráčů a začněte svou cestu na Retrovax FiveM</p>
             <Link href={siteConfig.links.fivem} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-[#8a0101] hover:bg-[#570000] text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-[#8a0101]/25 transition-all duration-300">
+              <Button className="bg-[#8a0101] hover:bg-[#570000] text-foreground dark:text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-[#8a0101]/25 transition-all duration-300">
                 <Zap className="h-5 w-5 mr-2" />
                 Připojit se nyní
               </Button>

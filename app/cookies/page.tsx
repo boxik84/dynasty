@@ -84,7 +84,7 @@ export default function CookiesInfoPage() {
     ];
 
     return (
-        <div className="relative min-h-screen bg-[#0a0a0a] overflow-hidden">
+        <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a] overflow-hidden">
             
             <motion.div 
                 className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#b90505] to-[#bd2727] z-50 origin-left"
@@ -139,7 +139,7 @@ export default function CookiesInfoPage() {
                             </Badge>
                         </div>
                         
-                        <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+                        <h1 className="text-5xl md:text-7xl font-black text-foreground dark:text-white mb-8 leading-tight">
                             <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
                                 Cookies & soukromí
                             </span>
@@ -198,7 +198,7 @@ export default function CookiesInfoPage() {
                                                     </div>
                                                     <div className="flex-1">
                                                         <div className="flex items-center gap-3 mb-3">
-                                                            <CardTitle className="text-2xl font-bold text-white group-hover:text-gray-100 transition-colors">
+                                                            <CardTitle className="text-2xl font-bold text-foreground dark:text-white group-hover:text-gray-100 transition-colors">
                                                                 {cookie.title}
                                                             </CardTitle>
                                                             {cookie.essential && (
@@ -241,7 +241,7 @@ export default function CookiesInfoPage() {
                                     <div className="p-4 rounded-2xl bg-orange-500/20 border border-orange-500/30">
                                         <Info className="w-8 h-8 text-orange-400" />
                                     </div>
-                                    <CardTitle className="text-3xl font-bold text-white">
+                                    <CardTitle className="text-3xl font-bold text-foreground dark:text-white">
                                         Detailní přehled cookies
                                     </CardTitle>
                                 </div>
@@ -260,7 +260,7 @@ export default function CookiesInfoPage() {
                                         >
                                             <div className="space-y-3">
                                                 <div className="flex items-center justify-between">
-                                                    <h4 className="font-bold text-white text-lg">
+                                                    <h4 className="font-bold text-foreground dark:text-white text-lg">
                                                         {item.category}
                                                     </h4>
                                                     <Badge className={`text-xs ${
@@ -303,7 +303,7 @@ export default function CookiesInfoPage() {
                                     <div className="p-4 rounded-2xl bg-green-500/20 border border-green-500/30">
                                         <Shield className="w-8 h-8 text-green-400" />
                                     </div>
-                                    <CardTitle className="text-3xl font-bold text-white">
+                                    <CardTitle className="text-3xl font-bold text-foreground dark:text-white">
                                         Vaše práva & možnosti kontroly
                                     </CardTitle>
                                 </div>
@@ -348,7 +348,7 @@ export default function CookiesInfoPage() {
                                         <div className="p-3 rounded-xl bg-[#b90505]/20 border border-[#b90505]/30">
                                             <Mail className="w-6 h-6 text-[#bd2727]" />
                                         </div>
-                                        <CardTitle className="text-xl font-bold text-white">
+                                        <CardTitle className="text-xl font-bold text-foreground dark:text-white">
                                             Kontakt pro ochranu údajů
                                         </CardTitle>
                                     </div>
@@ -363,7 +363,7 @@ export default function CookiesInfoPage() {
                                             <div className="flex items-center gap-3">
                                                 <Mail className="w-5 h-5 text-[#bd2727]" />
                                                 <div>
-                                                    <p className="font-medium text-white">Email</p>
+                                                    <p className="font-medium text-foreground dark:text-white">Email</p>
                                                     <a 
                                                         href="mailto:tobiasvolny@icloud.com"
                                                         className="text-[#bd2727] hover:text-red-400 transition-colors"
@@ -389,7 +389,7 @@ export default function CookiesInfoPage() {
                                         <div className="p-3 rounded-xl bg-blue-500/20 border border-blue-500/30">
                                             <Settings className="w-6 h-6 text-blue-400" />
                                         </div>
-                                        <CardTitle className="text-xl font-bold text-white">
+                                        <CardTitle className="text-xl font-bold text-foreground dark:text-white">
                                             Nastavení v prohlížeči
                                         </CardTitle>
                                     </div>

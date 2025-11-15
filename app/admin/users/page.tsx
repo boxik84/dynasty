@@ -288,13 +288,13 @@ export default function UsersAdmin() {
                             placeholder="Hledat uživatele..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            className="pl-10 bg-white/5 border-white/10 text-white text-sm lg:text-base"
+                            className="pl-10 bg-white/5 border-white/10 text-foreground dark:text-white text-sm lg:text-base"
                         />
                     </div>
                     
                     <div className="flex gap-2 lg:gap-3">
                         <Select value={roleFilter} onValueChange={setRoleFilter}>
-                            <SelectTrigger className="w-32 lg:w-40 bg-white/5 border-white/10 text-white text-sm lg:text-base">
+                            <SelectTrigger className="w-32 lg:w-40 bg-white/5 border-white/10 text-foreground dark:text-white text-sm lg:text-base">
                                 <Filter className="h-4 w-4 mr-2" />
                                 <SelectValue />
                             </SelectTrigger>
@@ -308,7 +308,7 @@ export default function UsersAdmin() {
                         </Select>
 
                         <Select value={statusFilter} onValueChange={setStatusFilter}>
-                            <SelectTrigger className="w-24 lg:w-32 bg-white/5 border-white/10 text-white text-sm lg:text-base">
+                            <SelectTrigger className="w-24 lg:w-32 bg-white/5 border-white/10 text-foreground dark:text-white text-sm lg:text-base">
                                 <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
@@ -343,12 +343,12 @@ export default function UsersAdmin() {
                                         <div className="flex items-center gap-3">
                                             <Avatar className="h-10 w-10 lg:h-12 lg:w-12">
                                                 <AvatarImage src={user.image} alt={user.name} />
-                                                <AvatarFallback className="bg-gradient-to-br from-[#bd2727] to-[#b90505] text-white font-bold">
+                                                <AvatarFallback className="bg-gradient-to-br from-[#bd2727] to-[#b90505] text-foreground dark:text-white font-bold">
                                                     {user.name?.charAt(0)?.toUpperCase() || 'U'}
                                                 </AvatarFallback>
                                             </Avatar>
                                             <div className="min-w-0 flex-1">
-                                                <h3 className="font-semibold text-white text-sm lg:text-base truncate">{user.name}</h3>
+                                                <h3 className="font-semibold text-foreground dark:text-white text-sm lg:text-base truncate">{user.name}</h3>
                                                 <p className="text-xs text-gray-400 break-all">
                                                     {user.discordId ? `Discord: ${user.discordId}` : user.email}
                                                 </p>
@@ -433,13 +433,13 @@ export default function UsersAdmin() {
             <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
                 <DialogContent className="bg-gradient-to-br from-[#131618]/95 via-[#151a1c]/95 to-[#111b22]/95 border-white/10">
                     <DialogHeader>
-                        <DialogTitle className="text-white flex items-center gap-2">
+                        <DialogTitle className="text-foreground dark:text-white flex items-center gap-2">
                             <AlertTriangle className="h-5 w-5 text-red-400" />
                             Smazat uživatele
                         </DialogTitle>
                         <DialogDescription className="text-gray-400">
                             Opravdu chcete smazat uživatele{' '}
-                            <span className="font-semibold text-white">{userToDelete?.name}</span>?
+                            <span className="font-semibold text-foreground dark:text-white">{userToDelete?.name}</span>?
                             <br />
                             <br />
                             Tato akce:
@@ -455,14 +455,14 @@ export default function UsersAdmin() {
                         <button
                             onClick={() => setIsDeleteDialogOpen(false)}
                             disabled={isDeleting}
-                            className="border border-white/20 text-white hover:bg-white/10 px-4 py-2 rounded-md bg-transparent"
+                            className="border border-white/20 text-foreground dark:text-white hover:bg-white/10 px-4 py-2 rounded-md bg-transparent"
                         >
                             Zrušit
                         </button>
                         <Button
                             onClick={handleDeleteUser}
                             disabled={isDeleting}
-                            className="bg-red-600 hover:bg-red-700 text-white"
+                            className="bg-red-600 hover:bg-red-700 text-foreground dark:text-white"
                         >
                             {isDeleting ? (
                                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
@@ -479,10 +479,10 @@ export default function UsersAdmin() {
             <Dialog open={isUserDetailsOpen} onOpenChange={setIsUserDetailsOpen}>
                 <DialogContent className="max-w-2xl bg-gradient-to-br from-[#131618]/95 via-[#151a1c]/95 to-[#111b22]/95 border-white/10">
                     <DialogHeader>
-                        <DialogTitle className="text-white flex items-center gap-3">
+                        <DialogTitle className="text-foreground dark:text-white flex items-center gap-3">
                             <Avatar className="h-8 w-8">
                                 <AvatarImage src={selectedUser?.image} alt={selectedUser?.name} />
-                                <AvatarFallback className="bg-gradient-to-br from-[#bd2727] to-[#b90505] text-white font-bold text-sm">
+                                <AvatarFallback className="bg-gradient-to-br from-[#bd2727] to-[#b90505] text-foreground dark:text-white font-bold text-sm">
                                     {selectedUser?.name?.charAt(0)?.toUpperCase() || 'U'}
                                 </AvatarFallback>
                             </Avatar>
@@ -499,15 +499,15 @@ export default function UsersAdmin() {
                                 <div className="space-y-3">
                                     <div>
                                         <label className="text-sm font-medium text-gray-400">Jméno</label>
-                                        <p className="text-white">{selectedUser.name}</p>
+                                        <p className="text-foreground dark:text-white">{selectedUser.name}</p>
                                     </div>
                                     <div>
                                         <label className="text-sm font-medium text-gray-400">Email</label>
-                                        <p className="text-white break-all">{selectedUser.email || 'Není nastaveno'}</p>
+                                        <p className="text-foreground dark:text-white break-all">{selectedUser.email || 'Není nastaveno'}</p>
                                     </div>
                                     <div>
                                         <label className="text-sm font-medium text-gray-400">Discord ID</label>
-                                        <p className="text-white">{selectedUser.discordId || 'Není propojeno'}</p>
+                                        <p className="text-foreground dark:text-white">{selectedUser.discordId || 'Není propojeno'}</p>
                                     </div>
                                     <div>
                                         <label className="text-sm font-medium text-gray-400">Email ověřen</label>
@@ -517,7 +517,7 @@ export default function UsersAdmin() {
                                             ) : (
                                                 <UserX className="h-4 w-4 text-red-400" />
                                             )}
-                                            <span className="text-white">
+                                            <span className="text-foreground dark:text-white">
                                                 {selectedUser.emailVerified ? 'Ano' : 'Ne'}
                                             </span>
                                         </div>
@@ -533,13 +533,13 @@ export default function UsersAdmin() {
                                     </div>
                                     <div>
                                         <label className="text-sm font-medium text-gray-400">Aktivní sessions</label>
-                                        <p className="text-white">{selectedUser.activeSessions}</p>
+                                        <p className="text-foreground dark:text-white">{selectedUser.activeSessions}</p>
                                     </div>
                                     <div>
                                         <label className="text-sm font-medium text-gray-400">Registrace</label>
                                         <div className="flex items-center gap-2">
                                             <Calendar className="h-4 w-4 text-gray-400" />
-                                            <span className="text-white">
+                                            <span className="text-foreground dark:text-white">
                                                 {new Date(selectedUser.createdAt).toLocaleString('cs-CZ')}
                                             </span>
                                         </div>
@@ -548,7 +548,7 @@ export default function UsersAdmin() {
                                         <label className="text-sm font-medium text-gray-400">Poslední aktivita</label>
                                         <div className="flex items-center gap-2">
                                             <Activity className="h-4 w-4 text-gray-400" />
-                                            <span className="text-white">
+                                            <span className="text-foreground dark:text-white">
                                                 {new Date(selectedUser.updatedAt).toLocaleString('cs-CZ')}
                                             </span>
                                         </div>

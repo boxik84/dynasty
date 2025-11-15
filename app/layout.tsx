@@ -104,7 +104,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <TooltipProvider>
             <StickyBanner>
-              <span className="font-semibold text-sm text-white">
+              <span className="font-semibold text-sm text-foreground dark:text-white">
                 🛒 Kup si VIP na našem obchodě a získej exkluzivní výhody!{" "}
                 <a
                   href={siteConfig.links.store}

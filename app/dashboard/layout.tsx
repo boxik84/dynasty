@@ -107,7 +107,7 @@ export default function DashboardLayout({ children }: SettingsLayoutProps) {
 
   if (isLoading) {
     return (
-      <div className="relative min-h-screen bg-[#0a0a0a]">
+      <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
         
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
           <div className="absolute left-1/2 top-1/4 -translate-x-1/2 h-[300px] w-[400px] md:h-[400px] md:w-[600px] rounded-full bg-[#b90505]/8 blur-3xl" />
@@ -188,7 +188,7 @@ export default function DashboardLayout({ children }: SettingsLayoutProps) {
       });
 
   return (
-    <div className="relative min-h-screen bg-[#0a0a0a]">
+    <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
       <div className="relative z-10 container mx-auto max-w-7xl py-4 sm:py-6 lg:py-10 px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 lg:pt-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -206,7 +206,7 @@ export default function DashboardLayout({ children }: SettingsLayoutProps) {
                 <User className="h-3 w-3 sm:h-4 sm:w-4 text-[#bd2727] drop-shadow-[0_0_5px_#bd2727]" />
                 <span className="truncate max-w-[120px] sm:max-w-none">{user.username}</span>
               </Badge>
-              <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mt-2 mb-1 sm:mb-2">Dashboard</h1>
+              <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground dark:text-white mt-2 mb-1 sm:mb-2">Dashboard</h1>
               <p className="text-xs sm:text-sm lg:text-base text-gray-400">Spravuj svůj účet a přístup k serveru</p>
             </div>
             <Button

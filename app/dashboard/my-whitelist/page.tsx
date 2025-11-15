@@ -176,7 +176,7 @@ export default function MyWhitelistPage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-                        <h1 className="text-xl sm:text-2xl font-bold text-white">Moje Whitelist žádosti</h1>
+                        <h1 className="text-xl sm:text-2xl font-bold text-foreground dark:text-white">Moje Whitelist žádosti</h1>
                         {data.hasWhitelist && (
                             <Badge variant="outline" className="border-green-500/30 text-green-400 bg-green-500/10 w-fit">
                                 <CheckCircle className="h-3 w-3 mr-1" />
@@ -195,7 +195,7 @@ export default function MyWhitelistPage() {
                     </Button>
                         <button
                             onClick={() => router.push('/whitelist')}
-                        className="bg-[#b90505] hover:bg-[#a00404] text-white w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed px-3 py-2 rounded-md text-sm font-medium flex items-center gap-2"
+                        className="bg-[#b90505] hover:bg-[#a00404] text-foreground dark:text-white w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed px-3 py-2 rounded-md text-sm font-medium flex items-center gap-2"
                         disabled={!data.canSubmitNew || data.hasWhitelist}
                         >
                         <FileText className="h-4 w-4" />
@@ -298,7 +298,7 @@ export default function MyWhitelistPage() {
             
             <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10 backdrop-blur-md">
                 <CardHeader>
-                    <CardTitle className="text-white">Historie žádostí</CardTitle>
+                    <CardTitle className="text-foreground dark:text-white">Historie žádostí</CardTitle>
                     <CardDescription>
                         Seznam všech vašich whitelist žádostí
                     </CardDescription>
@@ -315,7 +315,7 @@ export default function MyWhitelistPage() {
                             </p>
                                 <button
                                     onClick={() => router.push('/whitelist')}
-                                className="bg-[#b90505] hover:bg-[#a00404] text-white w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed px-3 py-2 rounded-md text-sm font-medium"
+                                className="bg-[#b90505] hover:bg-[#a00404] text-foreground dark:text-white w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed px-3 py-2 rounded-md text-sm font-medium"
                                 disabled={!data.canSubmitNew || data.hasWhitelist}
                                 >
                                 {data.hasWhitelist ? 'Již máte whitelist' : 'Podat první žádost'}
@@ -339,13 +339,13 @@ export default function MyWhitelistPage() {
                                                 <div className="flex-1">
                                                     <div className="flex items-center gap-2 mb-2">
                                                         <User className="h-4 w-4 text-gray-400" />
-                                                        <span className="text-white font-medium">Žádost #{request.id}</span>
+                                                        <span className="text-foreground dark:text-white font-medium">Žádost #{request.id}</span>
                                                         <button
                                                             onClick={() => copyToClipboard(request.id.toString(), 'ID žádosti')}
                                                             className="p-1 rounded hover:bg-white/10 transition-colors group"
                                                             title="Kopírovat ID"
                                                         >
-                                                            <Copy className="h-3 w-3 text-gray-400 group-hover:text-white" />
+                                                            <Copy className="h-3 w-3 text-gray-400 group-hover:text-foreground dark:text-white" />
                                                         </button>
                                                     </div>
                                                     
@@ -388,15 +388,15 @@ export default function MyWhitelistPage() {
                                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 text-sm">
                                                 <div className="space-y-1">
                                                     <span className="text-gray-400 text-xs uppercase tracking-wide">Discord:</span>
-                                                    <p className="text-white font-medium">{formData.discordName || 'N/A'}</p>
+                                                    <p className="text-foreground dark:text-white font-medium">{formData.discordName || 'N/A'}</p>
                                                 </div>
                                                 <div className="space-y-1">
                                                     <span className="text-gray-400 text-xs uppercase tracking-wide">Věk:</span>
-                                                    <p className="text-white font-medium">{formData.age || 'N/A'}</p>
+                                                    <p className="text-foreground dark:text-white font-medium">{formData.age || 'N/A'}</p>
                                                 </div>
                                                 <div className="space-y-1">
                                                     <span className="text-gray-400 text-xs uppercase tracking-wide">FiveM hodiny:</span>
-                                                    <p className="text-white font-medium">{formData.fivemHours || 'N/A'}</p>
+                                                    <p className="text-foreground dark:text-white font-medium">{formData.fivemHours || 'N/A'}</p>
                                                 </div>
                                             </div>
                                         )}
