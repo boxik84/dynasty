@@ -27,7 +27,7 @@ import {
 
 import { useState, useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
-import { LogOut, User, Shield } from "lucide-react";
+import { LogOut, User, Shield, ChevronRightIcon } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { MotionHighlight, MotionHighlightItem } from "@/components/animate-ui/effects/motion-highlight";
 import { usePathname } from "next/navigation";
@@ -207,7 +207,7 @@ export function NavbarDemo() {
                             <DropdownMenuTrigger>
                                 <Avatar className="h-9 w-9 border border-slate-200 transition-all duration-300 hover:border-[#b90505]/50 hover:shadow-lg hover:shadow-rose-200/70 dark:border-white/20 dark:hover:border-[#b90505]/40 dark:hover:shadow-[#b90505]/25">
                                     <AvatarImage src={session.user.image || ""} alt={session.user.name || "Uživatel"} />
-                                    <AvatarFallback className="bg-gradient-to-br from-[#b90505] to-[#8a0101] text-white font-bold">
+                                    <AvatarFallback className="bg-linear-to-br from-[#b90505] to-[#8a0101] text-white font-bold">
                                         {session.user.name?.[0]?.toUpperCase() || 'U'}
                                     </AvatarFallback>
                                 </Avatar>
@@ -233,10 +233,12 @@ export function NavbarDemo() {
                     ) : (
                         <Button
                             asChild
-                            variant="outline"
-                            className="rounded-full border border-slate-200 px-5 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-50 dark:border-white/30 dark:text-white dark:hover:bg-white/10"
+                            className="group relative overflow-hidden rounded-2xl bg-linear-to-r from-[#b90505] via-[#b90505] to-[#8a0101] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-rose-200/60 ring-1 ring-[#b90505]/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-rose-300/60 focus-visible:ring-[#b90505]/50 dark:shadow-[#b90505]/30"
                         >
-                            <Link href="/sign-in">Přihlásit se</Link>
+                            <Link href="/sign-in" className="flex items-center gap-2">
+                                Přihlásit se
+                                <ChevronRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                            </Link>
                         </Button>
                     )}
                 </div>
@@ -272,7 +274,7 @@ export function NavbarDemo() {
                                 <DropdownMenuTrigger>
                                     <Avatar className="h-10 w-10 self-center border border-slate-200 transition-all duration-300 hover:border-[#b90505]/50 hover:shadow-lg hover:shadow-rose-200/70 dark:border-white/20 dark:hover:border-[#b90505]/40 dark:hover:shadow-[#b90505]/25">
                                         <AvatarImage src={session.user.image || ""} alt={session.user.name || "Uživatel"} />
-                                        <AvatarFallback className="bg-gradient-to-br from-[#b90505] to-[#8a0101] text-white font-bold">
+                                        <AvatarFallback className="bg-linear-to-br from-[#b90505] to-[#8a0101] text-white font-bold">
                                             {session.user.name?.[0]?.toUpperCase() || 'U'}
                                         </AvatarFallback>
                                     </Avatar>
@@ -297,11 +299,13 @@ export function NavbarDemo() {
                             </DropdownMenu>
                         ) : (
                             <Button
-                                variant="outline"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                                className="w-full rounded-xl border border-slate-200 py-3 text-slate-900 transition-colors duration-200 hover:bg-slate-50 hover:cursor-pointer dark:border-white/30 dark:text-white dark:hover:bg-white/10"
+                                asChild
+                                className="group w-full rounded-2xl bg-linear-to-r from-[#b90505] via-[#b90505] to-[#8a0101] px-6 py-3 text-base font-semibold text-white shadow-lg shadow-rose-200/60 ring-1 ring-[#b90505]/30 transition-all duration-200 hover:scale-[1.01] focus-visible:ring-[#b90505]/50 dark:shadow-[#b90505]/30"
                             >
-                                <Link href="/sign-in">Přihlásit se</Link>
+                                <Link href="/sign-in" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center justify-center gap-2">
+                                    Přihlásit se
+                                    <ChevronRightIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                                </Link>
                             </Button>
                         )}
                     </div>

@@ -20,6 +20,7 @@ export const StickyBanner = ({
 }) => {
   const [open, setOpen] = useState(true);
   const [visible, setVisible] = useState(true);
+  const [dismissed, setDismissed] = useState(false);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -31,7 +32,9 @@ export const StickyBanner = ({
   });
 
   const handleAnimationComplete = () => {
-    if (!open) setVisible(false);
+    if (!open && dismissed) {
+      setVisible(false);
+    }
   };
 
   React.useEffect(() => {
@@ -44,7 +47,7 @@ export const StickyBanner = ({
   return (
     <motion.div
       className={cn(
-        "relative inset-x-0 top-0 z-40 flex w-full items-center justify-center px-4 py-3",
+        "pointer-events-none fixed inset-x-0 bottom-6 z-50 flex w-full justify-center px-4 sm:px-6",
         className,
       )}
       initial={{
@@ -53,7 +56,7 @@ export const StickyBanner = ({
         scale: 0.95,
       }}
       animate={{
-        y: open ? 0 : -100,
+        y: open ? 0 : 100,
         opacity: open ? 1 : 0,
         scale: open ? 1 : 0.95,
       }}
@@ -121,14 +124,14 @@ export const StickyBanner = ({
       </div>
 
       
-      <div className="relative z-10 w-full max-w-6xl">
-        <div className="relative flex w-full flex-col gap-4 rounded-2xl border border-rose-100/80 bg-white/95 px-5 py-4 shadow-[0_24px_65px_rgba(15,23,42,0.08)] dark:border-[#8a0101]/40 dark:bg-[#160404]/85 sm:flex-row sm:items-center sm:gap-6 sm:pr-16">
+      <div className="relative z-10 w-full max-w-5xl">
+        <div className="pointer-events-auto relative flex w-full flex-col gap-4 rounded-3xl border border-rose-100/70 bg-white/95 bg-opacity-95 px-5 py-4 shadow-[0_25px_80px_rgba(15,23,42,0.15)] backdrop-blur-xl dark:border-[#8a0101]/40 dark:bg-[#160404]/85 sm:flex-row sm:items-center sm:gap-6 sm:pr-16">
           <div className="flex flex-1 items-center gap-4">
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 200 }}
-              className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-2xl bg-rose-100 text-[#b90505] shadow-[0_12px_25px_rgba(244,63,94,0.3)] ring-2 ring-rose-50 dark:bg-[#8a0101]/30 dark:text-white"
+              className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-rose-100 text-[#b90505] shadow-[0_12px_25px_rgba(244,63,94,0.3)] ring-2 ring-rose-50 dark:bg-[#8a0101]/30 dark:text-white"
             >
               <StoreIcon className="h-5 w-5" />
             </motion.div>
@@ -179,8 +182,11 @@ export const StickyBanner = ({
             whileTap={{
               scale: 0.9,
             }}
-            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full border border-rose-200 bg-rose-50 p-2 text-rose-600 shadow-md transition-colors duration-200 hover:bg-rose-100 dark:border-[#8a0101]/40 dark:bg-[#570000]/40 dark:text-white sm:top-1/2 sm:-translate-y-1/2"
-            onClick={() => setOpen(false)}
+            className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-2xl border border-rose-200 bg-rose-50 p-2 text-rose-600 shadow-md transition-colors duration-200 hover:bg-rose-100 dark:border-[#8a0101]/40 dark:bg-[#570000]/40 dark:text-white sm:top-1/2 sm:-translate-y-1/2"
+            onClick={() => {
+              setDismissed(true);
+              setOpen(false);
+            }}
             aria-label="Zavřít banner"
           >
             <CloseIcon className="h-4 w-4" />

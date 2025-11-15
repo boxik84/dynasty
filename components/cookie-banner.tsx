@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Cookie } from "lucide-react";
+import { Cookie, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
 
@@ -30,6 +30,8 @@ export default function CookieBanner() {
     closed: { opacity: 0, y: 50 },
   };
 
+  const detailsPanelId = "cookie-banner-details";
+
   return (
     <motion.div
       initial="closed"
@@ -49,26 +51,39 @@ export default function CookieBanner() {
             </p>
           </div>
         </div>
-        <div className="mt-2 flex w-full items-center gap-2">
+        <div className="mt-2 flex w-full flex-col gap-2 sm:flex-row">
           <Button
-            className="cursor-pointer rounded-xl border border-transparent bg-[#b90505] px-4 py-2 font-semibold text-white shadow-lg shadow-rose-200/70 transition-colors duration-200 hover:bg-[#8a0101] focus-visible:ring-[#b90505]/30 dark:bg-[#8a0101] dark:text-white"
+            className="w-full cursor-pointer rounded-xl border border-transparent bg-[#b90505] px-4 py-2 font-semibold text-white shadow-lg shadow-rose-200/70 transition-colors duration-200 hover:bg-[#8a0101] focus-visible:ring-[#b90505]/30 dark:bg-[#8a0101] dark:text-white sm:w-auto"
             onClick={acceptCookies}
           >
             Přijmout
           </Button>
-          <Button
-            variant="outline"
-            className="w-full cursor-pointer rounded-xl border border-slate-200 px-4 py-2 font-semibold text-slate-700 transition-colors duration-200 hover:bg-slate-50 hover:text-slate-900 dark:border-white/20 dark:text-gray-200 dark:hover:bg-white/10 dark:hover:text-white"
-            type="button"
-            onClick={() => setShowDetails((prev) => !prev)}
-          >
-            {showDetails ? "Skrýt detaily" : "Více informací"}
-          </Button>
+          <div className="flex-1">
+            <Button
+              variant="outline"
+              className="group flex w-full cursor-pointer items-center justify-between rounded-xl border border-slate-200 px-4 py-2 font-semibold text-slate-700 transition-colors duration-200 hover:bg-slate-50 hover:text-slate-900 dark:border-white/20 dark:text-gray-200 dark:hover:bg-white/10 dark:hover:text-white"
+              type="button"
+              aria-expanded={showDetails}
+              aria-controls={detailsPanelId}
+              onClick={() => setShowDetails((prev) => !prev)}
+            >
+              <span>{showDetails ? "Skrýt detaily" : "Více informací"}</span>
+              <motion.span
+                initial={false}
+                animate={{ rotate: showDetails ? 180 : 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="flex h-6 w-6 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 shadow-sm group-hover:border-slate-300 group-hover:text-slate-900 dark:border-white/20 dark:bg-transparent dark:text-gray-200"
+              >
+                <ChevronDown className="h-3.5 w-3.5" />
+              </motion.span>
+            </Button>
+          </div>
         </div>
 
         <AnimatePresence initial={false}>
           {showDetails && (
             <motion.div
+              id={detailsPanelId}
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
