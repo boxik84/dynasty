@@ -98,8 +98,9 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 50,
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex",
-        visible && "bg-background/80 dark:bg-background/80",
+        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full border border-transparent bg-white/70 px-4 py-2 shadow-sm shadow-slate-200/60 backdrop-blur lg:flex dark:border-white/5 dark:bg-background/40",
+        visible &&
+          "border border-slate-200/80 bg-white/90 shadow-[0_12px_45px_rgba(15,23,42,0.08)] dark:border-white/10 dark:bg-background/80",
         className,
       )}
     >
@@ -195,7 +196,7 @@ export const MobileNavMenu = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] dark:bg-neutral-950",
+            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-2xl border border-slate-200 bg-white/95 px-4 py-8 shadow-[0_25px_55px_rgba(15,23,42,0.12)] dark:border-white/10 dark:bg-neutral-950",
             className,
           )}
         >
@@ -224,7 +225,7 @@ export const NavbarLogo = () => {
   return (
     <Link
       href="/"
-      className="relative z-20 mr-6 flex items-center space-x-2 px-2 py-1 text-md font-normal text-black"
+      className="relative z-20 mr-6 flex items-center space-x-2 px-2 py-1 text-md font-semibold text-slate-900 dark:text-white"
     >
       <Image
         src="/logo.png"
@@ -232,7 +233,7 @@ export const NavbarLogo = () => {
         width={40}
         height={40}
       />
-      <span className="font-medium text-black dark:text-white">Retrovax</span>
+      <span className="font-semibold text-slate-900 dark:text-white">Retrovax</span>
     </Link>
   );
 };

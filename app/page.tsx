@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, lazy, Suspense } from 'react';
-import { Star, Truck, ShoppingBag, Landmark, CreditCard, Home, MapPin, Clock, AlertTriangle, DollarSign, Users, Shield, Code, MessageSquare, Zap, Target, Flame, ChevronRightIcon } from 'lucide-react';
+import { Star, Truck, ShoppingBag, Landmark, CreditCard, Home, MapPin, Clock, AlertTriangle, DollarSign, Users, Shield, Code, MessageSquare, Zap, Target, Flame, ChevronRightIcon, CalendarDays, Sparkles, Headphones, Radio, Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { siteConfig } from '@/config/site';
@@ -20,8 +20,8 @@ const HeroVideoDialog = lazy(() => import('@/components/magicui/hero-video-dialo
 // Loading components
 const ParticlesLoader = () => <div className="absolute inset-0 bg-transparent min-h-[400px]" />;
 const VideoLoader = () => (
-  <div className="w-full h-[320px] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center">
-    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#b90505]"></div>
+  <div className="w-full h-[320px] rounded-xl border border-slate-200 bg-gradient-to-br from-slate-100 via-slate-50 to-white dark:border-gray-700 dark:from-gray-800 dark:via-gray-900 dark:to-gray-950 flex items-center justify-center">
+    <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-[#b90505]" />
   </div>
 );
 
@@ -161,6 +161,18 @@ const activityStats = [
   { label: "Celkem aktivit", value: "7+", icon: Zap, color: "text-blue-400" },
 ];
 
+const glassCardClass =
+  "rounded-3xl border border-slate-200/80 bg-white/90 shadow-[0_18px_45px_rgba(15,23,42,0.08)] backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.05] dark:shadow-[0_25px_60px_rgba(0,0,0,0.45)]";
+
+const glassTileClass =
+  "rounded-2xl border border-slate-200 bg-white/95 shadow-md shadow-slate-200/60 backdrop-blur-sm dark:border-white/10 dark:bg-white/[0.08] dark:shadow-black/40";
+
+const headingGradientClass =
+  "text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500 bg-clip-text text-transparent dark:from-white dark:via-gray-200 dark:to-gray-400";
+
+const pillClass =
+  "inline-flex items-center gap-2 rounded-full border border-rose-100 bg-rose-50/80 px-4 py-2 text-sm font-semibold text-rose-700 shadow-sm backdrop-blur-sm dark:border-[#b90505]/40 dark:bg-[#b90505]/10 dark:text-[#bd2727]";
+
 // Optimized components with memoization
 const HeroSection = React.memo(() => {
   const { resolvedTheme } = useTheme();
@@ -174,14 +186,14 @@ const HeroSection = React.memo(() => {
       <div className="pointer-events-none absolute inset-x-0 top-0 h-1/6 w-full bg-gradient-to-b from-background to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/6 w-full bg-gradient-to-t from-background to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl flex flex-col items-center justify-center">
-        <h1 className="relative z-10 mx-auto max-w-4xl text-center font-bold text-slate-500 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-slate-300">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center justify-center">
+        <h1 className="relative z-10 mx-auto max-w-4xl text-center text-3xl font-bold text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl dark:text-slate-100">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-[#b90505]/10 border border-[#b90505]/60 text-[#bd2727] px-4 py-1 text-xs font-semibold shadow-sm backdrop-blur-sm">
+            <span className={cn(pillClass, "text-xs py-1")}>
               <svg width="14" height="14" fill="none"><circle cx="7" cy="7" r="7" fill="#b90505" /></svg>
               Největší cz/sk FiveM server
             </span>
@@ -203,7 +215,7 @@ const HeroSection = React.memo(() => {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.9 }}
-          className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-gray-400 mb-8 text-center max-w-xl mt-4 px-4"
+          className="mt-4 mb-8 max-w-xl px-4 text-center text-sm font-medium text-muted-foreground sm:text-base md:text-lg lg:text-xl dark:text-gray-400"
         >
           Naše komunita je postavena na principech spolupráce, respektu a zábavy. Přidej se k nám a zažij autentický herní zážitek v prostředí, které jsme vytvořili s láskou a péčí.
         </motion.p>
@@ -217,7 +229,7 @@ const HeroSection = React.memo(() => {
           <Link href={siteConfig.links.fivem} target="_blank" rel="noopener noreferrer">
               <Button
                 size="lg"
-                className="group px-6 sm:px-8 py-4 sm:py-5 bg-[#8a0101] text-gray-300 font-semibold rounded-xl shadow-xl ring-2 ring-[#b90505]/30 hover:bg-[#570000] hover:text-gray-300 transition duration-200 cursor-pointer hover:ring-[#8a0101] w-full sm:w-auto"
+                className="group w-full rounded-xl bg-[#b90505] px-6 py-4 font-semibold text-white shadow-xl shadow-rose-200/60 ring-2 ring-[#b90505]/20 transition duration-200 hover:bg-[#8a0101] hover:ring-[#8a0101]/40 sm:w-auto sm:px-8 sm:py-5 dark:shadow-[#b90505]/25"
               >
                 Připojit se!
                 <ChevronRightIcon className="size-4 transition-all duration-300 ease-out group-hover:translate-x-1.5 group-hover:scale-110" />
@@ -227,7 +239,7 @@ const HeroSection = React.memo(() => {
               <Button
                 size="lg"
                 variant="outline"
-                className="px-6 sm:px-8 py-4 sm:py-5 font-semibold rounded-xl shadow-2xl cursor-pointer ring-2 ring-[#b90505]/40 hover:ring-[#8a0101] transition duration-200 w-full sm:w-auto"
+                className="w-full rounded-xl px-6 py-4 font-semibold text-[#8a0101] ring-1 ring-[#b90505]/30 transition duration-200 hover:bg-rose-50 hover:text-[#8a0101] sm:w-auto sm:px-8 sm:py-5 dark:text-gray-100 dark:hover:bg-white/10 dark:ring-[#b90505]/40"
               >
                 <Icons.discord className="h-5 w-5 mr-2" />
                 Discord
@@ -276,14 +288,14 @@ const AboutSection = React.memo(() => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#b90505]/10 border border-[#b90505]/30 text-[#bd2727] px-4 py-2 text-sm font-semibold shadow-sm backdrop-blur-sm mb-6">
-            <Shield className="h-4 w-4" />
+          <div className={cn(pillClass, "mb-6")}>
+            <Shield className="h-4 w-4 text-rose-600 dark:text-white" />
             O našem serveru
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className={cn(headingGradientClass, "mb-8")}>
             Retrovax FiveM Experience
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed px-4">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground dark:text-gray-400 max-w-4xl mx-auto leading-relaxed px-4">
             Více než jen herní server - jsme komunita, kde se rodí nezapomenutelné příběhy. 
             Připojte se k tisícům hráčů v nejautentičtějším roleplay zážitku v České republice a na Slovensku.
           </p>
@@ -297,11 +309,17 @@ const AboutSection = React.memo(() => {
           className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
         >
           {serverStats.map((stat, index) => (
-            <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-8 text-center group hover:border-[#b90505]/30 hover:bg-gradient-to-br hover:from-[#b90505]/5 hover:to-[#8a0101]/5 transition-all duration-500">
-              <stat.icon className="h-12 w-12 mx-auto mb-4 text-[#bd2727] group-hover:scale-110 transition-transform duration-300" />
-              <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>
-              <div className="text-lg font-semibold text-gray-300 mb-1">{stat.label}</div>
-              <div className="text-sm text-gray-500">{stat.description}</div>
+            <div
+              key={index}
+              className={cn(
+                glassTileClass,
+                "p-8 text-center group hover:border-[#b90505]/40 hover:shadow-rose-200/40 dark:hover:border-[#b90505]/40 transition-all duration-500"
+              )}
+            >
+              <stat.icon className="h-12 w-12 mx-auto mb-4 text-[#bd2727] group-hover:scale-110 transition-transform duration-300 dark:text-[#bd2727]" />
+              <div className="mb-2 text-3xl font-bold text-slate-900 dark:text-white">{stat.value}</div>
+              <div className="mb-1 text-lg font-semibold text-slate-600 dark:text-gray-300">{stat.label}</div>
+              <div className="text-sm text-muted-foreground dark:text-gray-500">{stat.description}</div>
             </div>
           ))}
         </motion.div>
@@ -316,21 +334,26 @@ const AboutSection = React.memo(() => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="group relative"
             >
-              <div className="relative bg-gradient-to-br from-white/10 to-white/[0.02] backdrop-blur-md border border-white/20 rounded-3xl p-8 h-full overflow-hidden hover:border-[#b90505]/40 transition-all duration-500">
+              <div
+                className={cn(
+                  glassCardClass,
+                  "relative h-full overflow-hidden p-8 transition-all duration-500 hover:border-[#b90505]/40"
+                )}
+              >
                 
-                <div className="absolute inset-0 bg-gradient-to-br from-[#b90505]/5 via-transparent to-[#8a0101]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#b90505]/10 via-transparent to-[#8a0101]/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 
                 
-                <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#b90505]/20 to-[#8a0101]/20 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-8 h-8 text-[#bd2727]" />
+                <div className="relative mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-100 text-rose-600 transition-transform duration-300 group-hover:scale-110 dark:bg-[#b90505]/20 dark:text-[#bd2727]">
+                  <feature.icon className="h-8 w-8" />
                 </div>
                 
                 
                 <div className="relative text-center">
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-[#bd2727] transition-colors duration-300">
+                  <h3 className="mb-4 text-2xl font-bold text-slate-900 transition-colors duration-300 group-hover:text-[#bd2727] dark:text-white">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-400 leading-relaxed text-lg">
+                  <p className="text-lg leading-relaxed text-muted-foreground dark:text-gray-400">
                     {feature.description}
                   </p>
                 </div>
@@ -349,18 +372,18 @@ const AboutSection = React.memo(() => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-20"
         >
-          <div className="bg-gradient-to-r from-[#b90505]/10 via-[#8a0101]/10 to-[#b90505]/10 backdrop-blur-sm border border-[#b90505]/20 rounded-3xl p-10 max-w-3xl mx-auto">
-            <h3 className="text-3xl font-bold text-white mb-4">Připraveni vstoupit do hry?</h3>
-            <p className="text-gray-400 mb-8 text-lg">Staňte se součástí největší CZ/SK FiveM komunity a začněte psát svůj příběh už dnes</p>
+          <div className="mx-auto max-w-3xl rounded-3xl border border-rose-100/70 bg-gradient-to-r from-rose-100 via-rose-50 to-amber-50 p-10 shadow-[0_20px_40px_rgba(244,114,182,0.2)] dark:border-[#b90505]/20 dark:from-[#b90505]/10 dark:via-[#8a0101]/10 dark:to-[#b90505]/10">
+            <h3 className="mb-4 text-3xl font-bold text-slate-900 dark:text-white">Připraveni vstoupit do hry?</h3>
+            <p className="mb-8 text-lg text-muted-foreground dark:text-gray-400">Staňte se součástí největší CZ/SK FiveM komunity a začněte psát svůj příběh už dnes</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href={siteConfig.links.fivem} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#8a0101] hover:bg-[#570000] text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-[#8a0101]/25 transition-all duration-300 text-lg">
+                <Button className="rounded-xl bg-[#b90505] px-8 py-4 text-lg font-semibold text-white shadow-lg shadow-rose-200/60 transition-all duration-300 hover:bg-[#8a0101] hover:shadow-rose-300/40 dark:shadow-[#b90505]/25">
                   <Users className="h-5 w-5 mr-2" />
                   Připojit se k serveru
                 </Button>
               </Link>
               <Link href={siteConfig.links.discord} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="border-[#b90505]/40 text-[#bd2727] hover:bg-[#b90505]/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300 text-lg">
+                <Button variant="outline" className="rounded-xl border border-rose-200 px-8 py-4 text-lg font-semibold text-rose-700 transition-all duration-300 hover:bg-rose-50 dark:border-[#b90505]/40 dark:text-[#bd2727] dark:hover:bg-[#b90505]/10">
                   <Icons.discord className="h-5 w-5 mr-2" />
                   Vstoupit do komunity
                 </Button>
@@ -375,72 +398,233 @@ const AboutSection = React.memo(() => {
 AboutSection.displayName = 'AboutSection';
 
 const CommunitySection = React.memo(() => {
-  const communityFeatures = [
-    {
-      icon: MessageSquare,
-      title: "Aktivní Discord",
-      description: "Přes 15,000 členů v naší Discord komunitě",
-      color: "from-blue-500/20 to-blue-600/20",
-      borderColor: "border-blue-500/30"
-    },
+  const communityStats = [
     {
       icon: Users,
-      title: "Týmové události",
-      description: "Pravidelné komunitní akce a soutěže",
-      color: "from-green-500/20 to-green-600/20",
-      borderColor: "border-green-500/30"
+      label: "Discord členů",
+      value: "15 000+",
+      detail: "Každý den na voice i eventech",
+    },
+    {
+      icon: CalendarDays,
+      label: "Eventů měsíčně",
+      value: "120+",
+      detail: "RP mise, fotosoutěže a turnaje",
     },
     {
       icon: Shield,
-      title: "24/7 Podpora",
-      description: "Náš tým je tu pro vás kdykoliv potřebujete",
-      color: "from-purple-500/20 to-purple-600/20",
-      borderColor: "border-purple-500/30"
-    }
+      label: "Podpora",
+      value: "24/7",
+      detail: "Prioritní ticket systém a moderátoři",
+    },
+    {
+      icon: MessageSquare,
+      label: "Komunitní projekty",
+      value: "50+",
+      detail: "Gangy, podniky a příběhové frakce",
+    },
+  ];
+
+  const communityMoments = [
+    {
+      title: "Community Nights",
+      meta: "Pátek 20:00",
+      detail: "Velké scénáře a unikátní loot jen pro účastníky.",
+    },
+    {
+      title: "Creative Labs",
+      meta: "Středa 18:00",
+      detail: "Workshopy s developery, kteří odhalují zákulisí skriptů.",
+    },
+    {
+      title: "Storytelling Sessions",
+      meta: "Neděle 19:30",
+      detail: "Společné psaní příběhů a plánování RP sezón.",
+    },
+  ];
+
+  const communityHighlights = [
+    {
+      title: "Event Nights & Showcases",
+      description:
+        "Každý týden originální event s cinematic kamerami, custom odměnami a živým komentářem.",
+      icon: Sparkles,
+      accent: "from-rose-200 via-rose-100 to-amber-100",
+      bullets: ["Limitované skiny", "Fotoreport na Discordu", "Stream highlight"],
+    },
+    {
+      title: "Mentoring & onboarding",
+      description:
+        "Head Admini a community mentoři ti pomůžou s RP backstory i s technikou.",
+      icon: Headphones,
+      accent: "from-blue-200 via-blue-100 to-cyan-100",
+      bullets: ["Startovní RP balíček", "1:1 feedback", "Roleplay guidelines"],
+    },
+    {
+      title: "Broadcast & media crew",
+      description:
+        "Speciální redakce připravuje podcasty, trailery a behind-the-scenes obsah.",
+      icon: Radio,
+      accent: "from-purple-200 via-purple-100 to-fuchsia-100",
+      bullets: ["RP podcast", "Live reporty", "Playlist s komunitní hudbou"],
+    },
+    {
+      title: "Charity & special projekty",
+      description:
+        "Spojujeme komunitu na reálných charitativních streamech a IRL meetupech.",
+      icon: Heart,
+      accent: "from-green-200 via-emerald-100 to-teal-100",
+      bullets: ["Charity streamy", "IRL meetupy", "VIP merch drop"],
+    },
   ];
 
   return (
     <section className="relative py-32">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-rose-50/50 to-white dark:from-[#0a0a0a] dark:via-[#120202] dark:to-[#0a0a0a]" />
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
-        
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#b90505]/10 border border-[#b90505]/30 text-[#bd2727] px-4 py-2 text-sm font-semibold shadow-sm backdrop-blur-sm mb-6">
-            <Users className="h-4 w-4" />
+          <div className={cn(pillClass, "mb-5 inline-flex items-center gap-2")}>
+            <Users className="h-4 w-4 text-rose-600 dark:text-white" />
             Naše komunita
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className={cn(headingGradientClass, "mb-6")}>
             Více než jen server
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
-            Jsme rodina hráčů, kteří sdílejí vášeň pro kvalitní roleplay a nezapomenutelné zážitky
+          <p className="mx-auto max-w-3xl text-base text-muted-foreground dark:text-gray-400 sm:text-lg md:text-xl">
+            Retrovax je platforma, kde se potkávají hráči, tvůrci i vývojáři. Každý
+            večer je šance na nový příběh, showcase nebo společnou výzvu mimo herní svět.
           </p>
         </motion.div>
 
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {communityFeatures.map((feature, index) => (
-            <div key={index} className={cn(
-              "bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border rounded-3xl p-8 text-center group hover:scale-105 transition-all duration-500",
-              feature.borderColor
-            )}>
-              <div className={cn("w-16 h-16 rounded-2xl bg-gradient-to-br mx-auto mb-6 flex items-center justify-center", feature.color)}>
-                <feature.icon className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-              <p className="text-gray-400">{feature.description}</p>
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {communityStats.map((stat, index) => (
+                <div
+                  key={`${stat.label}-${index}`}
+                  className="rounded-3xl border border-slate-200/80 bg-white/95 p-6 text-left shadow-[0_18px_45px_rgba(15,23,42,0.08)] transition-shadow duration-300 hover:shadow-[0_25px_55px_rgba(15,23,42,0.12)] dark:border-white/10 dark:bg-white/[0.06]"
+                >
+                  <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.25em] text-slate-500 dark:text-gray-300">
+                    <stat.icon className="h-4 w-4 text-[#b90505]" />
+                    {stat.label}
+                  </div>
+                  <p className="mt-3 text-3xl font-bold text-slate-900 dark:text-white">
+                    {stat.value}
+                  </p>
+                  <p className="mt-2 text-sm text-muted-foreground dark:text-gray-400">
+                    {stat.detail}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-        </motion.div>
+
+            <div className={cn(glassCardClass, "rounded-[32px] border border-rose-100/70 bg-white/95 p-6 text-left dark:border-[#b90505]/20 dark:bg-white/[0.05]")}>
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-rose-500 dark:text-rose-200">
+                Program týdne
+              </p>
+              <div className="mt-6 space-y-5">
+                {communityMoments.map((moment, index) => (
+                  <div
+                    key={`${moment.title}-${index}`}
+                    className="flex items-start gap-4 rounded-2xl border border-slate-100/80 bg-white/95 px-4 py-3 shadow-sm dark:border-white/10 dark:bg-white/[0.04]"
+                  >
+                    <div className="text-sm font-semibold text-[#b90505] dark:text-rose-200">
+                      {moment.meta}
+                    </div>
+                    <div className="space-y-1">
+                      <p className="font-semibold text-slate-900 dark:text-white">
+                        {moment.title}
+                      </p>
+                      <p className="text-sm text-muted-foreground dark:text-gray-400">
+                        {moment.detail}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
+          >
+            <div className="relative overflow-hidden rounded-[32px] border border-slate-200 bg-gradient-to-br from-white via-rose-50 to-amber-50 p-6 shadow-[0_28px_60px_rgba(244,63,94,0.18)] dark:border-[#b90505]/20 dark:from-[#240303] dark:via-[#330404] dark:to-[#1b0202]">
+              <p className="text-xs font-semibold uppercase tracking-[0.4em] text-rose-500 dark:text-rose-200">
+                DNA komunity
+              </p>
+              <h3 className="mt-4 text-3xl font-bold text-slate-900 dark:text-white">
+                Každý den nový soundtrack, nový crew moment a další přátelství.
+              </h3>
+              <ul className="mt-6 space-y-3 text-sm text-slate-600 dark:text-gray-300">
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#b90505]" />
+                  RP editorial tým, který publikuje highlight články.
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#b90505]" />
+                  Custom soundtrack playlist kurátorovaný komunitou.
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#b90505]" />
+                  Věrnostní badge pro dlouhodobé členy i nové talenty.
+                </li>
+              </ul>
+              <div className="mt-6 flex items-center gap-3">
+                {["RS", "MT", "KL", "AD"].map((initials) => (
+                  <div
+                    key={initials}
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/80 text-sm font-semibold text-[#b90505] shadow-sm dark:border-white/20 dark:bg-white/10 dark:text-white"
+                  >
+                    {initials}
+                  </div>
+                ))}
+                <div className="text-sm font-semibold text-slate-700 dark:text-gray-200">
+                  + stovky dalších, kteří přispívají do každé sezóny
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {communityHighlights.map((highlight, index) => (
+                <div
+                  key={`${highlight.title}-${index}`}
+                  className="rounded-3xl border border-slate-200/80 bg-white/95 p-5 shadow-[0_15px_40px_rgba(15,23,42,0.08)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#b90505]/40 dark:border-white/10 dark:bg-white/[0.05]"
+                >
+                  <div className={cn("mb-4 inline-flex rounded-2xl p-3 text-[#b90505] dark:text-white", `bg-gradient-to-br ${highlight.accent}`)}>
+                    <highlight.icon className="h-5 w-5" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                    {highlight.title}
+                  </h4>
+                  <p className="mt-2 text-sm text-muted-foreground dark:text-gray-400">
+                    {highlight.description}
+                  </p>
+                  <ul className="mt-3 space-y-1.5 text-sm text-slate-600 dark:text-gray-300">
+                    {highlight.bullets.map((item) => (
+                      <li key={item} className="flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#b90505]" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -467,14 +651,14 @@ const PartnersSection = React.memo(() => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#b90505]/10 border border-[#b90505]/30 text-[#bd2727] px-4 py-2 text-sm font-semibold shadow-sm backdrop-blur-sm mb-6">
-            <Code className="h-4 w-4" />
+          <div className={cn(pillClass, "mb-6")}>
+            <Code className="h-4 w-4 text-rose-600 dark:text-white" />
             Naši partneři
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className={cn(headingGradientClass, "mb-6")}>
             Spolupracujeme s nejlepšími
           </h2>
-          <p className="text-base sm:text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-base sm:text-lg text-muted-foreground dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
             Díky partnerství s předními vývojáři můžeme nabídnout nejkvalitnější herní zážitek
           </p>
         </motion.div>
@@ -482,7 +666,13 @@ const PartnersSection = React.memo(() => {
         <div className="relative flex flex-col text-center">
           <InfiniteSlider gap={100}>
             {partners.map((partner, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-[#b90505]/30 transition-all duration-300 flex items-center justify-center">
+              <div
+                key={index}
+                className={cn(
+                  glassTileClass,
+                  "flex items-center justify-center rounded-2xl p-6 transition-all duration-300 hover:border-[#b90505]/40"
+                )}
+              >
                 <div className="relative h-[80px] w-[120px] flex items-center justify-center">
                   <Image
                     src={partner.src}
@@ -522,10 +712,22 @@ const ActivitiesSection = React.memo(() => {
 
   const getRiskBadge = (riskLevel: string, riziko: string) => {
     const badges = {
-      low: { color: 'bg-green-500/20 text-green-300 border-green-500/30', label: riziko },
-      medium: { color: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30', label: riziko },
-      high: { color: 'bg-orange-500/20 text-orange-300 border-orange-500/30', label: riziko },
-      extreme: { color: 'bg-red-500/20 text-red-300 border-red-500/30 animate-pulse', label: `🔥 ${riziko}` },
+      low: {
+        color: "bg-green-50 text-green-700 border-green-200 dark:bg-green-500/20 dark:text-green-200 dark:border-green-500/40",
+        label: riziko,
+      },
+      medium: {
+        color: "bg-amber-50 text-amber-700 border-amber-200 dark:bg-yellow-500/20 dark:text-yellow-200 dark:border-yellow-500/40",
+        label: riziko,
+      },
+      high: {
+        color: "bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-500/20 dark:text-orange-200 dark:border-orange-500/40",
+        label: riziko,
+      },
+      extreme: {
+        color: "bg-red-50 text-red-700 border-red-200 dark:bg-red-500/20 dark:text-red-200 dark:border-red-500/40 animate-pulse",
+        label: `🔥 ${riziko}`,
+      },
     };
     return badges[riskLevel as keyof typeof badges] || badges.medium;
   };
@@ -554,22 +756,39 @@ const ActivitiesSection = React.memo(() => {
   const getHoverColor = (zakazka: any) => {
     // Extract color from borderColor class for hover effects
     const borderColorClass = zakazka.borderColor;
-    
-    if (borderColorClass.includes('green')) {
-      return "group-hover:text-green-300 group-hover:bg-green-500/20"; // green
-    } else if (borderColorClass.includes('orange')) {
-      return "group-hover:text-orange-300 group-hover:bg-orange-500/20"; // orange
-    } else if (borderColorClass.includes('red')) {
-      return "group-hover:text-red-300 group-hover:bg-red-500/20"; // red
-    } else if (borderColorClass.includes('yellow')) {
-      return "group-hover:text-yellow-300 group-hover:bg-yellow-500/20"; // yellow
-    } else if (borderColorClass.includes('purple')) {
-      return "group-hover:text-purple-300 group-hover:bg-purple-500/20"; // purple
-    } else if (borderColorClass.includes('blue')) {
-      return "group-hover:text-blue-300 group-hover:bg-blue-500/20"; // blue
-    } else {
-      return "group-hover:text-red-300 group-hover:bg-red-500/20"; // fallback red
-    }
+
+    const map = {
+      green: {
+        textHover: "group-hover:text-green-600 dark:group-hover:text-green-200",
+        bgHover: "group-hover:bg-green-100 dark:group-hover:bg-green-500/20",
+      },
+      orange: {
+        textHover: "group-hover:text-orange-600 dark:group-hover:text-orange-200",
+        bgHover: "group-hover:bg-orange-100 dark:group-hover:bg-orange-500/20",
+      },
+      red: {
+        textHover: "group-hover:text-red-600 dark:group-hover:text-red-200",
+        bgHover: "group-hover:bg-red-100 dark:group-hover:bg-red-500/20",
+      },
+      yellow: {
+        textHover: "group-hover:text-yellow-600 dark:group-hover:text-yellow-200",
+        bgHover: "group-hover:bg-yellow-100 dark:group-hover:bg-yellow-500/20",
+      },
+      purple: {
+        textHover: "group-hover:text-purple-600 dark:group-hover:text-purple-200",
+        bgHover: "group-hover:bg-purple-100 dark:group-hover:bg-purple-500/20",
+      },
+      blue: {
+        textHover: "group-hover:text-blue-600 dark:group-hover:text-blue-200",
+        bgHover: "group-hover:bg-blue-100 dark:group-hover:bg-blue-500/20",
+      },
+    };
+
+    const found = (Object.keys(map) as Array<keyof typeof map>).find((key) =>
+      borderColorClass.includes(key),
+    );
+
+    return found ? map[found] : map.red;
   };
 
   return (
@@ -582,14 +801,14 @@ const ActivitiesSection = React.memo(() => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#b90505]/10 border border-[#b90505]/30 text-[#bd2727] px-4 py-2 text-sm font-semibold shadow-sm backdrop-blur-sm mb-6">
-            <Zap className="h-4 w-4" />
+          <div className={cn(pillClass, "mb-6")}>
+            <Zap className="h-4 w-4 text-rose-600 dark:text-white" />
             Herní aktivity
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+          <h2 className={cn(headingGradientClass, "mb-6")}>
             Objevte svět možností
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
             Od legálních prací až po rizikové loupeže - každý si najde svou cestu k bohatství
           </p>
         </motion.div>
@@ -602,10 +821,16 @@ const ActivitiesSection = React.memo(() => {
           className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12"
         >
           {activityStats.map((stat, index) => (
-            <div key={index} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center group hover:border-[#b90505]/30 transition-all duration-300">
-              <stat.icon className={`h-8 w-8 mx-auto mb-3 ${stat.color} group-hover:scale-110 transition-transform duration-300`} />
-              <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-400">{stat.label}</div>
+            <div
+              key={index}
+              className={cn(
+                glassTileClass,
+                "group rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-[#b90505]/40"
+              )}
+            >
+              <stat.icon className={`mx-auto mb-3 h-8 w-8 ${stat.color} transition-transform duration-300 group-hover:scale-110`} />
+              <div className="mb-1 text-2xl font-bold text-slate-900 dark:text-white">{stat.value}</div>
+              <div className="text-sm text-muted-foreground dark:text-gray-400">{stat.label}</div>
             </div>
           ))}
         </motion.div>
@@ -622,10 +847,10 @@ const ActivitiesSection = React.memo(() => {
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
               className={cn(
-                "flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 backdrop-blur-sm",
+                "flex items-center gap-2 rounded-xl px-6 py-3 font-semibold transition-all duration-300",
                 selectedCategory === category.id
-                  ? "bg-[#b90505]/20 text-[#bd2727] border border-[#b90505]/40 shadow-lg shadow-[#b90505]/20"
-                  : "bg-white/5 text-gray-400 border border-white/10 hover:bg-white/10 hover:text-white"
+                  ? "border border-rose-200 bg-rose-100 text-rose-700 shadow-lg shadow-rose-200/70 dark:border-[#b90505]/40 dark:bg-[#b90505]/20 dark:text-[#bd2727]"
+                  : "border border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:bg-slate-50 dark:border-white/10 dark:bg-white/5 dark:text-gray-300 dark:hover:bg-white/10"
               )}
             >
               <category.icon className="h-4 w-4" />
@@ -647,6 +872,7 @@ const ActivitiesSection = React.memo(() => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
               {filteredActivities.map((zakazka, i) => {
                 const riskBadge = getRiskBadge(zakazka.rizikoLevel, zakazka.riziko);
+                const hoverColors = getHoverColor(zakazka);
                 
                 return (
                   <motion.div
@@ -665,7 +891,8 @@ const ActivitiesSection = React.memo(() => {
                       transition: { duration: 0.1, ease: "easeOut" }
                     }}
                     className={cn(
-                      "group relative overflow-hidden rounded-3xl backdrop-blur-sm border transition-all duration-500 cursor-pointer",
+                      glassCardClass,
+                      "group relative cursor-pointer overflow-hidden transition-all duration-500",
                       zakazka.borderColor,
                       zakazka.glowColor,
                       zakazka.span === 2 ? "lg:col-span-2" : ""
@@ -688,7 +915,7 @@ const ActivitiesSection = React.memo(() => {
                     <div className={cn("absolute inset-0 bg-gradient-to-br opacity-50 transition-opacity duration-150 group-hover:opacity-70 group-hover:duration-150 group-hover:ease-out", zakazka.gradient)} />
                     
                     
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/[0.12] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-150 group-hover:duration-150 group-hover:ease-out" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-transparent to-transparent opacity-0 transition-all duration-150 group-hover:opacity-100 group-hover:duration-150 group-hover:ease-out dark:from-white/[0.12]" />
                     
                     
                     <div className="relative p-6 h-full flex flex-col">
@@ -702,7 +929,7 @@ const ActivitiesSection = React.memo(() => {
                           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           priority={i < 2}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-150 group-hover:opacity-90 group-hover:duration-150 group-hover:ease-out" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-150 group-hover:opacity-90 group-hover:duration-150 group-hover:ease-out dark:from-black/80" />
                         
                         
                         <div className="absolute top-4 right-4">
@@ -713,7 +940,7 @@ const ActivitiesSection = React.memo(() => {
                         
                         
                         <div className="absolute top-4 left-4">
-                          <Badge className="bg-black/50 text-white border-white/20">
+                          <Badge className="border border-slate-200 bg-white/80 text-slate-800 dark:border-white/20 dark:bg-black/50 dark:text-white">
                             {zakazka.category === 'legal' ? 'Legální' : 
                              zakazka.category === 'illegal' ? 'Ilegální' : 'Loupež'}
                           </Badge>
@@ -721,17 +948,17 @@ const ActivitiesSection = React.memo(() => {
                       </div>
 
                       
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className={cn("p-2 rounded-lg bg-white/10 backdrop-blur-sm transition-all duration-150 group-hover:scale-110 group-hover:rotate-3 group-hover:duration-150 group-hover:ease-out", getHoverColor(zakazka).split(' ')[1])}>
+                      <div className="mb-4 flex items-center gap-3">
+                        <div className={cn("p-2 rounded-lg bg-rose-50 text-rose-600 transition-all duration-150 group-hover:scale-110 group-hover:rotate-3 group-hover:duration-150 group-hover:ease-out dark:bg-white/10 dark:text-white", hoverColors.bgHover)}>
                           {zakazka.icon}
                         </div>
-                        <h3 className={cn("text-xl font-bold text-white transition-all duration-150 group-hover:translate-x-1 group-hover:duration-150 group-hover:ease-out", getHoverColor(zakazka).split(' ')[0])}>
+                        <h3 className={cn("text-xl font-bold text-slate-900 transition-all duration-150 group-hover:translate-x-1 group-hover:duration-150 group-hover:ease-out dark:text-white", hoverColors.textHover)}>
                           {zakazka.nazev}
                         </h3>
                       </div>
 
                       
-                      <p className="text-gray-300 text-sm leading-relaxed mb-6 flex-grow">
+                      <p className="mb-6 flex-grow text-sm leading-relaxed text-muted-foreground dark:text-gray-300">
                         {zakazka.popis}
                       </p>
 
@@ -739,22 +966,22 @@ const ActivitiesSection = React.memo(() => {
                       <div className="space-y-3">
                         <div className="flex items-center gap-2 text-sm transition-all duration-150 group-hover:translate-x-1 group-hover:duration-150 group-hover:ease-out">
                           <DollarSign className="h-4 w-4 text-green-400 transition-transform duration-150 group-hover:scale-110 group-hover:rotate-12 group-hover:duration-150 group-hover:ease-out" />
-                          <span className="text-gray-400">Odměna:</span>
-                          <span className="text-green-400 font-semibold group-hover:text-green-300 transition-colors duration-150 group-hover:duration-150 group-hover:ease-out">{zakazka.odmena}</span>
+                          <span className="text-muted-foreground dark:text-gray-400">Odměna:</span>
+                          <span className="font-semibold text-green-600 transition-colors duration-150 group-hover:text-green-500 group-hover:duration-150 group-hover:ease-out dark:text-green-400">{zakazka.odmena}</span>
                         </div>
                         
                         {zakazka.vzdalenost && (
-                          <div className="flex items-center gap-2 text-sm transition-all duration-150 group-hover:translate-x-1 delay-25 group-hover:duration-150 group-hover:ease-out">
+                          <div className="flex items-center gap-2 text-sm transition-all duration-150 delay-25 group-hover:translate-x-1 group-hover:duration-150 group-hover:ease-out">
                             <MapPin className="h-4 w-4 text-blue-400 transition-transform duration-150 group-hover:scale-110 group-hover:rotate-12 group-hover:duration-150 group-hover:ease-out" />
-                            <span className="text-gray-400">Vzdálenost:</span>
-                            <span className="text-blue-400 font-semibold group-hover:text-blue-300 transition-colors duration-150 group-hover:duration-150 group-hover:ease-out">{zakazka.vzdalenost}</span>
+                            <span className="text-muted-foreground dark:text-gray-400">Vzdálenost:</span>
+                            <span className="font-semibold text-blue-600 transition-colors duration-150 group-hover:text-blue-500 group-hover:duration-150 group-hover:ease-out dark:text-blue-300">{zakazka.vzdalenost}</span>
                           </div>
                         )}
                         
-                        <div className="flex items-center gap-2 text-sm transition-all duration-150 group-hover:translate-x-1 delay-50 group-hover:duration-150 group-hover:ease-out">
+                        <div className="flex items-center gap-2 text-sm transition-all duration-150 delay-50 group-hover:translate-x-1 group-hover:duration-150 group-hover:ease-out">
                           <Clock className="h-4 w-4 text-yellow-400 transition-transform duration-150 group-hover:scale-110 group-hover:rotate-12 group-hover:duration-150 group-hover:ease-out" />
-                          <span className="text-gray-400">Čas:</span>
-                          <span className="text-yellow-400 font-semibold group-hover:text-yellow-300 transition-colors duration-150 group-hover:duration-150 group-hover:ease-out">{zakazka.cas}</span>
+                          <span className="text-muted-foreground dark:text-gray-400">Čas:</span>
+                          <span className="font-semibold text-yellow-600 transition-colors duration-150 group-hover:text-yellow-500 group-hover:duration-150 group-hover:ease-out dark:text-yellow-300">{zakazka.cas}</span>
                         </div>
                       </div>
 
@@ -776,11 +1003,11 @@ const ActivitiesSection = React.memo(() => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-[#b90505]/10 via-[#8a0101]/10 to-[#b90505]/10 backdrop-blur-sm border border-[#b90505]/20 rounded-3xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">Připraveni na akci?</h3>
-            <p className="text-gray-400 mb-6">Připojte se k tisícům hráčů a začněte svou cestu na Retrovax FiveM</p>
+          <div className="mx-auto max-w-2xl rounded-3xl border border-rose-100/70 bg-gradient-to-r from-rose-100 via-rose-50 to-amber-50 p-8 shadow-[0_18px_40px_rgba(244,114,182,0.2)] dark:border-[#b90505]/20 dark:from-[#b90505]/10 dark:via-[#8a0101]/10 dark:to-[#b90505]/10">
+            <h3 className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">Připraveni na akci?</h3>
+            <p className="mb-6 text-muted-foreground dark:text-gray-400">Připojte se k tisícům hráčů a začněte svou cestu na Retrovax FiveM</p>
             <Link href={siteConfig.links.fivem} target="_blank" rel="noopener noreferrer">
-              <Button className="bg-[#8a0101] hover:bg-[#570000] text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-[#8a0101]/25 transition-all duration-300">
+              <Button className="rounded-xl bg-[#b90505] px-8 py-3 font-semibold text-white shadow-lg shadow-rose-200/60 transition-all duration-300 hover:bg-[#8a0101] hover:shadow-rose-300/40 dark:shadow-[#b90505]/25">
                 <Zap className="h-5 w-5 mr-2" />
                 Připojit se nyní
               </Button>
@@ -795,15 +1022,13 @@ ActivitiesSection.displayName = 'ActivitiesSection';
 
 export default function HomePage() {
   return (
-    <div className="mx-auto relative">
-      
-      <div className="fixed inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#0d0d0d] to-[#0a0a0a] -z-10" />
-      
-      
-      <div className="fixed top-1/4 left-1/4 w-72 h-72 bg-[#b90505]/10 rounded-full blur-2xl animate-pulse -z-10" />
-      <div className="fixed top-2/3 right-1/3 w-56 h-56 bg-[#8a0101]/10 rounded-full blur-2xl animate-pulse delay-1000 -z-10" />
-      
-      
+    <div className="relative mx-auto">
+      <div className="fixed inset-0 -z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-[#0a0a0a] dark:via-[#0d0d0d] dark:to-[#0a0a0a]" />
+        <div className="absolute top-1/4 left-1/4 h-72 w-72 rounded-full bg-rose-200/50 blur-3xl dark:bg-[#b90505]/10" />
+        <div className="absolute top-2/3 right-1/3 h-56 w-56 rounded-full bg-rose-100/50 blur-3xl dark:bg-[#8a0101]/10" />
+      </div>
+
       <HeroSection />
       <AboutSection />
       <CommunitySection />

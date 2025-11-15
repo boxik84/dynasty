@@ -103,18 +103,11 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <TooltipProvider>
-            <StickyBanner>
-              <span className="font-semibold text-sm text-white">
-                🛒 Kup si VIP na našem obchodě a získej exkluzivní výhody!{" "}
-                <a
-                  href={siteConfig.links.store}
-                  className="underline hover:text-red-200 transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Navštívit obchod
-                </a>
-              </span>
+            <StickyBanner
+              ctaHref={siteConfig.links.store}
+              ctaLabel="Navštívit obchod"
+            >
+              🛒 Kup si VIP na našem obchodě a získej exkluzivní výhody pro celý tým.
             </StickyBanner>
             <NavbarDemo />
             <div className="flex-1">{children}</div>

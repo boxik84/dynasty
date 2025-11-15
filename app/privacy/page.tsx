@@ -113,7 +113,7 @@ export default function PrivacyPage() {
     ]
 
     return (
-        <div className="relative min-h-screen bg-[#0a0a0a] overflow-hidden">
+        <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-slate-50 to-slate-100 dark:from-[#0a0a0a] dark:via-[#0d0d0d] dark:to-[#0a0a0a]">
             
             <motion.div 
                 className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#b90505] to-[#bd2727] z-50 origin-left"
@@ -168,8 +168,8 @@ export default function PrivacyPage() {
                             </Badge>
                         </div>
                         
-                        <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
-                            <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
+                        <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 leading-tight">
+                            <span className="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500 bg-clip-text text-transparent dark:from-white dark:via-gray-100 dark:to-white">
                                 Zásady ochrany osobních údajů
                             </span>
                         </h1>
@@ -225,7 +225,7 @@ export default function PrivacyPage() {
                                                         <span className="absolute -top-2 -right-2 text-lg">{section.emoji}</span>
                                                     </div>
                                                     <div className="flex-1">
-                                                        <CardTitle className="text-2xl font-bold text-white mb-3 group-hover:text-gray-100 transition-colors">
+                                                        <CardTitle className="text-2xl font-bold text-slate-900 dark:text-white mb-3 transition-colors group-hover:text-[#b90505] dark:group-hover:text-gray-100">
                                                             {section.title}
                                                         </CardTitle>
                                                         <p className="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
@@ -262,7 +262,7 @@ export default function PrivacyPage() {
                                     <div className="p-4 rounded-2xl bg-blue-500/20 border border-blue-500/30">
                                         <Database className="w-8 h-8 text-blue-400" />
                                     </div>
-                                    <CardTitle className="text-3xl font-bold text-white">
+                                    <CardTitle className="text-3xl font-bold text-slate-900 dark:text-white">
                                         Typy shromažďovaných dat
                                     </CardTitle>
                                 </div>
@@ -283,7 +283,7 @@ export default function PrivacyPage() {
                                                 <span className="text-3xl">{item.icon}</span>
                                                 <div className="flex-1">
                                                     <div className="flex items-center gap-3 mb-2">
-                                                        <h4 className="font-bold text-white text-lg">
+                                                        <h4 className="text-lg font-bold text-slate-900 dark:text-white">
                                                             {item.type}
                                                         </h4>
                                                         <Badge className={`text-xs ${
@@ -332,7 +332,7 @@ export default function PrivacyPage() {
                                                     <div className={`p-3 rounded-xl bg-gradient-to-br ${section.color}/20 border border-white/20`}>
                                                         <Icon className={`w-6 h-6 ${section.iconColor}`} />
                                                     </div>
-                                                    <CardTitle className="text-xl font-bold text-white group-hover:text-gray-100 transition-colors">
+                                                    <CardTitle className="text-xl font-bold text-slate-900 dark:text-white transition-colors group-hover:text-[#b90505] dark:group-hover:text-gray-100">
                                                         {section.title}
                                                     </CardTitle>
                                                 </div>
@@ -365,7 +365,7 @@ export default function PrivacyPage() {
                                     <div className="p-4 rounded-2xl bg-[#b90505]/20 border border-[#b90505]/30">
                                         <Mail className="w-8 h-8 text-[#bd2727]" />
                                     </div>
-                                    <CardTitle className="text-3xl font-bold text-white">
+                                    <CardTitle className="text-3xl font-bold text-slate-900 dark:text-white">
                                         Kontakt pro otázky ohledně soukromí
                                     </CardTitle>
                                 </div>
@@ -374,7 +374,7 @@ export default function PrivacyPage() {
                             <CardContent className="p-8 pt-0">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                     <div className="space-y-4">
-                                        <h4 className="text-xl font-bold text-white">Vaše práva podle GDPR</h4>
+                                        <h4 className="text-xl font-bold text-slate-900 dark:text-white">Vaše práva podle GDPR</h4>
                                         <ul className="space-y-3 text-gray-300">
                                             <li className="flex items-center gap-3">
                                                 <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
@@ -395,19 +395,19 @@ export default function PrivacyPage() {
                                         </ul>
                                     </div>
                                     <div className="space-y-4">
-                                        <h4 className="text-xl font-bold text-white">Jak nás kontaktovat</h4>
+                                        <h4 className="text-xl font-bold text-slate-900 dark:text-white">Jak nás kontaktovat</h4>
                                         <div className="space-y-3">
                                             <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
                                                 <MessageCircle className="w-6 h-6 text-blue-400" />
                                                 <div>
-                                                    <p className="font-medium text-white">Discord Server</p>
+                                                    <p className="font-medium text-slate-900 dark:text-white">Discord Server</p>
                                                     <p className="text-sm text-gray-400">Nejrychlejší způsob kontaktu</p>
                                                 </div>
                                             </div>
                                             <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10">
                                                 <Mail className="w-6 h-6 text-green-400" />
                                                 <div>
-                                                    <p className="font-medium text-white">Email</p>
+                                                    <p className="font-medium text-slate-900 dark:text-white">Email</p>
                                                     <p className="text-sm text-gray-400">tobiasvolny@icloud.com</p>
                                                 </div>
                                             </div>

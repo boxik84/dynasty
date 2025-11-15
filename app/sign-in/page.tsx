@@ -28,7 +28,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center justify-center bg-background overflow-hidden">
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-[#fff9fb] via-white to-[#fef4f6] px-4 py-16 dark:bg-background">
       
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0">
         <div className="h-[340px] w-[500px] rounded-full bg-[#b90505]/10 blur-3xl" />
@@ -53,12 +53,12 @@ export default function LoginPage() {
           </Badge>
         </div>
 
-        <Card className="bg-gradient-to-br from-[#131618] via-[#151a1c] to-[#111b22] border border-white/10 shadow-xl rounded-2xl backdrop-blur-md">
+        <Card className="rounded-2xl border border-slate-200/80 bg-white/95 shadow-[0_25px_55px_rgba(15,23,42,0.12)] backdrop-blur dark:border-white/10 dark:bg-gradient-to-br dark:from-[#131618] dark:via-[#151a1c] dark:to-[#111b22]">
           <CardHeader className="text-center pb-2">
-            <CardTitle className="text-2xl font-bold flex justify-center gap-2 text-white">
+            <CardTitle className="flex justify-center gap-2 text-2xl font-bold text-slate-900 dark:text-white">
               Vítej zpět
             </CardTitle>
-            <div className="text-sm text-gray-300">
+            <div className="text-sm text-muted-foreground dark:text-gray-300">
               Přihlaš se pomocí Discord účtu, abys mohl začít.
             </div>
           </CardHeader>
@@ -66,17 +66,17 @@ export default function LoginPage() {
             <Button
               variant={"outline"}
               onClick={loginWithDiscord}
-              className="w-full cursor-pointer"
+              className="w-full cursor-pointer border border-slate-200 text-slate-800 hover:bg-slate-50 dark:border-white/20 dark:text-white"
             >
               <Icons.discord className="h-7 w-7 text-[#9b1a1a]" />
-              <span className="font-semibold text-white">
+              <span className="font-semibold dark:text-white">
                 Přihlásit se přes Discord
               </span>
             </Button>
           </CardContent>
         </Card>
 
-        <div className="text-center text-xs text-white [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-[#b90505] [&_a]:transition-colors [&_a]:duration-150 drop-shadow-md">
+        <div className="text-center text-xs text-slate-500 drop-shadow-sm dark:text-white [&_a]:underline [&_a]:underline-offset-4 [&_a]:transition-colors [&_a]:duration-150">
           Kliknutím na tlačítko souhlasíte s našimi{" "}
           <Link href="/terms" className="underline">
             Podmínkami služby

@@ -157,7 +157,7 @@ export default function TermsPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-[#0a0a0a] overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-white via-slate-50 to-slate-100 dark:from-[#0a0a0a] dark:via-[#0d0d0d] dark:to-[#0a0a0a]">
       
       <motion.div 
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#b90505] to-[#bd2727] z-50 origin-left"
@@ -212,7 +212,7 @@ export default function TermsPage() {
               </Badge>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white mb-8 leading-tight">
               <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
                 Podmínky služby
               </span>
@@ -269,7 +269,7 @@ export default function TermsPage() {
                             <Icon className={`w-8 h-8 ${point.iconColor}`} />
                           </div>
                           <div className="flex-1">
-                            <CardTitle className="text-2xl font-bold text-white mb-3 group-hover:text-gray-100 transition-colors">
+                            <CardTitle className="text-2xl font-bold text-slate-900 dark:text-white mb-3 transition-colors group-hover:text-[#b90505] dark:group-hover:text-gray-100">
                               {point.title}
                             </CardTitle>
                             <p className="text-gray-400 mb-4 group-hover:text-gray-300 transition-colors">
@@ -306,7 +306,7 @@ export default function TermsPage() {
                   <div className="p-4 rounded-2xl bg-blue-500/20 border border-blue-500/30">
                     <BookOpen className="w-8 h-8 text-blue-400" />
                   </div>
-                  <CardTitle className="text-3xl font-bold text-white">
+                  <CardTitle className="text-3xl font-bold text-slate-900 dark:text-white">
                     Definice klíčových pojmů
                   </CardTitle>
                 </div>
@@ -356,7 +356,7 @@ export default function TermsPage() {
                   <div className="p-4 rounded-2xl bg-red-500/20 border border-red-500/30">
                     <Users className="w-8 h-8 text-red-400" />
                   </div>
-                  <CardTitle className="text-3xl font-bold text-white">
+                  <CardTitle className="text-3xl font-bold text-slate-900 dark:text-white">
                     Pravidla chování
                   </CardTitle>
                 </div>
@@ -426,7 +426,7 @@ export default function TermsPage() {
                           <div className={`p-3 rounded-xl ${color.bg} ${color.border} border`}>
                             <Icon className={`w-6 h-6 ${color.text}`} />
                           </div>
-                          <CardTitle className="text-xl font-bold text-white group-hover:text-gray-100 transition-colors">
+                          <CardTitle className="text-xl font-bold text-slate-900 dark:text-white transition-colors group-hover:text-[#b90505] dark:group-hover:text-gray-100">
                             {section.title}
                           </CardTitle>
                         </div>
