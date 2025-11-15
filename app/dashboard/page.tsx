@@ -148,7 +148,7 @@ export default function PrehledMainPage() {
 
   if (loading) {
     return (
-      <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
+      <div className="relative min-h-screen bg-[#0a0a0a]">
         
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
           <div className="absolute left-1/2 top-1/4 -translate-x-1/2 h-[300px] w-[400px] md:h-[400px] md:w-[600px] rounded-full bg-[#b90505]/8 blur-3xl" />
@@ -171,7 +171,7 @@ export default function PrehledMainPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
+    <div className="relative min-h-screen bg-[#0a0a0a]">
       
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="absolute left-1/2 top-1/4 -translate-x-1/2 h-[400px] w-[500px] md:h-[400px] md:w-[800px] rounded-full bg-[#b90505]/6 md:bg-[#b90505]/10 blur-3xl" />
@@ -195,7 +195,7 @@ export default function PrehledMainPage() {
               Dashboard
             </Badge>
           </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground dark:text-white text-center drop-shadow">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white text-center drop-shadow">
             Vítej zpět, <span className="block sm:inline">{user?.username || 'Hráči'}!</span>
           </h1>
           <p className="text-sm sm:text-base lg:text-lg text-gray-400 text-center max-w-2xl mx-auto px-4">
@@ -284,7 +284,7 @@ export default function PrehledMainPage() {
                         getUserStatus() === 'blacklisted' ? <AlertTriangle className="h-4 w-4 sm:h-5 sm:w-5 drop-shadow-[0_0_5px_currentColor]" /> :
                           <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5 drop-shadow-[0_0_5px_currentColor]" />}
                   </div>
-                  <CardTitle className="text-foreground dark:text-white text-sm sm:text-base">Stav účtu</CardTitle>
+                  <CardTitle className="text-white text-sm sm:text-base">Stav účtu</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 sm:space-y-3">
                   {getUserStatus() === 'whitelisted' ? (
@@ -333,7 +333,7 @@ export default function PrehledMainPage() {
                   <div className="p-2 rounded-lg bg-[#326e98]/20 text-[#326e98] shrink-0">
                     <User className="h-4 w-4 sm:h-5 sm:w-5 drop-shadow-[0_0_5px_#326e98]" />
                   </div>
-                  <CardTitle className="text-foreground dark:text-white text-sm sm:text-base">Discord informace</CardTitle>
+                  <CardTitle className="text-white text-sm sm:text-base">Discord informace</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 sm:space-y-3">
                   <div className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
@@ -347,7 +347,7 @@ export default function PrehledMainPage() {
                         <div className="flex items-center gap-2 text-gray-300">
                           <AtSign className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 shrink-0" />
                           <span className="font-medium">Zobrazované jméno:</span> 
-                          <span className="truncate font-semibold text-foreground dark:text-white">{user.username}</span>
+                          <span className="truncate font-semibold text-white">{user.username}</span>
                         </div>
                         <div className="flex items-center gap-2 text-gray-300">
                           <User className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 shrink-0" />
@@ -401,7 +401,7 @@ export default function PrehledMainPage() {
                     <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400 shrink-0">
                       <Award className="h-4 w-4 sm:h-5 sm:w-5 drop-shadow-[0_0_5px_currentColor]" />
                     </div>
-                    <CardTitle className="text-foreground dark:text-white text-sm sm:text-base">Tvoje pozice</CardTitle>
+                    <CardTitle className="text-white text-sm sm:text-base">Tvoje pozice</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2">
@@ -430,7 +430,7 @@ export default function PrehledMainPage() {
               transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
               className="space-y-3 sm:space-y-4"
             >
-              <h2 className="text-xl sm:text-2xl font-bold text-foreground dark:text-white text-center">Rychlé akce</h2>
+              <h2 className="text-xl sm:text-2xl font-bold text-white text-center">Rychlé akce</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {filteredActions.map((action, index) => {
                   const Icon = action.icon;
@@ -442,9 +442,9 @@ export default function PrehledMainPage() {
                             <Icon className="h-4 w-4 sm:h-5 sm:w-5 drop-shadow-[0_0_5px_currentColor]" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <CardTitle className="text-foreground dark:text-white text-sm sm:text-base truncate">{action.title}</CardTitle>
+                            <CardTitle className="text-white text-sm sm:text-base truncate">{action.title}</CardTitle>
                           </div>
-                          <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 group-hover:text-foreground dark:text-white transition-colors shrink-0" />
+                          <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 group-hover:text-white transition-colors shrink-0" />
                         </CardHeader>
                         <CardContent>
                           <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">{action.description}</p>

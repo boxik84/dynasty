@@ -127,13 +127,13 @@ export function NavbarDemo() {
                             <DropdownMenuTrigger>
                                 <Avatar className="w-9 h-9 border border-white/20 hover:border-[#b90505]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#b90505]/20">
                                     <AvatarImage src={session.user.image || ""} alt={session.user.name || "Uživatel"} />
-                                    <AvatarFallback className="bg-gradient-to-br from-[#b90505] to-[#8a0101] text-foreground dark:text-white font-bold">
+                                    <AvatarFallback className="bg-gradient-to-br from-[#b90505] to-[#8a0101] text-white font-bold">
                                         {session.user.name?.[0]?.toUpperCase() || 'U'}
                                     </AvatarFallback>
                                 </Avatar>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-56">
-                                <DropdownMenuLabel className="text-foreground dark:text-white font-medium">
+                                <DropdownMenuLabel className="text-white font-medium">
                                     {session.user.name}
                                 </DropdownMenuLabel>
                                 <DropdownMenuSeparator className="bg-white/10" />
@@ -150,7 +150,7 @@ export function NavbarDemo() {
                                     >
                                         <Link href={siteConfig.links.dashboard}>
                                             <DropdownMenuItem className={`hover:cursor-pointer hover:bg-transparent focus:bg-transparent relative transition-all duration-200 ${
-                                                pathname.startsWith('/dashboard') ? 'text-foreground dark:text-white bg-[#b90505]/10' : 'text-gray-300'
+                                                pathname.startsWith('/dashboard') ? 'text-white bg-[#b90505]/10' : 'text-gray-300'
                                             }`}>
                                                 <User className={`mr-2 h-4 w-4 transition-all duration-200 ${
                                                     pathname.startsWith('/dashboard') 
@@ -174,7 +174,7 @@ export function NavbarDemo() {
                                             >
                                                 <Link href="/admin">
                                                     <DropdownMenuItem className={`hover:cursor-pointer hover:bg-transparent focus:bg-transparent relative transition-all duration-200 ${
-                                                        pathname.startsWith('/admin') ? 'text-foreground dark:text-white bg-[#b90505]/10' : 'text-gray-300'
+                                                        pathname.startsWith('/admin') ? 'text-white bg-[#b90505]/10' : 'text-gray-300'
                                                     }`}>
                                                         <Shield className={`mr-2 h-4 w-4 transition-all duration-200 ${
                                                             pathname.startsWith('/admin') 
@@ -205,7 +205,7 @@ export function NavbarDemo() {
                             </DropdownMenuContent>
                         </DropdownMenu>
                     ) : (
-                        <Button asChild variant="outline" className="text-foreground dark:text-white border-white/50 hover:bg-white/10">
+                        <Button asChild variant="outline" className="text-white border-white/50 hover:bg-white/10">
                             <Link href="/sign-in">Přihlásit se</Link>
                         </Button>
                     )}
@@ -242,13 +242,13 @@ export function NavbarDemo() {
                                 <DropdownMenuTrigger>
                                     <Avatar className="w-10 h-10 self-center border border-white/20 hover:border-[#b90505]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#b90505]/20">
                                         <AvatarImage src={session.user.image || ""} alt={session.user.name || "Uživatel"} />
-                                        <AvatarFallback className="bg-gradient-to-br from-[#b90505] to-[#8a0101] text-foreground dark:text-white font-bold">
+                                        <AvatarFallback className="bg-gradient-to-br from-[#b90505] to-[#8a0101] text-white font-bold">
                                             {session.user.name?.[0]?.toUpperCase() || 'U'}
                                         </AvatarFallback>
                                     </Avatar>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent className="w-56">
-                                    <DropdownMenuLabel className="text-foreground dark:text-white font-medium">
+                                    <DropdownMenuLabel className="text-white font-medium">
                                         {session.user.name}
                                     </DropdownMenuLabel>
                                     <DropdownMenuSeparator className="bg-white/10" />
@@ -267,7 +267,7 @@ export function NavbarDemo() {
                                                 <DropdownMenuItem 
                                                     onClick={() => setIsMobileMenuOpen(false)} 
                                                     className={`hover:cursor-pointer hover:bg-transparent focus:bg-transparent relative transition-all duration-200 ${
-                                                        pathname.startsWith('/dashboard') ? 'text-foreground dark:text-white bg-[#b90505]/10' : 'text-gray-300'
+                                                        pathname.startsWith('/dashboard') ? 'text-white bg-[#b90505]/10' : 'text-gray-300'
                                                     }`}
                                                 >
                                                     <User className={`mr-2 h-4 w-4 transition-all duration-200 ${
@@ -294,7 +294,7 @@ export function NavbarDemo() {
                                                         <DropdownMenuItem 
                                                             onClick={() => setIsMobileMenuOpen(false)} 
                                                             className={`hover:cursor-pointer hover:bg-transparent focus:bg-transparent relative transition-all duration-200 ${
-                                                                pathname.startsWith('/admin') ? 'text-foreground dark:text-white bg-[#b90505]/10' : 'text-gray-300'
+                                                                pathname.startsWith('/admin') ? 'text-white bg-[#b90505]/10' : 'text-gray-300'
                                                             }`}
                                                         >
                                                             <Shield className={`mr-2 h-4 w-4 transition-all duration-200 ${

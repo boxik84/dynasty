@@ -65,7 +65,7 @@ export default function TeamPage() {
     }, [])
 
     return (
-        <section className="relative min-h-screen bg-background dark:bg-[#0a0a0a] py-28 flex flex-col items-center overflow-hidden">
+        <section className="relative min-h-screen bg-[#0a0a0a] py-28 flex flex-col items-center overflow-hidden">
             
             <div className="pointer-events-none absolute left-1/2 top-0 z-0 -translate-x-1/2">
                 <div className="h-[400px] w-[1200px] rounded-full bg-[#b90505]/20 blur-3xl" />
@@ -94,7 +94,7 @@ export default function TeamPage() {
                     transition={{ duration: 0.7, ease: "easeOut" }}
                     className="text-center mb-16"
                 >
-                    <h1 className="text-4xl md:text-5xl font-extrabold text-foreground dark:text-white mb-4 drop-shadow">
+                    <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow">
                         Seznamte se s Retrovax FiveM týmem
                     </h1>
                     <p className="text-lg text-gray-300 max-w-2xl mx-auto">
@@ -162,9 +162,9 @@ function Section({ label, members, loading, error, delay, icon: Icon, badgeColor
                 className="flex justify-center mb-10 mt-16"
             >
                 <span className={`inline-flex items-center gap-2 px-5 py-2 rounded-xl text-base font-bold tracking-wide shadow-lg ring-1 ring-red-300/40 
-                    bg-[#b90505]/10 text-foreground dark:text-white/90
+                    bg-[#b90505]/10 text-white/90
                     backdrop-blur-xl select-none`}>
-                    <Icon className="w-5 h-5 text-foreground dark:text-white/90 drop-shadow" />
+                    <Icon className="w-5 h-5 text-white/90 drop-shadow" />
                     {label}
                 </span>
             </motion.div>
@@ -202,7 +202,7 @@ function Section({ label, members, loading, error, delay, icon: Icon, badgeColor
                                             )}
                                         </Avatar>
                                     </div>
-                                    <p className="mt-1 text-lg font-semibold text-center text-foreground dark:text-white tracking-wide">
+                                    <p className="mt-1 text-lg font-semibold text-center text-white tracking-wide">
                                         {member.username}
                                     </p>
                                 </CardContent>

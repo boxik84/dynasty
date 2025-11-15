@@ -14,7 +14,7 @@ export default function NotFound() {
 
     return (
         <section
-            className="relative min-h-screen w-full flex flex-col items-center justify-center bg-background dark:bg-[#0a0a0a] overflow-hidden"
+            className="relative min-h-screen w-full flex flex-col items-center justify-center bg-[#0a0a0a] overflow-hidden"
         >
             
             <div className="pointer-events-none absolute left-1/3 top-2/5 z-0 -translate-x-1/2 -translate-y-1/2">
@@ -90,7 +90,7 @@ export default function NotFound() {
                     />
                 </motion.div>
 
-                <h1 className="relative z-10 mx-auto max-w-4xl text-center font-bold text-foreground dark:text-white text-5xl lg:text-6xl mb-6">
+                <h1 className="relative z-10 mx-auto max-w-4xl text-center font-bold text-white text-5xl lg:text-6xl mb-6">
                     {words.map((word, index) => (
                         <motion.span
                             key={index}
@@ -128,7 +128,7 @@ export default function NotFound() {
                     <Link href="/" passHref>
                         <Button
                             size="lg"
-                            className="group px-8 py-4 bg-[#8a0101] hover:bg-[#570000] text-foreground dark:text-white font-semibold rounded-xl shadow-xl ring-2 ring-[#8a0101]/30 hover:ring-[#8a0101]/50 transition-all duration-300 cursor-pointer hover:scale-105"
+                            className="group px-8 py-4 bg-[#8a0101] hover:bg-[#570000] text-white font-semibold rounded-xl shadow-xl ring-2 ring-[#8a0101]/30 hover:ring-[#8a0101]/50 transition-all duration-300 cursor-pointer hover:scale-105"
                         >
                             <Home className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:scale-110" />
                             Domovská stránka
@@ -138,7 +138,7 @@ export default function NotFound() {
                         variant="outline"
                         size="lg"
                         onClick={() => window.history.back()}
-                        className="group px-8 py-4 border-white/20 text-gray-300 hover:bg-white/10 hover:text-foreground dark:text-white transition-all duration-300 font-semibold rounded-xl cursor-pointer"
+                        className="group px-8 py-4 border-white/20 text-gray-300 hover:bg-white/10 hover:text-white transition-all duration-300 font-semibold rounded-xl cursor-pointer"
                     >
                         <ArrowLeft className="h-5 w-5 mr-2 transition-transform duration-300 group-hover:-translate-x-1" />
                         Zpět

@@ -104,7 +104,7 @@ function SortableItem(props: {
 
     return (
         <div ref={setNodeRef} style={style} className="flex items-center gap-2 w-full">
-            <button {...attributes} {...listeners} className="p-2 text-gray-400 hover:text-foreground dark:text-white transition-colors cursor-grab active:cursor-grabbing">
+            <button {...attributes} {...listeners} className="p-2 text-gray-400 hover:text-white transition-colors cursor-grab active:cursor-grabbing">
                 <GripVertical className="h-5 w-5" />
             </button>
             <div className="flex-1">
@@ -406,7 +406,7 @@ export default function RulesAdmin() {
                 <div className="flex justify-between items-center mb-4">
                     <div className="flex items-center gap-3">
                          <button onClick={() => toggleOpen(section.id)} className="p-1 hover:bg-zinc-800 rounded-md"><ChevronDown className={`h-6 w-6 transition-transform ${openItems[section.id] ? 'rotate-180' : ''}`} /></button>
-                         <h2 className="font-bold text-xl text-foreground dark:text-white">{section.title}</h2>
+                         <h2 className="font-bold text-xl text-white">{section.title}</h2>
                          <span className="text-xs font-mono px-2 py-1 bg-zinc-700 rounded-md">{rulesInSection.length + rulesData.rules.filter(r => subcategoriesInSection.some(s => s.id === r.subcategory_id)).length}</span>
                     </div>
                     <div className="flex items-center gap-1">
@@ -450,10 +450,10 @@ export default function RulesAdmin() {
             <div className="p-4 sm:p-6 lg:p-8">
                 <header className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-8">
                     <div>
-                        <h1 className="text-3xl font-bold text-foreground dark:text-white">Správa Pravidel</h1>
+                        <h1 className="text-3xl font-bold text-white">Správa Pravidel</h1>
                         <p className="text-zinc-400 mt-1">Uspořádejte, upravujte a přidávejte pravidla serveru.</p>
                     </div>
-                    <Button onClick={() => handleNew('section')} className="bg-red-600 hover:bg-red-700 text-foreground dark:text-white">
+                    <Button onClick={() => handleNew('section')} className="bg-red-600 hover:bg-red-700 text-white">
                         <Plus className="mr-2 h-4 w-4" />
                         Přidat novou sekci
                     </Button>
@@ -489,7 +489,7 @@ export default function RulesAdmin() {
                         onClick={e => e.stopPropagation()}
                     >
                         <div className="flex justify-between items-center mb-6">
-                            <h2 className="text-2xl font-bold text-foreground dark:text-white">
+                            <h2 className="text-2xl font-bold text-white">
                                 {editingData.id && editingData.id !== '' ? 'Upravit' : 'Vytvořit'} {editType === 'section' ? 'sekci' : editType === 'subcategory' ? 'podkategorii' : 'pravidlo'}
                             </h2>
                              <Button size="icon" variant="ghost" onClick={() => setIsEditing(false)} className="h-8 w-8 hover:bg-zinc-700"><X className="h-5 w-5" /></Button>
@@ -544,7 +544,7 @@ export default function RulesAdmin() {
 
                         <div className="flex justify-end gap-3 mt-8 pt-6 border-t border-zinc-700">
                              <Button variant="outline" onClick={() => setIsEditing(false)}>Zrušit</Button>
-                             <Button onClick={handleSave} disabled={isSaving} className="bg-red-600 hover:bg-red-700 text-foreground dark:text-white">
+                             <Button onClick={handleSave} disabled={isSaving} className="bg-red-600 hover:bg-red-700 text-white">
                                 {isSaving ? 'Ukládání...' : <><Save className="mr-2 h-4 w-4"/> Uložit</>}
                             </Button>
                         </div>

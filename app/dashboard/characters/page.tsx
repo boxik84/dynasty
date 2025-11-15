@@ -116,7 +116,7 @@ export default function DashboardCharactersPage() {
 
   if (loading || !user) {
     return (
-      <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
+      <div className="relative min-h-screen bg-[#0a0a0a]">
         
         <div className="pointer-events-none absolute left-1/2 top-1/4 z-0 -translate-x-1/2">
           <div className="h-[400px] w-[600px] rounded-full bg-[#b90505]/8 blur-3xl" />
@@ -150,7 +150,7 @@ export default function DashboardCharactersPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
+    <div className="relative min-h-screen bg-[#0a0a0a]">
       
       <div className="pointer-events-none absolute left-1/2 top-1/4 z-0 -translate-x-1/2">
         <div className="h-[400px] w-[800px] rounded-full bg-[#b90505]/8 blur-3xl" />
@@ -176,7 +176,7 @@ export default function DashboardCharactersPage() {
               Moje postavy
             </Badge>
           </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold text-foreground dark:text-white text-center drop-shadow">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-white text-center drop-shadow">
             Správa postav
           </h1>
           <p className="text-lg text-gray-400 text-center max-w-2xl mx-auto">
@@ -201,7 +201,7 @@ export default function DashboardCharactersPage() {
                       <div className="p-2 rounded-lg bg-[#b90505]/20 text-[#bd2727]">
                         <Users className="h-5 w-5 drop-shadow-[0_0_5px_#bd2727]" />
                       </div>
-                      <CardTitle className="text-foreground dark:text-white text-sm">Celkem postav</CardTitle>
+                      <CardTitle className="text-white text-sm">Celkem postav</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-3xl font-bold text-[#bd2727]">{characters.length}</p>
@@ -213,7 +213,7 @@ export default function DashboardCharactersPage() {
                       <div className="p-2 rounded-lg bg-green-500/20 text-green-400">
                         <Banknote className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
                       </div>
-                      <CardTitle className="text-foreground dark:text-white text-sm">Celkové bohatství</CardTitle>
+                      <CardTitle className="text-white text-sm">Celkové bohatství</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-3xl font-bold text-green-400">
@@ -234,7 +234,7 @@ export default function DashboardCharactersPage() {
                       <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
                         <Activity className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
                       </div>
-                      <CardTitle className="text-foreground dark:text-white text-sm">Poslední aktivita</CardTitle>
+                      <CardTitle className="text-white text-sm">Poslední aktivita</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm text-gray-300">
@@ -266,7 +266,7 @@ export default function DashboardCharactersPage() {
                   <div className="mx-auto p-3 rounded-full bg-[#b90505]/20 text-[#bd2727] w-fit mb-4">
                     <Users className="h-8 w-8 drop-shadow-[0_0_5px_#bd2727]" />
                   </div>
-                  <CardTitle className="text-xl text-foreground dark:text-white">Žádné postavy</CardTitle>
+                  <CardTitle className="text-xl text-white">Žádné postavy</CardTitle>
                   <CardDescription className="text-gray-400">
                     Zatím nemáte vytvořené žádné postavy. Připojte se na server a vytvořte si svou první postavu!
                   </CardDescription>
@@ -316,7 +316,7 @@ const CharacterCard = ({ character }: { character: PostavyEntity }) => {
       <CardHeader className="pb-4">
         <div className="flex items-start justify-between">
           <div className="space-y-2">
-            <CardTitle className="text-xl font-bold text-foreground dark:text-white group-hover:text-[#bd2727] transition-colors">
+            <CardTitle className="text-xl font-bold text-white group-hover:text-[#bd2727] transition-colors">
               {character.firstname} {character.lastname}
             </CardTitle>
             <div className="flex items-center gap-2">

@@ -66,7 +66,7 @@ export function SidebarNav({
                   "group relative flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-xl transition-all duration-200 border",
                   isActive 
                     ? "text-[#b90505] bg-[#b90505]/20 border-[#b90505]/40 shadow-lg shadow-[#b90505]/10" 
-                    : "text-gray-300 hover:text-foreground dark:text-white bg-transparent border-transparent"
+                    : "text-gray-300 hover:text-white bg-transparent border-transparent"
                 )}
                 data-value={item.href}
                 tabIndex={0}

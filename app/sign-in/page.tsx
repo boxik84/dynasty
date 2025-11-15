@@ -55,7 +55,7 @@ export default function LoginPage() {
 
         <Card className="bg-gradient-to-br from-[#131618] via-[#151a1c] to-[#111b22] border border-white/10 shadow-xl rounded-2xl backdrop-blur-md">
           <CardHeader className="text-center pb-2">
-            <CardTitle className="text-2xl font-bold flex justify-center gap-2 text-foreground dark:text-white">
+            <CardTitle className="text-2xl font-bold flex justify-center gap-2 text-white">
               Vítej zpět
             </CardTitle>
             <div className="text-sm text-gray-300">
@@ -69,14 +69,14 @@ export default function LoginPage() {
               className="w-full cursor-pointer"
             >
               <Icons.discord className="h-7 w-7 text-[#9b1a1a]" />
-              <span className="font-semibold text-foreground dark:text-white">
+              <span className="font-semibold text-white">
                 Přihlásit se přes Discord
               </span>
             </Button>
           </CardContent>
         </Card>
 
-        <div className="text-center text-xs text-foreground dark:text-white [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-[#b90505] [&_a]:transition-colors [&_a]:duration-150 drop-shadow-md">
+        <div className="text-center text-xs text-white [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-[#b90505] [&_a]:transition-colors [&_a]:duration-150 drop-shadow-md">
           Kliknutím na tlačítko souhlasíte s našimi{" "}
           <Link href="/terms" className="underline">
             Podmínkami služby

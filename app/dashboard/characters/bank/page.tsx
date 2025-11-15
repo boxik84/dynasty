@@ -129,7 +129,7 @@ export default function BankPage() {
 
   if (loading) {
     return (
-      <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
+      <div className="relative min-h-screen bg-[#0a0a0a]">
         <div className="pointer-events-none absolute left-1/2 top-1/4 z-0 -translate-x-1/2">
           <div className="h-[400px] w-[600px] rounded-full bg-[#b90505]/8 blur-3xl" />
         </div>
@@ -158,11 +158,11 @@ export default function BankPage() {
 
   if (!data) {
     return (
-      <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
+      <div className="relative min-h-screen bg-[#0a0a0a]">
         <div className="relative z-10 flex items-center justify-center min-h-screen">
           <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10 shadow-xl rounded-2xl backdrop-blur-md max-w-md mx-auto">
             <CardHeader className="text-center">
-              <CardTitle className="text-xl text-foreground dark:text-white">Chyba načítání</CardTitle>
+              <CardTitle className="text-xl text-white">Chyba načítání</CardTitle>
             </CardHeader>
           </Card>
         </div>
@@ -194,7 +194,7 @@ export default function BankPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
+    <div className="relative min-h-screen bg-[#0a0a0a]">
       
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="absolute left-1/2 top-1/4 -translate-x-1/2 h-[400px] w-[800px] rounded-full bg-[#b90505]/8 blur-3xl" />
@@ -232,7 +232,7 @@ export default function BankPage() {
               <DollarSign className="h-4 w-4 text-[#bd2727] drop-shadow-[0_0_5px_#bd2727]" />
               Banking transakce
             </Badge>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-foreground dark:text-white text-center drop-shadow mt-4">
+            <h1 className="text-3xl md:text-5xl font-extrabold text-white text-center drop-shadow mt-4">
               {characterName || "Neznámá postava"}
             </h1>
             <p className="text-lg text-gray-400 text-center max-w-2xl mx-auto">
@@ -253,7 +253,7 @@ export default function BankPage() {
               <div className="p-2 rounded-lg bg-green-500/20 text-green-400">
                 <TrendingUp className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
               </div>
-              <CardTitle className="text-foreground dark:text-white text-sm">Celkové vklady</CardTitle>
+              <CardTitle className="text-white text-sm">Celkové vklady</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-3xl font-bold text-green-400">${data.stats.totalIncome.toLocaleString()}</p>
@@ -265,7 +265,7 @@ export default function BankPage() {
               <div className="p-2 rounded-lg bg-red-500/20 text-red-400">
                 <TrendingDown className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
               </div>
-              <CardTitle className="text-foreground dark:text-white text-sm">Celkové výběry</CardTitle>
+              <CardTitle className="text-white text-sm">Celkové výběry</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-3xl font-bold text-red-400">${data.stats.totalExpense.toLocaleString()}</p>
@@ -277,7 +277,7 @@ export default function BankPage() {
               <div className="p-2 rounded-lg bg-blue-500/20 text-blue-400">
                 <Activity className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
               </div>
-              <CardTitle className="text-foreground dark:text-white text-sm">Čistý zisk</CardTitle>
+              <CardTitle className="text-white text-sm">Čistý zisk</CardTitle>
             </CardHeader>
             <CardContent>
               <p className={`text-3xl font-bold ${data.stats.totalIncome - data.stats.totalExpense >= 0 ? 'text-green-400' : 'text-red-400'}`}>
@@ -291,7 +291,7 @@ export default function BankPage() {
               <div className="p-2 rounded-lg bg-purple-500/20 text-purple-400">
                 <Calendar className="h-5 w-5 drop-shadow-[0_0_5px_currentColor]" />
               </div>
-              <CardTitle className="text-foreground dark:text-white text-sm">Celkem transakcí</CardTitle>
+              <CardTitle className="text-white text-sm">Celkem transakcí</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-3xl font-bold text-purple-400">{data.stats.totalTransactions}</p>
@@ -308,7 +308,7 @@ export default function BankPage() {
         >
           <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10 shadow-xl rounded-2xl backdrop-blur-md">
             <CardHeader>
-              <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
+              <CardTitle className="text-white flex items-center gap-2">
                 <PieChart className="w-5 h-5 text-[#bd2727]" />
                 Transakce podle typu
               </CardTitle>
@@ -418,7 +418,7 @@ export default function BankPage() {
 
           <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10 shadow-xl rounded-2xl backdrop-blur-md">
             <CardHeader>
-              <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
+              <CardTitle className="text-white flex items-center gap-2">
                 <LineChartIcon className="w-5 h-5 text-[#bd2727]" />
                 Denní změna financí za posledních 30 dní
               </CardTitle>
@@ -489,7 +489,7 @@ export default function BankPage() {
         >
           <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10 shadow-xl rounded-2xl backdrop-blur-md">
             <CardHeader>
-              <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
+              <CardTitle className="text-white flex items-center gap-2">
                 <Activity className="w-5 h-5 text-[#bd2727]" />
                 Poslední transakce
               </CardTitle>
@@ -523,7 +523,7 @@ export default function BankPage() {
                           {isPositive ? <ArrowDownLeft className="w-4 h-4" /> : <ArrowUpRight className="w-4 h-4" />}
                         </div>
                         <div>
-                          <p className="text-foreground dark:text-white font-medium">{otherParty}</p>
+                          <p className="text-white font-medium">{otherParty}</p>
                           <p className="text-gray-400 text-sm">{transaction.type}</p>
                         </div>
                       </div>

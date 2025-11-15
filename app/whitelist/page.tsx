@@ -213,7 +213,7 @@ export default function WhitelistPage() {
             placeholder={question.placeholder}
             minLength={question.min_length}
             maxLength={question.max_length}
-            className="bg-white/5 border-white/10 text-foreground dark:text-white"
+            className="bg-white/5 border-white/10 text-white"
           />
         );
       
@@ -229,7 +229,7 @@ export default function WhitelistPage() {
             placeholder={question.placeholder}
             min={question.min_value}
             max={question.max_value}
-            className="bg-white/5 border-white/10 text-foreground dark:text-white"
+            className="bg-white/5 border-white/10 text-white"
           />
         );
       
@@ -245,7 +245,7 @@ export default function WhitelistPage() {
             minLength={question.min_length}
             maxLength={question.max_length}
             rows={question.min_length && question.min_length > 50 ? 4 : 3}
-            className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-foreground dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b90505]/50 focus:border-transparent resize-none"
+            className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#b90505]/50 focus:border-transparent resize-none"
           />
         );
       
@@ -258,7 +258,7 @@ export default function WhitelistPage() {
               onCheckedChange={(checked) => handleInputChange(question.field_name, !!checked)}
               required={question.required}
             />
-            <Label htmlFor={question.field_name} className="text-foreground dark:text-white text-sm">
+            <Label htmlFor={question.field_name} className="text-white text-sm">
               {question.question}
             </Label>
           </div>
@@ -271,7 +271,7 @@ export default function WhitelistPage() {
 
   if (isLoading) {
     return (
-      <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a] flex items-center justify-center">
+      <div className="relative min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="pointer-events-none absolute left-1/2 top-1/4 z-0 -translate-x-1/2">
           <div className="h-[400px] w-[600px] rounded-full bg-[#b90505]/10 blur-3xl" />
         </div>
@@ -294,7 +294,7 @@ export default function WhitelistPage() {
 
   if (isBlacklisted) {
     return (
-      <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a] flex items-center justify-center">
+      <div className="relative min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="pointer-events-none absolute left-1/2 top-1/4 z-0 -translate-x-1/2">
           <div className="h-[400px] w-[600px] rounded-full bg-red-500/10 blur-3xl" />
         </div>
@@ -315,7 +315,7 @@ export default function WhitelistPage() {
 
   if (hasWhitelist) {
     return (
-      <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a] flex items-center justify-center">
+      <div className="relative min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="pointer-events-none absolute left-1/2 top-1/4 z-0 -translate-x-1/2">
           <div className="h-[400px] w-[600px] rounded-full bg-green-500/10 blur-3xl" />
         </div>
@@ -344,7 +344,7 @@ export default function WhitelistPage() {
 
   if (isWaiting || hasActiveRequest) {
     return (
-      <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a] flex items-center justify-center">
+      <div className="relative min-h-screen bg-[#0a0a0a] flex items-center justify-center">
         <div className="pointer-events-none absolute left-1/2 top-1/4 z-0 -translate-x-1/2">
           <div className="h-[400px] w-[600px] rounded-full bg-yellow-500/10 blur-3xl" />
         </div>
@@ -364,7 +364,7 @@ export default function WhitelistPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-background dark:bg-[#0a0a0a]">
+    <div className="relative min-h-screen bg-[#0a0a0a]">
       
       <div className="pointer-events-none absolute left-1/3 top-1/4 z-0">
         <div className="h-[600px] w-[800px] rounded-full bg-[#b90505]/8 blur-3xl" />
@@ -429,7 +429,7 @@ export default function WhitelistPage() {
           >
             <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10 backdrop-blur-md">
               <CardHeader>
-                <CardTitle className="text-foreground dark:text-white">Whitelist formulář</CardTitle>
+                <CardTitle className="text-white">Whitelist formulář</CardTitle>
                 <CardDescription>
                 Všechna pole jsou povinná. Odpovězte podle pravidel serveru dostupných na{' '}
                 <Link href="https://retrovax-pravidla.gitbook.io/retrovax-fivem-pravidla" target="_blank" rel="noopener noreferrer" className="text-[#b90505] hover:text-[#d40606] underline">
@@ -453,7 +453,7 @@ export default function WhitelistPage() {
                     <User className="h-4 w-4 text-[#bd2727] drop-shadow-[0_0_5px_#bd2727]" />
                     {user.username}
                   </Badge>
-                  <h1 className="text-2xl sm:text-3xl font-bold text-foreground dark:text-white mb-4">Žádost o Whitelist</h1>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-white mb-4">Žádost o Whitelist</h1>
                   <p className="text-sm sm:text-base text-gray-400 max-w-md mx-auto">
                     Vyplňte formulář níže pro získání přístupu na náš roleplay server
                   </p>
@@ -490,14 +490,14 @@ export default function WhitelistPage() {
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   {Object.entries(categories).map(([categoryKey, categoryQuestions]) => (
                     <div key={categoryKey} className="space-y-4">
-                      <h3 className="text-lg font-semibold text-foreground dark:text-white border-b border-white/10 pb-2">
+                      <h3 className="text-lg font-semibold text-white border-b border-white/10 pb-2">
                         {categoryLabels[categoryKey as keyof typeof categoryLabels] || categoryKey}
                       </h3>
                       
                       {categoryQuestions.map((question) => (
                         <div key={question.id} className="space-y-2">
                           {question.field_type !== 'checkbox' && (
-                            <Label htmlFor={question.field_name} className="text-foreground dark:text-white">
+                            <Label htmlFor={question.field_name} className="text-white">
                               {question.question}
                               {question.required && <span className="text-red-400 ml-1">*</span>}
                       </Label>
@@ -518,7 +518,7 @@ export default function WhitelistPage() {
                     <Button
                       type="submit"
                       disabled={isSubmitting || attemptInfo?.remainingAttempts === 0}
-                      className="w-full bg-gradient-to-r from-[#b90505] to-[#d40606] hover:from-[#a00404] hover:to-[#b90505] text-foreground dark:text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg shadow-[#b90505]/25 hover:shadow-[#b90505]/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-gradient-to-r from-[#b90505] to-[#d40606] hover:from-[#a00404] hover:to-[#b90505] text-white font-semibold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg shadow-[#b90505]/25 hover:shadow-[#b90505]/40 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <div className="flex items-center justify-center gap-2">

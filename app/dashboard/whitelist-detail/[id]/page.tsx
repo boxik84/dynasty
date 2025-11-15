@@ -234,14 +234,14 @@ export default function WhitelistDetailPage() {
 
     const FormField = ({ label, value, isTextarea = false }: { label: string; value: string; isTextarea?: boolean }) => (
         <div className="space-y-2">
-            <label className="text-foreground dark:text-white font-medium text-sm">{label}</label>
+            <label className="text-white font-medium text-sm">{label}</label>
             <div className="flex items-start gap-2">
                 {isTextarea ? (
-                    <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-foreground dark:text-white text-sm whitespace-pre-wrap break-words min-h-[60px] max-h-40 overflow-y-auto">
+                    <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white text-sm whitespace-pre-wrap break-words min-h-[60px] max-h-40 overflow-y-auto">
                         {value}
                     </div>
                 ) : (
-                    <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-foreground dark:text-white text-sm break-words">
+                    <div className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white text-sm break-words">
                         {value}
                     </div>
                 )}
@@ -269,19 +269,19 @@ export default function WhitelistDetailPage() {
                 <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                         <FileText className="h-6 w-6 text-[#bd2727]" />
-                        <h1 className="text-2xl font-bold text-foreground dark:text-white">Detail whitelist žádosti</h1>
+                        <h1 className="text-2xl font-bold text-white">Detail whitelist žádosti</h1>
                     </div>
                     
                     <div className="flex flex-wrap items-center gap-4 text-sm">
                         <div className="flex items-center gap-2">
                             <span className="text-gray-400">ID:</span>
-                            <span className="text-foreground dark:text-white font-mono">#{request.id}</span>
+                            <span className="text-white font-mono">#{request.id}</span>
                             <button
                                 onClick={() => copyToClipboard(request.id.toString(), 'ID žádosti')}
                                 className="p-1 rounded hover:bg-white/10 transition-colors"
                                 title="Kopírovat ID"
                             >
-                                <Copy className="h-3 w-3 text-gray-400 hover:text-foreground dark:text-white" />
+                                <Copy className="h-3 w-3 text-gray-400 hover:text-white" />
                             </button>
                         </div>
                         
@@ -315,7 +315,7 @@ export default function WhitelistDetailPage() {
                     
                     <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10">
                         <CardHeader>
-                            <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
+                            <CardTitle className="text-white flex items-center gap-2">
                                 <User className="h-5 w-5" />
                                 Základní informace
                             </CardTitle>
@@ -337,7 +337,7 @@ export default function WhitelistDetailPage() {
                     
                     <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10">
                         <CardHeader>
-                            <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
+                            <CardTitle className="text-white flex items-center gap-2">
                                 <MessageSquare className="h-5 w-5" />
                                 Znalost RP pravidel
                             </CardTitle>
@@ -356,7 +356,7 @@ export default function WhitelistDetailPage() {
                     
                     <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10">
                         <CardHeader>
-                            <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
+                            <CardTitle className="text-white flex items-center gap-2">
                                 <FileText className="h-5 w-5" />
                                 Znalost pravidel serveru
                             </CardTitle>
@@ -378,7 +378,7 @@ export default function WhitelistDetailPage() {
                     
                     <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10">
                         <CardHeader>
-                            <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
+                            <CardTitle className="text-white flex items-center gap-2">
                                 <Eye className="h-5 w-5" />
                                 Scénáře
                             </CardTitle>
@@ -395,7 +395,7 @@ export default function WhitelistDetailPage() {
                     
                     <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10">
                         <CardHeader>
-                            <CardTitle className="text-foreground dark:text-white text-lg">Status žádosti</CardTitle>
+                            <CardTitle className="text-white text-lg">Status žádosti</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-4">
                             <div className="flex justify-center">
@@ -412,7 +412,7 @@ export default function WhitelistDetailPage() {
                     
                     <Card className="bg-gradient-to-br from-[#131618]/80 via-[#151a1c]/80 to-[#111b22]/90 border border-white/10">
                         <CardHeader>
-                            <CardTitle className="text-foreground dark:text-white flex items-center gap-2">
+                            <CardTitle className="text-white flex items-center gap-2">
                                 <Edit3 className="h-5 w-5" />
                                 Poznámky správce
                             </CardTitle>
@@ -425,7 +425,7 @@ export default function WhitelistDetailPage() {
                                 value={notes}
                                 onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setNotes(e.target.value)}
                                 placeholder={canManageNotes ? "Zadejte poznámky k této žádosti..." : "Žádné poznámky"}
-                                className="min-h-[120px] bg-white/5 border-white/10 text-foreground dark:text-white"
+                                className="min-h-[120px] bg-white/5 border-white/10 text-white"
                                 disabled={!canManageNotes}
                             />
                             
@@ -433,7 +433,7 @@ export default function WhitelistDetailPage() {
                                 <Button
                                     onClick={saveNotes}
                                     disabled={isSavingNotes || notes === (request.notes || '')}
-                                    className="w-full bg-[#b90505] hover:bg-[#a00404] text-foreground dark:text-white"
+                                    className="w-full bg-[#b90505] hover:bg-[#a00404] text-white"
                                 >
                                     {isSavingNotes ? (
                                         <>

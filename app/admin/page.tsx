@@ -216,7 +216,7 @@ export default function AdminDashboard() {
                                     </div>
                                     <div className="space-y-1 sm:space-y-2">
                                         <h3 className="text-xs sm:text-sm font-medium text-gray-400 break-words">{card.title}</h3>
-                                        <p className="text-xl sm:text-2xl font-bold text-foreground dark:text-white">{card.value}</p>
+                                        <p className="text-xl sm:text-2xl font-bold text-white">{card.value}</p>
                                         <p className="text-xs text-gray-500 break-words">{card.description}</p>
                                     </div>
                                 </CardContent>
@@ -234,7 +234,7 @@ export default function AdminDashboard() {
             >
                 <div className="flex items-center gap-2 mb-4 sm:mb-6">
                     <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-[#bd2727] flex-shrink-0" />
-                    <h2 className="text-lg sm:text-xl font-bold text-foreground dark:text-white">Rychlé akce</h2>
+                    <h2 className="text-lg sm:text-xl font-bold text-white">Rychlé akce</h2>
                 </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
@@ -268,7 +268,7 @@ export default function AdminDashboard() {
             >
                 <div className="flex items-center gap-2 mb-4 sm:mb-6">
                     <BarChart3 className="h-4 w-4 sm:h-5 sm:w-5 text-[#bd2727] flex-shrink-0" />
-                    <h2 className="text-lg sm:text-xl font-bold text-foreground dark:text-white">Stav systému</h2>
+                    <h2 className="text-lg sm:text-xl font-bold text-white">Stav systému</h2>
                 </div>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
@@ -308,15 +308,15 @@ export default function AdminDashboard() {
                             <div className="space-y-2 sm:space-y-3">
                                 <div className="flex justify-between items-center">
                                     <span className="text-gray-400 text-sm sm:text-base">Uptime</span>
-                                    <span className="text-foreground dark:text-white font-medium text-sm sm:text-base">99.8%</span>
+                                    <span className="text-white font-medium text-sm sm:text-base">99.8%</span>
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <span className="text-gray-400 text-sm sm:text-base">Avg. Response</span>
-                                    <span className="text-foreground dark:text-white font-medium text-sm sm:text-base">&lt; 50ms</span>
+                                    <span className="text-white font-medium text-sm sm:text-base">&lt; 50ms</span>
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <span className="text-gray-400 text-sm sm:text-base">Memory Usage</span>
-                                    <span className="text-foreground dark:text-white font-medium text-sm sm:text-base">2.1GB</span>
+                                    <span className="text-white font-medium text-sm sm:text-base">2.1GB</span>
                                 </div>
                             </div>
                         </CardContent>

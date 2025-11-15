@@ -153,7 +153,7 @@ export const Button = ({ className, children, ...props }: ButtonProps) => {
       ref={scope}
       className={cn(
         // Base styles matching your design system
-        "flex min-w-[120px] cursor-pointer items-center justify-center gap-2 rounded-md px-4 py-2 font-medium text-foreground dark:text-white transition-all duration-200",
+        "flex min-w-[120px] cursor-pointer items-center justify-center gap-2 rounded-md px-4 py-2 font-medium text-white transition-all duration-200",
         // Default red theme styling
         "border border-[#b90505]/30 bg-transparent hover:bg-[#b90505]/10 text-[#bd2727]",
         // Focus and hover states

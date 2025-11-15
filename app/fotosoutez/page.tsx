@@ -129,7 +129,7 @@ function UploadForm({ contestId, onUploadFinished }: { contestId: number, onUplo
                     accept="image/png, image/jpeg, image/gif"
                     onChange={handleFileChange}
                     disabled={isUploading}
-                    className="file:text-foreground dark:text-white"
+                    className="file:text-white"
                 />
                 <p className="text-xs text-neutral-400 mt-1">PNG, JPG, GIF. Max 10MB.</p>
             </div>
@@ -254,7 +254,7 @@ export default function PhotoContestPage() {
                     </motion.div>
 
                     {loading && (
-                        <div className="flex items-center justify-center text-foreground dark:text-white/80">
+                        <div className="flex items-center justify-center text-white/80">
                             <Icons.spinner className="h-8 w-8 animate-spin mr-3" />
                             Načítání soutěží...
                         </div>
@@ -269,17 +269,17 @@ export default function PhotoContestPage() {
                                     <div key={contest.id} className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm border border-white/10 rounded-3xl p-6 md:p-8">
                                         <div className="flex flex-col md:flex-row justify-between md:items-start mb-8">
                                             <div className="mb-4 md:mb-0">
-                                                <h2 className="text-3xl md:text-4xl font-bold text-foreground dark:text-white mb-2">{contest.title}</h2>
+                                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">{contest.title}</h2>
                                                 <p className="text-neutral-300 max-w-2xl">{contest.description}</p>
                                             </div>
                                             {contest.status === 'open' && (
                                                 <Dialog open={openDialogId === contest.id} onOpenChange={(isOpen) => setOpenDialogId(isOpen ? contest.id : null)}>
                                                     <DialogTrigger asChild>
-                                                        <Button className="shrink-0 bg-[#8a0101] hover:bg-[#570000] text-foreground dark:text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-[#8a0101]/25 transition-all duration-300">
+                                                        <Button className="shrink-0 bg-[#8a0101] hover:bg-[#570000] text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-[#8a0101]/25 transition-all duration-300">
                                                             <Icons.plus className="mr-2 h-5 w-5" /> Přidat fotku
                                                         </Button>
                                                     </DialogTrigger>
-                                                    <DialogContent className="sm:max-w-[425px] bg-[#101010] border-neutral-700 text-foreground dark:text-white">
+                                                    <DialogContent className="sm:max-w-[425px] bg-[#101010] border-neutral-700 text-white">
                                                         <DialogHeader>
                                                             <DialogTitle>Nahrát fotku do soutěže</DialogTitle>
                                                             <DialogDescription>
@@ -305,19 +305,19 @@ export default function PhotoContestPage() {
                                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                                                     </div>
                                                     <div className="absolute bottom-0 left-0 p-4 w-full">
-                                                        <p className="text-foreground dark:text-white/90 text-sm mb-3 min-h-[40px] font-medium">{submission.caption}</p>
+                                                        <p className="text-white/90 text-sm mb-3 min-h-[40px] font-medium">{submission.caption}</p>
                                                         <div className="flex justify-between items-center">
                                                             <div className="flex items-center gap-2">
                                                                 <Avatar className="h-8 w-8 border-2 border-transparent group-hover:border-[#b90505]/50 transition-colors">
                                                                     <AvatarImage src={submission.user_image} />
                                                                     <AvatarFallback>{submission.user_name.charAt(0)}</AvatarFallback>
                                                                 </Avatar>
-                                                                <span className="text-sm text-foreground dark:text-white/80 font-semibold">{submission.user_name}</span>
+                                                                <span className="text-sm text-white/80 font-semibold">{submission.user_name}</span>
                                                             </div>
                                                             <button
                                                                 onClick={() => handleLikeToggle(contest.id, submission.id)}
                                                                 className={cn(
-                                                                    "flex items-center gap-2 rounded-full px-3 py-1 text-foreground dark:text-white/80 transition-all duration-200 backdrop-blur-sm",
+                                                                    "flex items-center gap-2 rounded-full px-3 py-1 text-white/80 transition-all duration-200 backdrop-blur-sm",
                                                                     submission.has_liked 
                                                                         ? "bg-red-500/30 text-red-300 hover:bg-red-500/40" 
                                                                         : "bg-black/30 hover:bg-white/20"
@@ -326,7 +326,7 @@ export default function PhotoContestPage() {
                                                                 <Icons.heart
                                                                     className={cn(
                                                                         "h-5 w-5 transition-all",
-                                                                        submission.has_liked ? 'text-red-400 fill-current' : 'text-foreground dark:text-white/70'
+                                                                        submission.has_liked ? 'text-red-400 fill-current' : 'text-white/70'
                                                                     )}
                                                                 />
                                                                 <span className="font-semibold">{submission.like_count}</span>
@@ -345,8 +345,8 @@ export default function PhotoContestPage() {
                                 ))
                             ) : (
                                 <div className="text-center py-20 rounded-2xl bg-black/20 border border-dashed border-white/10">
-                                    <h3 className="text-2xl font-bold text-foreground dark:text-white/90 mb-2">Žádná aktivní soutěž</h3>
-                                    <p className="text-center text-foreground dark:text-white/60 text-lg">
+                                    <h3 className="text-2xl font-bold text-white/90 mb-2">Žádná aktivní soutěž</h3>
+                                    <p className="text-center text-white/60 text-lg">
                                         Momentálně neprobíhá žádná fotosoutěž. Zkus to prosím později!
                                     </p>
                                 </div>
