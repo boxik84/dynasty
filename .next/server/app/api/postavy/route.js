@@ -1,9 +1,9 @@
 var R=require("../../../chunks/[turbopack]_runtime.js")("server/app/api/postavy/route.js")
-R.c("server/chunks/[root-of-the-server]__c038699c._.js")
-R.c("server/chunks/edc2e_next_dist_cbcc53a7._.js")
-R.c("server/chunks/[root-of-the-server]__7be3af64._.js")
-R.c("server/chunks/[root-of-the-server]__27f10009._.js")
-R.c("server/chunks/edc2e_next_8f09754b._.js")
+R.c("server/chunks/[root-of-the-server]__aabb977f._.js")
+R.c("server/chunks/node_modules_next_dist_bfd7b269._.js")
+R.c("server/chunks/[root-of-the-server]__09c3bdaf._.js")
+R.c("server/chunks/[root-of-the-server]__ec106c77._.js")
+R.c("server/chunks/node_modules_next_f2da0d3e._.js")
 R.c("server/chunks/_next-internal_server_app_api_postavy_route_actions_e9d8b7f1.js")
-R.m(4869)
-module.exports=R.m(4869).exports
+R.m(31982)
+module.exports=R.m(31982).exports
