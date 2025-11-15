@@ -1,0 +1,3 @@
+{
+  "/api/whitelist/[id]/route": "app/api/whitelist/[id]/route.js"
+}

@@ -1,0 +1,11 @@
+var R=require("../../../../../chunks/[turbopack]_runtime.js")("server/app/api/admin/whitelist-questions/[id]/route.js")
+R.c("server/chunks/[root-of-the-server]__650d10e2._.js")
+R.c("server/chunks/edc2e_next_8f09754b._.js")
+R.c("server/chunks/edc2e_next_dist_cbcc53a7._.js")
+R.c("server/chunks/[root-of-the-server]__7be3af64._.js")
+R.c("server/chunks/lib_auth_ts_22c348a0._.js")
+R.c("server/chunks/[root-of-the-server]__27f10009._.js")
+R.c("server/chunks/9cfc5_kysely_dist_esm_a2c1a0da._.js")
+R.c("server/chunks/ce889_server_app_api_admin_whitelist-questions_[id]_route_actions_4a37e43a.js")
+R.m(83806)
+module.exports=R.m(83806).exports

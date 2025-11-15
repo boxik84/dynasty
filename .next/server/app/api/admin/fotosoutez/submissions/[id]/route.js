@@ -1,0 +1,11 @@
+var R=require("../../../../../../chunks/[turbopack]_runtime.js")("server/app/api/admin/fotosoutez/submissions/[id]/route.js")
+R.c("server/chunks/[root-of-the-server]__5b6f7e81._.js")
+R.c("server/chunks/[root-of-the-server]__7be3af64._.js")
+R.c("server/chunks/edc2e_next_dist_cbcc53a7._.js")
+R.c("server/chunks/lib_auth_ts_22c348a0._.js")
+R.c("server/chunks/9cfc5_kysely_dist_esm_a2c1a0da._.js")
+R.c("server/chunks/[root-of-the-server]__27f10009._.js")
+R.c("server/chunks/edc2e_next_8f09754b._.js")
+R.c("server/chunks/ce889_server_app_api_admin_fotosoutez_submissions_[id]_route_actions_99511add.js")
+R.m(37645)
+module.exports=R.m(37645).exports

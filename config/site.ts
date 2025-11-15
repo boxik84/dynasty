@@ -13,7 +13,7 @@ export const siteConfig = {
         "Retrovax Roleplay",
         "Retrovax server",
         "Retrovax gaming",
-
+        
         // FiveM obecně
         "FiveM server",
         "FiveM Czech",
@@ -25,7 +25,7 @@ export const siteConfig = {
         "stabilní FiveM server",
         "prémiový FiveM server",
         "top FiveM server",
-
+        
         // Roleplay termíny
         "Roleplay server",
         "RP server",
@@ -38,7 +38,7 @@ export const siteConfig = {
         "roleplay komunita",
         "heavy roleplay",
         "immersive roleplay",
-
+        
         // GTA related
         "GTA 5 roleplay",
         "GTA V roleplay",
@@ -48,7 +48,7 @@ export const siteConfig = {
         "GTA 5 server",
         "GTA V server",
         "GTA 5 multiplayer",
-
+        
         // Komunita a social
         "FiveM komunita",
         "česká FiveM komunita",
@@ -58,7 +58,7 @@ export const siteConfig = {
         "online komunita",
         "gaming komunita",
         "herní komunita",
-
+        
         // Gameplay features
         "custom skripty",
         "unikátní skripty",
@@ -72,7 +72,7 @@ export const siteConfig = {
         "business roleplay",
         "whitelist server",
         "aplikace na server",
-
+        
         // Technical features
         "nízká latence",
         "stabilní připojení",
@@ -82,7 +82,7 @@ export const siteConfig = {
         "kvalitní hosting",
         "rychlý server",
         "spolehlivý server",
-
+        
         // Location/region
         "Česká republika",
         "Slovakia",
@@ -90,7 +90,7 @@ export const siteConfig = {
         "EU server",
         "evropský server",
         "střední Evropa",
-
+        
         // Gaming keywords
         "multiplayer",
         "online gaming",
@@ -98,7 +98,7 @@ export const siteConfig = {
         "herní server",
         "herní zážitek",
         "online hra",
-
+        
         // Experience keywords
         "nejlepší roleplay",
         "kvalitní server",
@@ -107,7 +107,7 @@ export const siteConfig = {
         "established server",
         "dlouhodobý server",
         "stabilní komunita",
-
+        
         // Activity keywords
         "aktivní server",
         "denně hráči",

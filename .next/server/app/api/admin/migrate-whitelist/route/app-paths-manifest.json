@@ -1,0 +1,3 @@
+{
+  "/api/admin/migrate-whitelist/route": "app/api/admin/migrate-whitelist/route.js"
+}

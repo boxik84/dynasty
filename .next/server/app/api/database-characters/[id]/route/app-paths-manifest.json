@@ -1,0 +1,3 @@
+{
+  "/api/database-characters/[id]/route": "app/api/database-characters/[id]/route.js"
+}

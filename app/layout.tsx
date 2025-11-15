@@ -1,43 +1,129 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-// THEME PROVIDER FOR DARK THEME SUPPORT
-import { ThemeProvider } from "@/components/theme-provider"
-import { LayoutShell } from "@/components/layout-shell"
+//CONFIG
+import { siteConfig } from "@/config/site"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { ThemeProvider } from "@/components/theme-provider";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { NavbarDemo } from "@/components/nav-bar";
+import Footer from "@/components/footer";
+import CookieBanner from "@/components/cookie-banner";
+
+import { Toaster } from "@/components/ui/sonner"
+
+//vercel
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
+
+import { fontSans } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
+import { StickyBanner } from "@/components/ui/sticky-banner";
 
 export const metadata: Metadata = {
-  title: "Dynasty Control Center",
-  description: "Administrace Dynasty RP – živý přehled serveru",
+  title: {
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
+  },
+  metadataBase: new URL(siteConfig.url),
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [
+    {
+      name: "Retrovax Team",
+      url: "https://github.com/retrovax",
+    },
+  ],
+  creator: "Retrovax Development",
+  openGraph: {
+    type: "website",
+    locale: "cs_CZ",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+    images: [
+      {
+        url: siteConfig.ogImage || "/default-og-image.png",
+        width: 800,
+        height: 600,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage || "/default-og-image.png"],
+    creator: "@retrovax_rp",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+      { url: "/favicon.ico", sizes: "16x16", type: "image/x-icon" }
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/logo.png",
+    other: [
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "192x192",
+        url: "/logo.png",
+      },
+      {
+        rel: "icon", 
+        type: "image/png",
+        sizes: "512x512",
+        url: "/logo.png",
+      }
+    ]
+  },
+  alternates: {
+    canonical: siteConfig.url,
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="cs" suppressHydrationWarning>
+      <head />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          "min-h-screen font-sans antialiased",
+          fontSans.variable
+        )}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <LayoutShell>{children}</LayoutShell>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <TooltipProvider>
+            <StickyBanner>
+              <span className="font-semibold text-sm text-white">
+                🛒 Kup si VIP na našem obchodě a získej exkluzivní výhody!{" "}
+                <a
+                  href={siteConfig.links.store}
+                  className="underline hover:text-red-200 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Navštívit obchod
+                </a>
+              </span>
+            </StickyBanner>
+            <NavbarDemo />
+            <div className="flex-1">{children}</div>
+            <Toaster />
+            <CookieBanner />
+            <Footer />
+            <SpeedInsights />
+            <Analytics />
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

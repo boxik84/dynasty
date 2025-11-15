@@ -1,0 +1,3 @@
+{
+  "/api/admin/whitelist-questions/route": "app/api/admin/whitelist-questions/route.js"
+}
